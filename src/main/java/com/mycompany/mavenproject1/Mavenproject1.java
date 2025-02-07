@@ -14,6 +14,6 @@ public class Mavenproject1 {
         System.out.println("Hello World!");
         
         int N;
-        String zx = "Nombre";
+        String zx = "Empanada";
     }
 }
