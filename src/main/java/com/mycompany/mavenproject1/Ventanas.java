@@ -132,3 +132,4 @@ public class Ventanas extends javax.swing.JFrame {
     private javax.swing.JLabel TXT_Texto;
     // End of variables declaration//GEN-END:variables
 }
+//hola
