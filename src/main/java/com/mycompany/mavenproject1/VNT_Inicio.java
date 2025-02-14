@@ -6,7 +6,7 @@ package com.mycompany.mavenproject1;
 
 /**
  *
- * @author mendlez12
+ * @author Vicente193373
  */
 public class VNT_Inicio extends javax.swing.JFrame {
 
@@ -52,7 +52,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         BTN_Inicio.setBackground(new java.awt.Color(30, 30, 30));
-        BTN_Inicio.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
+        BTN_Inicio.setFont(new java.awt.Font("Monospaced", 3, 24)); // NOI18N
         BTN_Inicio.setForeground(new java.awt.Color(255, 255, 255));
         BTN_Inicio.setText("Inicio");
         BTN_Inicio.addActionListener(new java.awt.event.ActionListener() {
@@ -62,7 +62,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         });
 
         BTN_Explorar.setBackground(new java.awt.Color(30, 30, 30));
-        BTN_Explorar.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
+        BTN_Explorar.setFont(new java.awt.Font("Monospaced", 2, 24)); // NOI18N
         BTN_Explorar.setForeground(new java.awt.Color(255, 255, 255));
         BTN_Explorar.setText("Explorar");
         BTN_Explorar.addActionListener(new java.awt.event.ActionListener() {
@@ -72,7 +72,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         });
 
         BTN_Notif.setBackground(new java.awt.Color(30, 30, 30));
-        BTN_Notif.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
+        BTN_Notif.setFont(new java.awt.Font("Monospaced", 2, 24)); // NOI18N
         BTN_Notif.setForeground(new java.awt.Color(255, 255, 255));
         BTN_Notif.setText("Notificaciones");
         BTN_Notif.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +82,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         });
 
         BTN_Perfil.setBackground(new java.awt.Color(30, 30, 30));
-        BTN_Perfil.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
+        BTN_Perfil.setFont(new java.awt.Font("Monospaced", 2, 24)); // NOI18N
         BTN_Perfil.setForeground(new java.awt.Color(255, 255, 255));
         BTN_Perfil.setText("Perfil");
         BTN_Perfil.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +92,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         });
 
         BTN_Config.setBackground(new java.awt.Color(30, 30, 30));
-        BTN_Config.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
+        BTN_Config.setFont(new java.awt.Font("Monospaced", 2, 24)); // NOI18N
         BTN_Config.setForeground(new java.awt.Color(255, 255, 255));
         BTN_Config.setText("Configuración");
         BTN_Config.setToolTipText("");
@@ -114,7 +114,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         BTN_Publicar.setText("Postear");
 
         BTN_Comun.setBackground(new java.awt.Color(30, 30, 30));
-        BTN_Comun.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
+        BTN_Comun.setFont(new java.awt.Font("Monospaced", 2, 24)); // NOI18N
         BTN_Comun.setForeground(new java.awt.Color(255, 255, 255));
         BTN_Comun.setText("Comunidades");
         BTN_Comun.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +124,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         });
 
         BTN_Listas.setBackground(new java.awt.Color(30, 30, 30));
-        BTN_Listas.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
+        BTN_Listas.setFont(new java.awt.Font("Monospaced", 2, 24)); // NOI18N
         BTN_Listas.setForeground(new java.awt.Color(255, 255, 255));
         BTN_Listas.setText("Listas");
         BTN_Listas.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +133,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
             }
         });
 
-        PNL_Icono.setBackground(new java.awt.Color(51, 255, 153));
+        PNL_Icono.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout PNL_IconoLayout = new javax.swing.GroupLayout(PNL_Icono);
         PNL_Icono.setLayout(PNL_IconoLayout);
@@ -174,9 +174,9 @@ public class VNT_Inicio extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(PNL_Icono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69)))
+                        .addGap(86, 86, 86)))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
                     .addComponent(PAN_Posts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -228,9 +228,9 @@ public class VNT_Inicio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
+                        .addGap(22, 22, 22)
                         .addComponent(PNL_Icono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
+                        .addGap(41, 41, 41)
                         .addComponent(BTN_Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(BTN_Explorar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
