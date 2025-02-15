@@ -46,6 +46,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         PAN_Posts = new java.awt.ScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1040, 660));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -207,7 +208,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(512, 512, 512)
                         .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(14, Short.MAX_VALUE))
+                        .addContainerGap(18, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(LST_Tendencias, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
