@@ -4,6 +4,9 @@
  */
 package com.mycompany.mavenproject1;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Vicente193373
@@ -15,6 +18,13 @@ public class VNT_Inicio extends javax.swing.JFrame {
      */
     public VNT_Inicio() {
         initComponents();
+        
+        
+        //String url = "src/img/Halo.png";
+        //ImageIcon image = new ImageIcon(url);
+        //Image img = image.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
+        //ImageIcon icono = new ImageIcon(img);
+        //BTN_Icono.setIcon(icono);
     }
 
     /**
@@ -40,13 +50,12 @@ public class VNT_Inicio extends javax.swing.JFrame {
         BTN_Publicar = new javax.swing.JButton();
         BTN_Comun = new javax.swing.JButton();
         BTN_Listas = new javax.swing.JButton();
-        PNL_Icono = new javax.swing.JPanel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
         LST_Tendencias = new java.awt.List();
         PAN_Posts = new java.awt.ScrollPane();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1040, 660));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -134,19 +143,6 @@ public class VNT_Inicio extends javax.swing.JFrame {
             }
         });
 
-        PNL_Icono.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout PNL_IconoLayout = new javax.swing.GroupLayout(PNL_Icono);
-        PNL_Icono.setLayout(PNL_IconoLayout);
-        PNL_IconoLayout.setHorizontalGroup(
-            PNL_IconoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 69, Short.MAX_VALUE)
-        );
-        PNL_IconoLayout.setVerticalGroup(
-            PNL_IconoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-
         LST_Tendencias.setBackground(new java.awt.Color(30, 30, 30));
         LST_Tendencias.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         LST_Tendencias.setName("Tendencias"); // NOI18N
@@ -154,28 +150,26 @@ public class VNT_Inicio extends javax.swing.JFrame {
         PAN_Posts.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         PAN_Posts.setName("Posts"); // NOI18N
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/HaloIcon.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(BTN_Notif)
-                                .addComponent(BTN_Inicio, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(BTN_Perfil, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(BTN_Explorar, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(BTN_Config, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(BTN_Listas)
-                            .addComponent(BTN_Comun))
-                        .addGap(12, 12, 12))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(PNL_Icono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(86, 86, 86)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(BTN_Notif)
+                        .addComponent(BTN_Perfil, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(BTN_Config, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(BTN_Inicio, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BTN_Explorar, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(BTN_Listas)
+                    .addComponent(BTN_Comun))
+                .addGap(12, 12, 12)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -229,9 +223,9 @@ public class VNT_Inicio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(PNL_Icono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
+                        .addGap(52, 52, 52)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
                         .addComponent(BTN_Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(BTN_Explorar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -259,7 +253,6 @@ public class VNT_Inicio extends javax.swing.JFrame {
         BTN_Publicar.getAccessibleContext().setAccessibleName("ID_BTN_Publicar");
         BTN_Comun.getAccessibleContext().setAccessibleName("ID_BTN_Comun");
         BTN_Listas.getAccessibleContext().setAccessibleName("ID_BTN_Listas");
-        PNL_Icono.getAccessibleContext().setAccessibleName("ID_PNL_Icono");
         LST_Tendencias.getAccessibleContext().setAccessibleName("ID_LST_Tendencias");
         PAN_Posts.getAccessibleContext().setAccessibleName("ID_PAN_Posts");
 
@@ -344,8 +337,8 @@ public class VNT_Inicio extends javax.swing.JFrame {
     private javax.swing.JTextArea FLD_Publicar;
     private java.awt.List LST_Tendencias;
     private java.awt.ScrollPane PAN_Posts;
-    private javax.swing.JPanel PNL_Icono;
     private javax.swing.Box.Filler filler1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
