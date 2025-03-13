@@ -66,7 +66,10 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="LBL_Nombre" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="LBL_Nombre2" max="32767" attributes="0"/>
+                                  <Component id="LBL_Nombre" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -103,13 +106,6 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="filler1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-          </Group>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="434" max="-2" attributes="0"/>
-                  <Component id="LBL_Nombre2" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="328" max="-2" attributes="0"/>
-              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -170,7 +166,9 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                               <Component id="LBL_Nombre" min="-2" pref="19" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                              <Component id="LBL_Nombre2" min="-2" pref="16" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="BTN_Verif" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="BTN_CPerfil" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -191,13 +189,6 @@
                       <Component id="PAN_Posts" min="-2" pref="246" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-              </Group>
-          </Group>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
-                  <Component id="LBL_Nombre2" min="-2" pref="16" max="-2" attributes="0"/>
-                  <EmptySpace pref="388" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>

@@ -4,15 +4,20 @@
  */
 package com.mycompany.mavenproject1;
 
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author Vicente193373
  */
 public class VNT_Singup extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VNT_Login
-     */
+    //Se necesita definir una variable File para contener la foto de perfil
+    File im;
+    
     public VNT_Singup() {
         initComponents();
     }
@@ -28,7 +33,6 @@ public class VNT_Singup extends javax.swing.JFrame {
 
         FLD_Nombre = new javax.swing.JPasswordField();
         FLD_Email = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
         BTN_Crear = new javax.swing.JButton();
         TXT_Email = new javax.swing.JLabel();
         TXT_Nombre = new javax.swing.JLabel();
@@ -42,23 +46,16 @@ public class VNT_Singup extends javax.swing.JFrame {
         SPN_Dia = new javax.swing.JSpinner();
         SPN_Mes = new javax.swing.JSpinner();
         SPN_Anio = new javax.swing.JSpinner();
+        BTN_Foto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
         BTN_Crear.setText("Crear Cuenta");
+        BTN_Crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_CrearActionPerformed(evt);
+            }
+        });
 
         TXT_Email.setText("Email");
 
@@ -78,15 +75,18 @@ public class VNT_Singup extends javax.swing.JFrame {
 
         SPN_Anio.setModel(new javax.swing.SpinnerNumberModel(2025, 1500, 3000, 1));
 
+        BTN_Foto.setText("Foto");
+        BTN_Foto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_FotoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(470, 470, 470)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(470, 470, 470))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(424, 424, 424)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(SPN_Anio, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -112,12 +112,16 @@ public class VNT_Singup extends javax.swing.JFrame {
                                     .addComponent(TXT_Password1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(FLD_Password1))))))
                 .addGap(424, 424, 424))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BTN_Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(469, 469, 469))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(BTN_Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(TXT_Email)
                 .addGap(1, 1, 1)
@@ -145,7 +149,7 @@ public class VNT_Singup extends javax.swing.JFrame {
                 .addComponent(TXT_Password2)
                 .addGap(1, 1, 1)
                 .addComponent(FLD_Password2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 30, Short.MAX_VALUE)
                 .addComponent(BTN_Crear)
                 .addGap(25, 25, 25))
         );
@@ -161,6 +165,28 @@ public class VNT_Singup extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BTN_FotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_FotoActionPerformed
+        // TODO add your handling code here:
+        
+        //Se debe definir para usar la ventanilla que busca un archivo
+        JFileChooser archivo = new JFileChooser();
+        archivo.showOpenDialog(this);
+        this.im = archivo.getSelectedFile();
+        
+        //Se guarda en 'path' la ubicacion del archivo elegido que sera la foto de perfil
+        String path_img = this.im.getAbsolutePath();
+        
+        //Se toma la imagen y se define como un icono asignable
+        ImageIcon img = new ImageIcon(new ImageIcon(path_img).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+        this.BTN_Foto.setText("");
+        this.BTN_Foto.setIcon(img);
+    }//GEN-LAST:event_BTN_FotoActionPerformed
+
+    private void BTN_CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CrearActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_BTN_CrearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,6 +215,12 @@ public class VNT_Singup extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -200,6 +232,7 @@ public class VNT_Singup extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Crear;
+    private javax.swing.JButton BTN_Foto;
     private javax.swing.JTextField FLD_Email;
     private javax.swing.JPasswordField FLD_Nombre;
     private javax.swing.JPasswordField FLD_Password1;
@@ -214,6 +247,5 @@ public class VNT_Singup extends javax.swing.JFrame {
     private javax.swing.JLabel TXT_Password1;
     private javax.swing.JLabel TXT_Password2;
     private javax.swing.JLabel TXT_Tel;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
