@@ -31,10 +31,7 @@
                       <Component id="BTN_Perfil" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="BTN_Config" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="BTN_Inicio" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                          <Component id="jButton1" alignment="1" min="-2" pref="70" max="-2" attributes="0"/>
-                          <Component id="BTN_Explorar" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="BTN_Explorar" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="BTN_Listas" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="BTN_Comun" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -95,9 +92,7 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" pref="70" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="168" max="-2" attributes="0"/>
                               <Component id="BTN_Inicio" min="-2" pref="37" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="BTN_Explorar" min="-2" pref="37" max="-2" attributes="0"/>
@@ -365,13 +360,6 @@
         <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.VerticalStrut"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/HaloIcon.png"/>
-        </Property>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="BTN_Buscar1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
@@ -439,7 +427,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="BTN_Publicar8">
       <Properties>
-        <Property name="actionCommand" type="java.lang.String" value=""/>
         <Property name="horizontalAlignment" type="int" value="2"/>
         <Property name="label" type="java.lang.String" value="Accesibilidad, pantalla e idiomas"/>
       </Properties>

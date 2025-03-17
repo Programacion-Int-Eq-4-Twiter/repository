@@ -4,9 +4,6 @@
  */
 package com.mycompany.mavenproject1;
 
-import java.awt.Image;
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author Vicente193373
@@ -19,12 +16,6 @@ public class VNT_Explorar extends javax.swing.JFrame {
     public VNT_Explorar() {
         initComponents();
         
-        
-        //String url = "src/img/Halo.png";
-        //ImageIcon image = new ImageIcon(url);
-        //Image img = image.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
-        //ImageIcon icono = new ImageIcon(img);
-        //BTN_Icono.setIcon(icono);
     }
 
     /**
@@ -48,7 +39,6 @@ public class VNT_Explorar extends javax.swing.JFrame {
         BTN_Listas = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
         LST_Tendencias = new java.awt.List();
-        jButton1 = new javax.swing.JButton();
         BTN_Buscar1 = new javax.swing.JButton();
         TBD_Parati = new javax.swing.JTabbedPane();
 
@@ -133,8 +123,6 @@ public class VNT_Explorar extends javax.swing.JFrame {
         LST_Tendencias.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         LST_Tendencias.setName("Tendencias"); // NOI18N
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/HaloIcon.png"))); // NOI18N
-
         BTN_Buscar1.setText("Buscar");
 
         TBD_Parati.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -151,9 +139,7 @@ public class VNT_Explorar extends javax.swing.JFrame {
                         .addComponent(BTN_Perfil, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(BTN_Config, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(BTN_Inicio, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BTN_Explorar, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addComponent(BTN_Explorar, javax.swing.GroupLayout.Alignment.LEADING))
                     .addComponent(BTN_Listas)
                     .addComponent(BTN_Comun))
                 .addGap(12, 12, 12)
@@ -192,9 +178,7 @@ public class VNT_Explorar extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(TBD_Parati, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46)
+                                .addGap(168, 168, 168)
                                 .addComponent(BTN_Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(BTN_Explorar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -308,7 +292,6 @@ public class VNT_Explorar extends javax.swing.JFrame {
     private java.awt.List LST_Tendencias;
     private javax.swing.JTabbedPane TBD_Parati;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables

@@ -12,10 +12,10 @@ import java.util.logging.Logger;
 /**
  *
  * @author Vicente193373
- */
+ */        
 public class DB_con 
 {
-
+    //*
     ///Estos strings tienen la funcion de contener los detalles de la conexio a la base de datos
     ///Hasta tener mas instrucciones cada miembro del equipo debe de crear una base de datos
     ///en su computadora y anotar los detalles de este aqui
@@ -126,7 +126,7 @@ public class DB_con
             //Se define lo que sera introducido en el campo del tercer "?"
             st.setString(4, birth);
             
-//Se define lo que sera introducido en el campo del tercer "?"
+            //Se define lo que sera introducido en el campo del tercer "?"
             st.setString(5, contra);
             
             //st.setInt(3, 29); //Si el tipo de dato a introducir es entero 
@@ -153,6 +153,8 @@ public class DB_con
         {
             Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
         }
+    
         return true;
     }
+    //*/
 }

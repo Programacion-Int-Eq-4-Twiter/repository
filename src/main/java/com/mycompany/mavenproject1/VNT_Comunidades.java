@@ -4,8 +4,6 @@
  */
 package com.mycompany.mavenproject1;
 
-import java.awt.Image;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,13 +16,7 @@ public class VNT_Comunidades extends javax.swing.JFrame {
      */
     public VNT_Comunidades() {
         initComponents();
-        
-        
-        //String url = "src/img/Halo.png";
-        //ImageIcon image = new ImageIcon(url);
-        //Image img = image.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
-        //ImageIcon icono = new ImageIcon(img);
-        //BTN_Icono.setIcon(icono);
+       
     }
 
     /**
@@ -53,7 +45,6 @@ public class VNT_Comunidades extends javax.swing.JFrame {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
         LST_Tendencias = new java.awt.List();
         PAN_Posts = new java.awt.ScrollPane();
-        jButton1 = new javax.swing.JButton();
         BTN_Publicar1 = new javax.swing.JButton();
         BTN_Publicar2 = new javax.swing.JButton();
         BTN_Publicar3 = new javax.swing.JButton();
@@ -155,8 +146,6 @@ public class VNT_Comunidades extends javax.swing.JFrame {
         PAN_Posts.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         PAN_Posts.setName("Posts"); // NOI18N
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/HaloIcon.png"))); // NOI18N
-
         BTN_Publicar1.setText("Tecnología");
         BTN_Publicar1.setActionCommand("");
 
@@ -181,9 +170,7 @@ public class VNT_Comunidades extends javax.swing.JFrame {
                         .addComponent(BTN_Perfil, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(BTN_Config, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(BTN_Inicio, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BTN_Explorar, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addComponent(BTN_Explorar, javax.swing.GroupLayout.Alignment.LEADING))
                     .addComponent(BTN_Listas)
                     .addComponent(BTN_Comun))
                 .addGap(12, 12, 12)
@@ -255,9 +242,7 @@ public class VNT_Comunidades extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
+                        .addGap(168, 168, 168)
                         .addComponent(BTN_Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(BTN_Explorar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -380,7 +365,6 @@ public class VNT_Comunidades extends javax.swing.JFrame {
     private java.awt.List LST_Tendencias;
     private java.awt.ScrollPane PAN_Posts;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
