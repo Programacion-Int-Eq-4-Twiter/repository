@@ -248,7 +248,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_InicioActionPerformed
 
     private void BTN_ExplorarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ExplorarActionPerformed
-        // TODO add your handling code here:
+        // Este bloque de codigo cierra esta ventana y abre la ventana de este boton
         VNT_Explorar NewVE = new VNT_Explorar();
         NewVE.setVisible(true);
         this.setVisible(false);
@@ -256,7 +256,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_ExplorarActionPerformed
 
     private void BTN_NotifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_NotifActionPerformed
-        // TODO add your handling code here:
+        // Este bloque de codigo cierra esta ventana y abre la ventana de este boton
         VNT_Notif NewVN = new VNT_Notif();
         NewVN.setVisible(true);
         this.setVisible(false);
@@ -264,7 +264,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_NotifActionPerformed
 
     private void BTN_PerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PerfilActionPerformed
-        // TODO add your handling code here:
+        // Este bloque de codigo cierra esta ventana y abre la ventana de este boton
         VNT_Perfil NewVP = new VNT_Perfil();
         NewVP.setVisible(true);
         this.setVisible(false);
@@ -272,7 +272,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_PerfilActionPerformed
 
     private void BTN_ConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ConfigActionPerformed
-        // TODO add your handling code here:
+        // Este bloque de codigo cierra esta ventana y abre la ventana de este boton
         VNT_Configuracion NewVCn = new VNT_Configuracion();
         NewVCn.setVisible(true);
         this.setVisible(false);
@@ -280,7 +280,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_ConfigActionPerformed
 
     private void BTN_ComunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ComunActionPerformed
-        // TODO add your handling code here:
+        // Este bloque de codigo cierra esta ventana y abre la ventana de este boton
         VNT_Comunidades NewVCm = new VNT_Comunidades();
         NewVCm.setVisible(true);
         this.setVisible(false);
@@ -288,7 +288,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_ComunActionPerformed
 
     private void BTN_ListasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ListasActionPerformed
-        // TODO add your handling code here:
+        // Este bloque de codigo cierra esta ventana y abre la ventana de este boton
         VNT_Listas NewVL = new VNT_Listas();
         NewVL.setVisible(true);
         this.setVisible(false);

@@ -1,20 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.mycompany.mavenproject1;
+
+import java.awt.Image;
+import java.io.File;
+import java.sql.Connection;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 
 /**
  *
  * @author Vicente193373
  */
 public class VNT_Login extends javax.swing.JFrame {
-
-    /**
-     * Creates new form VNT_Login
-     */
-    public VNT_Login() {
+    
+    public VNT_Login() 
+    {
         initComponents();
+        
+        String path = "./PI0211/src/main/java/com/mycompany/pi0211/Images/HaloIcon.png";
+        ImageIcon img = new ImageIcon(new ImageIcon(path).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+        this.LBL_Logo.setIcon(img);
     }
 
     /**
@@ -26,82 +31,86 @@ public class VNT_Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        FLD_Password = new javax.swing.JPasswordField();
+        FLD_Pass = new javax.swing.JPasswordField();
         FLD_Identif = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
         BTN_Crear = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        LBL_TextD = new javax.swing.JLabel();
         TXT_Identif = new javax.swing.JLabel();
         TXT_Password = new javax.swing.JLabel();
+        BTN_Entrar = new javax.swing.JButton();
+        LBL_Logo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1040, 660));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
 
         BTN_Crear.setText("Crear una Cuenta");
+        BTN_Crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_CrearActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setText("  ó  ");
+        LBL_TextD.setText("  ó  ");
 
-        TXT_Identif.setText("Teléfono, email o nombre");
+        TXT_Identif.setText("Correo Electronico");
 
         TXT_Password.setText("Contraseña");
+
+        BTN_Entrar.setText("Entrar");
+        BTN_Entrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_EntrarActionPerformed(evt);
+            }
+        });
+
+        LBL_Logo.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(470, 470, 470)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(470, 470, 470))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(424, 424, 424)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                .addContainerGap(424, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BTN_Entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(LBL_TextD)
                         .addGap(86, 86, 86))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(TXT_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(FLD_Password)
+                            .addComponent(FLD_Pass)
                             .addComponent(BTN_Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TXT_Identif, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(FLD_Identif, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGap(424, 424, 424))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(470, 470, 470)
+                .addComponent(LBL_Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(129, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
+                .addGap(111, 111, 111)
+                .addComponent(LBL_Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addComponent(TXT_Identif)
                 .addGap(1, 1, 1)
                 .addComponent(FLD_Identif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addComponent(TXT_Password)
                 .addGap(1, 1, 1)
-                .addComponent(FLD_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
+                .addComponent(FLD_Pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(BTN_Entrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LBL_TextD)
                 .addGap(16, 16, 16)
                 .addComponent(BTN_Crear)
-                .addGap(212, 212, 212))
+                .addGap(155, 155, 155))
         );
 
-        FLD_Password.getAccessibleContext().setAccessibleName("ID_FLD_Password");
+        FLD_Pass.getAccessibleContext().setAccessibleName("ID_FLD_Password");
         FLD_Identif.getAccessibleContext().setAccessibleName("ID_FLD_Identif");
         FLD_Identif.getAccessibleContext().setAccessibleDescription("");
         BTN_Crear.getAccessibleContext().setAccessibleName("ID_BTN_Crear");
@@ -111,6 +120,52 @@ public class VNT_Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BTN_CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CrearActionPerformed
+        // TODO add your handling code here:
+        
+        //Se crea una ventana para crear una cuenta nueva
+        VNT_Singup sing = new VNT_Singup();
+        
+        //Se hace visible a la ventana de singup
+        sing.setVisible(true);
+        
+        //Se hace invisible y se desaparece la ventana de login actual
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_BTN_CrearActionPerformed
+
+    //Funcion que se activa al presionar el boton de ingreso
+    private void BTN_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_EntrarActionPerformed
+        
+        //Se define la conexion usando el archivo predefinido DB_con.java
+        DB_con db_c = new DB_con();
+        
+        //Se guarda en 'usr' lo que estaba escrito en el campo de identificacion
+        String usr = FLD_Identif.getText();
+        
+        //Se guarda en 'psw' lo que estaba escrito en el campo de contraseña
+        String psw  = FLD_Pass.getText();
+        
+        //Se define la conexion en a para referenciarla
+        Connection a = db_c.Get_conexion();
+        
+        //Se define login para guardar si se confirman que el usuario y la contraseña fueron correctos
+        Boolean login = db_c.Ex_select(usr, psw);
+        
+        if(login) //se comprueba que los datos para entrar si existen y son correctos
+        {
+            //Se crea una ventana de inicio
+            VNT_Inicio NewVI = new VNT_Inicio();
+        
+            //Se hace visible a la ventana de inicio
+            NewVI.setVisible(true);
+        
+            //Se hace invisible y se desaparece la ventana de login actual
+            this.setVisible(false);
+            this.dispose();
+        }
+    }//GEN-LAST:event_BTN_EntrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,6 +193,9 @@ public class VNT_Login extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(VNT_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -149,11 +207,12 @@ public class VNT_Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Crear;
+    private javax.swing.JButton BTN_Entrar;
     private javax.swing.JTextField FLD_Identif;
-    private javax.swing.JPasswordField FLD_Password;
+    private javax.swing.JPasswordField FLD_Pass;
+    private javax.swing.JLabel LBL_Logo;
+    private javax.swing.JLabel LBL_TextD;
     private javax.swing.JLabel TXT_Identif;
     private javax.swing.JLabel TXT_Password;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,9 @@ package com.mycompany.mavenproject1;
 
 import java.awt.Image;
 import java.io.File;
+import java.sql.Connection;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 
@@ -20,6 +23,10 @@ public class VNT_Singup extends javax.swing.JFrame {
     
     public VNT_Singup() {
         initComponents();
+        if (FLD_ClaveA.getText() == FLD_ClaveB.getText())
+        {
+            BTN_Crear.setText("Crear cuenta");
+        }
     }
 
     /**
@@ -32,14 +39,14 @@ public class VNT_Singup extends javax.swing.JFrame {
     private void initComponents() {
 
         FLD_Nombre = new javax.swing.JPasswordField();
-        FLD_Email = new javax.swing.JTextField();
+        FLD_Correo = new javax.swing.JTextField();
         BTN_Crear = new javax.swing.JButton();
-        TXT_Email = new javax.swing.JLabel();
+        TXT_Correo = new javax.swing.JLabel();
         TXT_Nombre = new javax.swing.JLabel();
-        FLD_Password1 = new javax.swing.JPasswordField();
-        TXT_Password1 = new javax.swing.JLabel();
-        FLD_Password2 = new javax.swing.JPasswordField();
-        TXT_Password2 = new javax.swing.JLabel();
+        FLD_ClaveA = new javax.swing.JPasswordField();
+        TXT_ClaveA = new javax.swing.JLabel();
+        FLD_ClaveB = new javax.swing.JPasswordField();
+        TXT_ClaveB = new javax.swing.JLabel();
         FLD_Tel = new javax.swing.JTextField();
         TXT_Tel = new javax.swing.JLabel();
         TXT_FechaN = new javax.swing.JLabel();
@@ -47,6 +54,14 @@ public class VNT_Singup extends javax.swing.JFrame {
         SPN_Mes = new javax.swing.JSpinner();
         SPN_Anio = new javax.swing.JSpinner();
         BTN_Foto = new javax.swing.JButton();
+        FLD_Apellido = new javax.swing.JPasswordField();
+        TXT_Apellido = new javax.swing.JLabel();
+        FLD_Id = new javax.swing.JPasswordField();
+        TXT_Id = new javax.swing.JLabel();
+        FLD_Genero = new javax.swing.JPasswordField();
+        TXT_Genero = new javax.swing.JLabel();
+        TXT_Localidad = new javax.swing.JLabel();
+        FLD_Localidad = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,15 +72,15 @@ public class VNT_Singup extends javax.swing.JFrame {
             }
         });
 
-        TXT_Email.setText("Email");
+        TXT_Correo.setText("Correo Electrónico");
 
         TXT_Nombre.setText("Nombre");
 
-        TXT_Password1.setText("Contraseña");
+        TXT_ClaveA.setText("Contraseña");
 
-        TXT_Password2.setText("Repetir Contraseña");
+        TXT_ClaveB.setText("Repetir Contraseña");
 
-        TXT_Tel.setText("Telefono");
+        TXT_Tel.setText("Teléfono");
 
         TXT_FechaN.setText("Fecha de Nacimiento");
 
@@ -82,84 +97,135 @@ public class VNT_Singup extends javax.swing.JFrame {
             }
         });
 
+        TXT_Apellido.setText("Apellido");
+
+        TXT_Id.setText("Identificador");
+
+        TXT_Genero.setText("Género");
+
+        TXT_Localidad.setText("Localidad");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(424, 424, 424)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(SPN_Anio, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(SPN_Dia, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(1, 1, 1)
-                            .addComponent(SPN_Mes, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TXT_FechaN, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(TXT_Tel, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(FLD_Tel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(TXT_Password2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(FLD_Password2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(TXT_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(FLD_Nombre)
-                                    .addComponent(BTN_Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TXT_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(FLD_Email, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(TXT_Password1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(FLD_Password1))))))
-                .addGap(424, 424, 424))
+                .addGap(314, 314, 314)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(TXT_Genero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(FLD_Genero)
+                        .addComponent(TXT_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(FLD_Nombre)
+                        .addComponent(TXT_Correo, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                        .addComponent(FLD_Correo, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(FLD_Id)
+                        .addComponent(TXT_Id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(TXT_ClaveA, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(FLD_ClaveA, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TXT_ClaveB, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FLD_ClaveB, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(SPN_Anio, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(SPN_Dia, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(1, 1, 1)
+                                        .addComponent(SPN_Mes, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(TXT_FechaN, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(TXT_Tel, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(FLD_Tel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(TXT_Apellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(FLD_Apellido)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(TXT_Localidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(FLD_Localidad, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(312, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BTN_Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(469, 469, 469))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(BTN_Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(469, 469, 469))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(BTN_Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(423, 423, 423))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(BTN_Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TXT_Correo)
+                        .addGap(1, 1, 1)
+                        .addComponent(FLD_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TXT_Tel)
+                        .addGap(1, 1, 1)
+                        .addComponent(FLD_Tel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(TXT_Email)
-                .addGap(1, 1, 1)
-                .addComponent(FLD_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(TXT_Tel)
-                .addGap(1, 1, 1)
-                .addComponent(FLD_Tel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(TXT_Nombre)
-                .addGap(1, 1, 1)
-                .addComponent(FLD_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TXT_Nombre)
+                        .addGap(1, 1, 1)
+                        .addComponent(FLD_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TXT_Apellido)
+                        .addGap(1, 1, 1)
+                        .addComponent(FLD_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(TXT_FechaN)
-                .addGap(1, 1, 1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SPN_Dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SPN_Mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SPN_Anio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addComponent(TXT_Password1)
-                .addGap(1, 1, 1)
-                .addComponent(FLD_Password1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(TXT_Password2)
-                .addGap(1, 1, 1)
-                .addComponent(FLD_Password2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 30, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TXT_FechaN)
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(SPN_Dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SPN_Mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SPN_Anio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TXT_Id)
+                        .addGap(1, 1, 1)
+                        .addComponent(FLD_Id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TXT_Genero)
+                        .addGap(1, 1, 1)
+                        .addComponent(FLD_Genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TXT_Localidad)
+                        .addGap(1, 1, 1)
+                        .addComponent(FLD_Localidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TXT_ClaveB)
+                        .addGap(1, 1, 1)
+                        .addComponent(FLD_ClaveB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TXT_ClaveA)
+                        .addGap(1, 1, 1)
+                        .addComponent(FLD_ClaveA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(53, 53, 53)
                 .addComponent(BTN_Crear)
-                .addGap(25, 25, 25))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         FLD_Nombre.getAccessibleContext().setAccessibleName("ID_FLD_Password");
-        FLD_Email.getAccessibleContext().setAccessibleName("ID_FLD_Identif");
-        FLD_Email.getAccessibleContext().setAccessibleDescription("");
+        FLD_Correo.getAccessibleContext().setAccessibleName("ID_FLD_Identif");
+        FLD_Correo.getAccessibleContext().setAccessibleDescription("");
         BTN_Crear.getAccessibleContext().setAccessibleName("ID_BTN_Crear");
-        TXT_Email.getAccessibleContext().setAccessibleName("ID_TXT_Identif");
-        TXT_Email.getAccessibleContext().setAccessibleDescription("");
+        TXT_Correo.getAccessibleContext().setAccessibleName("ID_TXT_Identif");
+        TXT_Correo.getAccessibleContext().setAccessibleDescription("");
         TXT_Nombre.getAccessibleContext().setAccessibleName("ID_TXT_Password");
         TXT_FechaN.getAccessibleContext().setAccessibleName("ID_TXT_FechaN");
 
@@ -185,6 +251,71 @@ public class VNT_Singup extends javax.swing.JFrame {
 
     private void BTN_CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CrearActionPerformed
         // TODO add your handling code here:
+        
+        if(FLD_ClaveA.getText() == FLD_ClaveB.getText())
+        {
+            //Se define la conexion usando el archivo predefinido DB_con.java
+            DB_con db_c = new DB_con();
+        
+            //Se guarda en 'name' lo que estaba escrito en el campo nombre
+            String id = FLD_Id.getText();
+            
+            //Se guarda en 'name' lo que estaba escrito en el campo nombre
+            String name = FLD_Nombre.getText();
+        
+            //Se guarda en 'name' lo que estaba escrito en el campo nombre
+            String last = FLD_Apellido.getText();
+        
+            //Se guarda en 'name' lo que estaba escrito en el campo nombre
+            String email = FLD_Correo.getText();
+        
+            //Se guarda en 'name' lo que estaba escrito en el campo nombre
+            String phone = FLD_Tel.getText();
+        
+            //Se guarda cada valor del dia de nacimiento para cambiar su formato
+            int D = (Integer) SPN_Dia.getValue();
+            int M = (Integer) SPN_Mes.getValue();
+            int Y = (Integer) SPN_Anio.getValue();
+            
+            //Se procesan los valores en el formato adecuado para una fecha en SQL
+            LocalDate bdate = LocalDate.of(Y, M, D);
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            
+            //Se guarda en 'birth' lo que se intordujo como fecha de nacimiento
+            String birth = bdate.format(formato);
+        
+            //Se guarda en 'psw' lo que estaba escrito en el campo genero
+            String gender  = FLD_Genero.getText();
+        
+            //Se guarda en 'psw' lo que estaba escrito en el campo genero
+            String home  = FLD_Localidad.getText();
+        
+            //Se guarda en 'psw' lo que estaba escrito en el campo contraseña
+            String pass  = FLD_ClaveB.getText();
+        
+            //Se define la conexion en a para referenciarla
+            Connection a = db_c.Get_conexion();
+        
+            //Se define login para guardar si se confirman que el usuario y la contraseña fueron correctos
+            Boolean singup = db_c.Registrar(id, name, last, email, phone, birth, gender, home, pass);
+            
+            if(singup) //se comprueba que los datos para entrar si existen y son correctos
+            {
+                //Se crea una ventana de inicio
+                VNT_Inicio NewVI = new VNT_Inicio();
+        
+                //Se hace visible a la ventana de inicio
+                NewVI.setVisible(true);
+        
+                //Se hace invisible y se desaparece la ventana de login actual
+                this.setVisible(false);
+                this.dispose();
+            }
+        }
+        else
+        {
+            BTN_Crear.setText("Contraseñas diferentes");
+        }
         
     }//GEN-LAST:event_BTN_CrearActionPerformed
 
@@ -233,19 +364,27 @@ public class VNT_Singup extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Crear;
     private javax.swing.JButton BTN_Foto;
-    private javax.swing.JTextField FLD_Email;
+    private javax.swing.JPasswordField FLD_Apellido;
+    private javax.swing.JPasswordField FLD_ClaveA;
+    private javax.swing.JPasswordField FLD_ClaveB;
+    private javax.swing.JTextField FLD_Correo;
+    private javax.swing.JPasswordField FLD_Genero;
+    private javax.swing.JPasswordField FLD_Id;
+    private javax.swing.JPasswordField FLD_Localidad;
     private javax.swing.JPasswordField FLD_Nombre;
-    private javax.swing.JPasswordField FLD_Password1;
-    private javax.swing.JPasswordField FLD_Password2;
     private javax.swing.JTextField FLD_Tel;
     private javax.swing.JSpinner SPN_Anio;
     private javax.swing.JSpinner SPN_Dia;
     private javax.swing.JSpinner SPN_Mes;
-    private javax.swing.JLabel TXT_Email;
+    private javax.swing.JLabel TXT_Apellido;
+    private javax.swing.JLabel TXT_ClaveA;
+    private javax.swing.JLabel TXT_ClaveB;
+    private javax.swing.JLabel TXT_Correo;
     private javax.swing.JLabel TXT_FechaN;
+    private javax.swing.JLabel TXT_Genero;
+    private javax.swing.JLabel TXT_Id;
+    private javax.swing.JLabel TXT_Localidad;
     private javax.swing.JLabel TXT_Nombre;
-    private javax.swing.JLabel TXT_Password1;
-    private javax.swing.JLabel TXT_Password2;
     private javax.swing.JLabel TXT_Tel;
     // End of variables declaration//GEN-END:variables
 }

@@ -24,43 +24,67 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="424" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="SPN_Anio" alignment="1" min="-2" pref="101" max="-2" attributes="0"/>
-                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="SPN_Dia" min="-2" pref="54" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                          <Component id="SPN_Mes" min="-2" pref="54" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="TXT_FechaN" min="-2" pref="192" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="TXT_Tel" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                                  <Component id="FLD_Tel" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="TXT_Password2" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                              <Component id="FLD_Password2" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                              <Component id="TXT_Nombre" min="-2" pref="192" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="FLD_Nombre" max="32767" attributes="0"/>
-                                  <Component id="BTN_Crear" min="-2" pref="192" max="-2" attributes="0"/>
-                                  <Component id="TXT_Email" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                                  <Component id="FLD_Email" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="TXT_Password1" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                                  <Component id="FLD_Password1" alignment="0" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="314" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="TXT_Genero" max="32767" attributes="0"/>
+                      <Component id="FLD_Genero" alignment="0" max="32767" attributes="0"/>
+                      <Component id="TXT_Nombre" alignment="0" max="32767" attributes="0"/>
+                      <Component id="FLD_Nombre" alignment="0" max="32767" attributes="0"/>
+                      <Component id="TXT_Correo" alignment="0" pref="192" max="32767" attributes="0"/>
+                      <Component id="FLD_Correo" alignment="1" max="32767" attributes="0"/>
+                      <Component id="FLD_Id" alignment="0" max="32767" attributes="0"/>
+                      <Component id="TXT_Id" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="TXT_ClaveA" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                      <Component id="FLD_ClaveA" alignment="1" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="TXT_ClaveB" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                  <Component id="FLD_ClaveB" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="SPN_Anio" alignment="1" min="-2" pref="101" max="-2" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="SPN_Dia" min="-2" pref="54" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                      <Component id="SPN_Mes" min="-2" pref="54" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="TXT_FechaN" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="TXT_Tel" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                              <Component id="FLD_Tel" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
+                              <Component id="TXT_Apellido" max="32767" attributes="0"/>
+                              <Component id="FLD_Apellido" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="TXT_Localidad" alignment="0" max="32767" attributes="0"/>
+                          <Component id="FLD_Localidad" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="424" max="-2" attributes="0"/>
+              <EmptySpace pref="312" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="BTN_Foto" min="-2" pref="100" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="469" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="BTN_Foto" min="-2" pref="100" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="469" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="BTN_Crear" min="-2" pref="192" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="423" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -69,37 +93,78 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Component id="BTN_Foto" min="-2" pref="100" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="TXT_Email" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-              <Component id="FLD_Email" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-              <Component id="TXT_Tel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-              <Component id="FLD_Tel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-              <Component id="TXT_Nombre" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-              <Component id="FLD_Nombre" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="TXT_FechaN" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="SPN_Dia" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="SPN_Mes" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="SPN_Anio" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="TXT_Correo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <Component id="FLD_Correo" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="TXT_Tel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <Component id="FLD_Tel" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-              <Component id="TXT_Password1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-              <Component id="FLD_Password1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-              <Component id="TXT_Password2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-              <Component id="FLD_Password2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" pref="30" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="TXT_Nombre" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <Component id="FLD_Nombre" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="TXT_Apellido" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <Component id="FLD_Apellido" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="TXT_FechaN" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="SPN_Dia" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="SPN_Mes" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="SPN_Anio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="TXT_Id" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <Component id="FLD_Id" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="TXT_Genero" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <Component id="FLD_Genero" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="TXT_Localidad" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <Component id="FLD_Localidad" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="TXT_ClaveB" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <Component id="FLD_ClaveB" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="TXT_ClaveA" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <Component id="FLD_ClaveA" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               <Component id="BTN_Crear" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <EmptySpace pref="67" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -110,7 +175,7 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_FLD_Password"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="javax.swing.JTextField" name="FLD_Email">
+    <Component class="javax.swing.JTextField" name="FLD_Correo">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_FLD_Identif"/>
         <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
@@ -127,9 +192,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_CrearActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="TXT_Email">
+    <Component class="javax.swing.JLabel" name="TXT_Correo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Email"/>
+        <Property name="text" type="java.lang.String" value="Correo Electr&#xf3;nico"/>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_TXT_Identif"/>
@@ -144,16 +209,16 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_TXT_Password"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="FLD_Password1">
+    <Component class="javax.swing.JPasswordField" name="FLD_ClaveA">
     </Component>
-    <Component class="javax.swing.JLabel" name="TXT_Password1">
+    <Component class="javax.swing.JLabel" name="TXT_ClaveA">
       <Properties>
         <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="FLD_Password2">
+    <Component class="javax.swing.JPasswordField" name="FLD_ClaveB">
     </Component>
-    <Component class="javax.swing.JLabel" name="TXT_Password2">
+    <Component class="javax.swing.JLabel" name="TXT_ClaveB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Repetir Contrase&#xf1;a"/>
       </Properties>
@@ -162,7 +227,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="TXT_Tel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Telefono"/>
+        <Property name="text" type="java.lang.String" value="Tel&#xe9;fono"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="TXT_FechaN">
@@ -201,6 +266,34 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_FotoActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="FLD_Apellido">
+    </Component>
+    <Component class="javax.swing.JLabel" name="TXT_Apellido">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Apellido"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="FLD_Id">
+    </Component>
+    <Component class="javax.swing.JLabel" name="TXT_Id">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Identificador"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="FLD_Genero">
+    </Component>
+    <Component class="javax.swing.JLabel" name="TXT_Genero">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="G&#xe9;nero"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="TXT_Localidad">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Localidad"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="FLD_Localidad">
     </Component>
   </SubComponents>
 </Form>

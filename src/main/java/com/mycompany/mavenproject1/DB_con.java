@@ -20,7 +20,7 @@ public class DB_con
     ///Hasta tener mas instrucciones cada miembro del equipo debe de crear una base de datos
     ///en su computadora y anotar los detalles de este aqui
     //public String connectionstring = "jdbc:sqlserver://localhost---";
-    public String connectionstring = "jdbc:mysql://localhost:3306/DB_LocalT";
+    public String connectionstring = "jdbc:mysql://localhost:3306/BD_Twitter";
     public String dbhost = "host";
     public String dbpass = "";
     
@@ -39,7 +39,7 @@ public class DB_con
         catch (SQLException ex) 
         {
             System.out.print("Error de conexion"); //Print
-            Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DB_con.class.getName()). log(Level.SEVERE, null, ex);
         }
     }
     
@@ -59,7 +59,7 @@ public class DB_con
             
             //Se define una variable de tipo string para contener un query de SQL
             //Particularmente busca en la tabla 'usr' un registro con cierto nombre y contraseña
-            String query = "SELECT * FROM Usuario WHERE Nombre = ? AND Contra = ?";
+            String query = "SELECT * FROM Usuario WHERE correo = ? AND clave = ?";
             
             //Se define "sta" como el contenedor del query
             PreparedStatement sta;
@@ -77,13 +77,13 @@ public class DB_con
             //En este caso se ejecuta un query que busca un registro en la base de datos
             //que contengan el nombre de usuario y su contraseña correctos
 
-            if(rs.next()) //Si hay uno, revisa siguiente registro enlistado en 'rs'
+            if(rs.next()) //Si hay mas, revisa siguiente registro enlistado en 'rs'
             {
                 //se hizo login
-                //se guarda en 'usr_name' el nombre del registro encontrado por el query
-                String nombre = rs.getString("usr_name");
+                //se guarda en 'name' el nombre del registro encontrado por el query
+                String email = rs.getString("correo");
                 //se guarda en 'contra' la contraseña del registro encontrado por el query
-                String contra = rs.getString("contra");                
+                String pass = rs.getString("clave");                
                 return true;
             }
             else
@@ -91,18 +91,16 @@ public class DB_con
                 return false;
             }
             
-            
         } 
         catch (SQLException ex) 
         {
             Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
-        
-        return true;
     }
     
     //Funcion para hacer un nuevo registro en la base de datos
-    public Boolean Registrar_usr(String email, String tel, String nombre, String birth, String contra)
+    public Boolean Registrar(String id_u, String name, String last, String email, String phone, String birth, String gender, String home, String pass)
     {
         try 
         {    
@@ -111,23 +109,35 @@ public class DB_con
             
             //Se realiza un query para insertar valores en la base de datos
             //Particularmente agregarlos a la tabla 'usr'
-            String query = "INSERT INTO usr VALUES(?, ?, ?, ?, ?)";
+            String query = "INSERT INTO Usuario VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement st = cn.prepareStatement(query);
             
             //Se define lo que sera introducido en el campo del primer "?"
-            st.setString(1, email);
+            st.setString(1, id_u);
             
             //Se define lo que sera introducido en el campo del segundo "?"
-            st.setString(2, tel);
+            st.setString(2, name);
             
             //Se define lo que sera introducido en el campo del tercer "?"
-            st.setString(3, nombre);
+            st.setString(3, last);
             
-            //Se define lo que sera introducido en el campo del tercer "?"
-            st.setString(4, birth);
+            //Se define lo que sera introducido en el campo del cuarto "?"
+            st.setString(4, email);
             
-            //Se define lo que sera introducido en el campo del tercer "?"
-            st.setString(5, contra);
+            //Se define lo que sera introducido en el campo del quinto "?"
+            st.setString(5, phone);
+            
+            //Se define lo que sera introducido en el campo del sexto "?"
+            st.setString(6, birth);
+            
+            //Se define lo que sera introducido en el campo del septimo "?"
+            st.setString(7, gender);
+            
+            //Se define lo que sera introducido en el campo del octavo "?"
+            st.setString(8, home);
+            
+            //Se define lo que sera introducido en el campo del noveno "?"
+            st.setString(9, pass);
             
             //st.setInt(3, 29); //Si el tipo de dato a introducir es entero 
             
@@ -140,21 +150,21 @@ public class DB_con
             {
                 //Fallo inset
                 System.out.println("Algo fallo en el registro");
+                return false;
             }
             else
             {
                 //exito
                 System.out.println("Registro completado exitosamente");
+                return true;
             }
 
-            return true;
         } 
         catch (SQLException ex) 
         {
             Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
-    
-        return true;
     }
     //*/
 }
