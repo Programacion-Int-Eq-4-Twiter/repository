@@ -13,11 +13,16 @@ public class VNT_Listas extends javax.swing.JFrame {
     /**
      * Creates new form VNT_Inicio
      */
+    String Main_ID;
+            
     public VNT_Listas() {
         initComponents();
         
     }
 
+    public void recieveID(String variable) {
+        this.Main_ID = variable;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

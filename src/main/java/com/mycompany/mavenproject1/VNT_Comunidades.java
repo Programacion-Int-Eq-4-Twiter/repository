@@ -14,11 +14,17 @@ public class VNT_Comunidades extends javax.swing.JFrame {
     /**
      * Creates new form VNT_Inicio
      */
+    String Main_ID;
+    
     public VNT_Comunidades() {
         initComponents();
        
     }
 
+    public void recieveID(String variable) {
+        this.Main_ID = variable;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

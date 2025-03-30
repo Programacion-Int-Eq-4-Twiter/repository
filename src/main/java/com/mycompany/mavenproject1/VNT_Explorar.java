@@ -13,11 +13,16 @@ public class VNT_Explorar extends javax.swing.JFrame {
     /**
      * Creates new form VNT_Inicio
      */
+    String Main_ID;
+            
     public VNT_Explorar() {
         initComponents();
         
     }
 
+    public void recieveID(String variable) {
+        this.Main_ID = variable;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,6 +48,7 @@ public class VNT_Explorar extends javax.swing.JFrame {
         TBD_Parati = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(1015, 615));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 

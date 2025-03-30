@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -48,9 +49,9 @@ public class DB_con
     {
         return this.conn;
     }
-
+    
     //Esta funcion busca encontrar un registro con nombre y contraseña validos
-    public boolean Ex_select(String usr, String psw)
+    public ResultSet Ex_select(String usr, String psw)
     {
         try 
         {
@@ -79,27 +80,23 @@ public class DB_con
 
             if(rs.next()) //Si hay mas, revisa siguiente registro enlistado en 'rs'
             {
-                //se hizo login
-                //se guarda en 'name' el nombre del registro encontrado por el query
-                String email = rs.getString("correo");
-                //se guarda en 'contra' la contraseña del registro encontrado por el query
-                String pass = rs.getString("clave");                
-                return true;
+                //se hizo login              
+                return rs;
             }
             else
             {
-                return false;
+                return null;
             }
             
         } 
         catch (SQLException ex) 
         {
             Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
+            return null;
         }
     }
     
-    //Funcion para hacer un nuevo registro en la base de datos
+    //Funcion para hacer el registro de un nuevo usuario en la base de datos
     public Boolean Registrar(String id_u, String name, String last, String email, String phone, String birth, String gender, String home, String pass)
     {
         try 
@@ -139,13 +136,11 @@ public class DB_con
             //Se define lo que sera introducido en el campo del noveno "?"
             st.setString(9, pass);
             
-            //st.setInt(3, 29); //Si el tipo de dato a introducir es entero 
-            
             //Se ejecuta la modificacion de la base de datos segun el query
             //el numero de filas afectadas se guarda en 'filas'
             int filas = st.executeUpdate();
             
-            //if filas = st.executeUpdate();
+            //Se comprueba que haya filas actualizadas en la base de datos
             if(filas == 0)
             {
                 //Fallo inset
@@ -166,5 +161,107 @@ public class DB_con
             return false;
         }
     }
-    //*/
+    
+    //Funcion para seleccionar una tabla de la base de datos facilmente
+    public ResultSet Tbl_Extract(String tbl_name)
+    {
+        try 
+        {
+            Connection c = this.Get_conexion();
+            
+            //Se define el query de forma que sea navegable
+            Statement sta = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            
+            //Se selecciona toda la tabla del nombre buscado
+            ResultSet rs = sta.executeQuery("SELECT * FROM " + tbl_name);
+            
+            //Se regresan los resultados de la busqueda
+            return rs;
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        
+    }
+    
+    //Funcion para obtener un elemento especifico de una tabla conectada por id
+    public String Adyacent_Element(String Element, String Table, String ID_Request)
+    {
+        int Tbl_index = 0;    
+        String S_Output = null;
+        ResultSet DB_Table = this.Tbl_Extract(Table);
+
+        //Se abre un bucle hasta que se encuentre el elemento
+        while(S_Output == null)
+        {
+            try 
+            {
+                //Se elige individualmente cada regitro de la tabla
+                DB_Table.absolute(Tbl_index);
+                
+                //Se comprueba que el registro sea del usuario correcto
+                if(ID_Request == DB_Table.getString("id_usuario"))
+                {
+                    //Se encuentra el elemento buscado
+                    S_Output = DB_Table.getString(Element);
+                }
+                
+                //En caso de no encontrarlo se cambia al siguiente espacio para buscar en el proximo bucle
+                Tbl_index = Tbl_index + 1;
+            } 
+            catch (SQLException ex) 
+            {
+                Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
+                return null;
+            }
+        }
+        //Se envia de regreso el elemento encontrado
+        return S_Output;
+    }
+
+    public String Check_Unique(String Id_user, String email)
+    {
+        
+        try {
+            int NUM_Id = 0, NUM_Mail = 0;
+            
+            Connection c = this.Get_conexion();
+            Statement sta = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            
+            ResultSet Ids = sta.executeQuery("SELECT * FROM Usuario WHERE id_usuario = " + Id_user);
+            ResultSet Emails = sta.executeQuery("SELECT * FROM Usuario WHERE correo = " + email);
+            
+            while(Ids.next())
+            {
+                NUM_Id++;
+            }
+            
+            while(Emails.next())
+            {
+                NUM_Mail++;
+            }
+            
+            if (NUM_Id != 0)
+            {
+                return "Id ya en uso";
+            }
+            
+            if(NUM_Mail != 0)
+            {
+                return "Correo ya en uso";
+            }
+            
+            if (NUM_Id == 0 && NUM_Mail == 0)
+            {
+                return "";
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

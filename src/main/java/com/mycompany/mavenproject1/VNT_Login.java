@@ -4,6 +4,10 @@ package com.mycompany.mavenproject1;
 import java.awt.Image;
 import java.io.File;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 
@@ -17,9 +21,11 @@ public class VNT_Login extends javax.swing.JFrame {
     {
         initComponents();
         
-        String path = "./PI0211/src/main/java/com/mycompany/pi0211/Images/HaloIcon.png";
-        ImageIcon img = new ImageIcon(new ImageIcon(path).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-        this.LBL_Logo.setIcon(img);
+        String url = "src/main/java/images/Direction.png";
+        ImageIcon image = new ImageIcon(url);
+        Image img = image.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+        ImageIcon icono = new ImageIcon(img);
+        LBL_Logo.setIcon(icono);
     }
 
     /**
@@ -39,8 +45,10 @@ public class VNT_Login extends javax.swing.JFrame {
         TXT_Password = new javax.swing.JLabel();
         BTN_Entrar = new javax.swing.JButton();
         LBL_Logo = new javax.swing.JLabel();
+        LBL_Warning = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(1015, 615));
 
         BTN_Crear.setText("Crear una Cuenta");
         BTN_Crear.addActionListener(new java.awt.event.ActionListener() {
@@ -64,13 +72,21 @@ public class VNT_Login extends javax.swing.JFrame {
 
         LBL_Logo.setBackground(new java.awt.Color(204, 204, 204));
 
+        LBL_Warning.setForeground(new java.awt.Color(255, 0, 51));
+        LBL_Warning.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(470, 470, 470)
+                .addComponent(LBL_Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(424, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(LBL_Warning, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BTN_Entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(LBL_TextD)
@@ -83,10 +99,6 @@ public class VNT_Login extends javax.swing.JFrame {
                             .addComponent(TXT_Identif, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(FLD_Identif, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGap(424, 424, 424))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(470, 470, 470)
-                .addComponent(LBL_Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,7 +113,9 @@ public class VNT_Login extends javax.swing.JFrame {
                 .addComponent(TXT_Password)
                 .addGap(1, 1, 1)
                 .addComponent(FLD_Pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LBL_Warning, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addComponent(BTN_Entrar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LBL_TextD)
@@ -138,32 +152,52 @@ public class VNT_Login extends javax.swing.JFrame {
     //Funcion que se activa al presionar el boton de ingreso
     private void BTN_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_EntrarActionPerformed
         
-        //Se define la conexion usando el archivo predefinido DB_con.java
-        DB_con db_c = new DB_con();
-        
-        //Se guarda en 'usr' lo que estaba escrito en el campo de identificacion
-        String usr = FLD_Identif.getText();
-        
-        //Se guarda en 'psw' lo que estaba escrito en el campo de contraseña
-        String psw  = FLD_Pass.getText();
-        
-        //Se define la conexion en a para referenciarla
-        Connection a = db_c.Get_conexion();
-        
-        //Se define login para guardar si se confirman que el usuario y la contraseña fueron correctos
-        Boolean login = db_c.Ex_select(usr, psw);
-        
-        if(login) //se comprueba que los datos para entrar si existen y son correctos
+        try 
         {
-            //Se crea una ventana de inicio
-            VNT_Inicio NewVI = new VNT_Inicio();
-        
-            //Se hace visible a la ventana de inicio
-            NewVI.setVisible(true);
-        
-            //Se hace invisible y se desaparece la ventana de login actual
-            this.setVisible(false);
-            this.dispose();
+            //Se define la conexion usando el archivo predefinido DB_con.java
+            DB_con db_c = new DB_con();
+            
+            //Se guarda en 'usr' lo que estaba escrito en el campo de identificacion
+            String usr = FLD_Identif.getText();
+            
+            //Se guarda en 'psw' lo que estaba escrito en el campo de contraseña
+            String psw  = FLD_Pass.getText();
+            
+            //Se define la conexion en a para referenciarla
+            Connection a = db_c.Get_conexion();
+            
+            /*/Se define login para guardar si se confirman que el usuario y la contraseña fueron correctos
+            Boolean login = db_c.Ex_select(usr, psw);
+            //*/
+            
+            //Se obtiene el registro del usuario buscado
+            ResultSet login = db_c.Ex_select(usr, psw);
+            
+            String User_ID = login.getString("id_usuario");
+            
+            if(login != null) //se comprueba que los datos para entrar si existen y son correctos
+            {
+                //Se crea una ventana de inicio
+                VNT_Inicio NewVI = new VNT_Inicio();
+                
+                //Se pasa el ID_del usuario que inicio sesion
+                NewVI.recieveID(User_ID);
+                
+                //Se hace visible a la ventana de inicio
+                NewVI.setVisible(true);
+                
+                //Se hace invisible y se desaparece la ventana de login actual
+                this.setVisible(false);
+                this.dispose();
+            }
+            else
+            {
+                LBL_Warning.setText("Usuario no encontrado");
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(VNT_Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_BTN_EntrarActionPerformed
 
@@ -212,6 +246,7 @@ public class VNT_Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField FLD_Pass;
     private javax.swing.JLabel LBL_Logo;
     private javax.swing.JLabel LBL_TextD;
+    private javax.swing.JLabel LBL_Warning;
     private javax.swing.JLabel TXT_Identif;
     private javax.swing.JLabel TXT_Password;
     // End of variables declaration//GEN-END:variables

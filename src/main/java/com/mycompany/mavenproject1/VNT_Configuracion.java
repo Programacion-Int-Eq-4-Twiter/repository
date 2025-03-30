@@ -13,9 +13,15 @@ public class VNT_Configuracion extends javax.swing.JFrame {
     /**
      * Creates new form VNT_Inicio
      */
+    String Main_ID;
+    
     public VNT_Configuracion() {
         initComponents();
         
+    }
+    
+    public void recieveID(String variable) {
+        this.Main_ID = variable;
     }
 
     /**
