@@ -31,6 +31,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
     String[] Pub_Id;    
     String[] Pub_Date;
     String[] Pub_Content;
+    int[] Pub_Likes;
     
     public VNT_Inicio() 
     {
@@ -49,9 +50,23 @@ public class VNT_Inicio extends javax.swing.JFrame {
         this.Main_ID = variable;
     }
     
+    public void ReloadVI()
+    {
+        VNT_Inicio NewVI = new VNT_Inicio();
+        
+        //Se pasa el ID_del usuario que inicio sesion
+        NewVI.recieveID(Main_ID);
+
+        //Se hace visible a la ventana de inicio
+        NewVI.setVisible(true);
+        
+        //Se hace invisible y se desaparece la ventana de login actual
+        this.setVisible(false);
+        this.dispose();
+    }
+    
     private void Set_Show()
     {
-            
         try 
         {
             DB_con db_c = new DB_con();
@@ -65,9 +80,9 @@ public class VNT_Inicio extends javax.swing.JFrame {
                 Pub_Id[Pub_index] = tweet.getString("id_usuario");
                 Pub_Date[Pub_index] = tweet.getString("fecha_publicacion");
                 Pub_Content[Pub_index] = tweet.getString("contenido");
-                Pub_Photo[Pub_index] = db_c.Adyacent_Element("foto_perfil", "Tweet", Pub_Id[Pub_index]);
-                Pub_Name[Pub_index] = db_c.Adyacent_Element( "nombre", "Usuario", Pub_Id[Pub_index]);;
-            
+                Pub_Photo[Pub_index] = db_c.Adyacent_Element("foto_perfil", "Tweet", Pub_Id[Pub_index], "id_usuario");
+                Pub_Name[Pub_index] = db_c.Adyacent_Element( "nombre", "Usuario", Pub_Id[Pub_index], "id_usuario");
+                Pub_Likes[Pub_index] = db_c.Numero_en_tweet(tweet.getString("id_tweet"), "MeGusta");
             }
         } 
         catch (SQLException ex) 
@@ -92,11 +107,22 @@ public class VNT_Inicio extends javax.swing.JFrame {
         //Se muestran las publicaciones presentes en la base de datos en la pagina inicial
         if (Shw_index >= 0 && Shw_index <= Pub_index)
         {
+            
+            LBL_Id.setVisible(true);
+            LBL_Date.setVisible(true);
+            TXT_Content.setVisible(true);
+            BTN_PubPhoto.setVisible(true);
+            LBL_Name.setVisible(true);
+            BTN_Respuesta.setVisible(true);
+            BTN_Repost.setVisible(true);
+            BTN_MeGusta.setVisible(true);
+            
             LBL_Id.setText(Pub_Id[Shw_index]);
             LBL_Date.setText(Pub_Date[Shw_index]);
             TXT_Content.setText(Pub_Content[Shw_index]);
             BTN_PubPhoto.setText(Pub_Photo[Shw_index]);
             LBL_Name.setText(Pub_Name[Shw_index]);
+            BTN_MeGusta.setText(String.valueOf(Pub_Likes[Shw_index]));
         }
         else
         {
@@ -105,15 +131,28 @@ public class VNT_Inicio extends javax.swing.JFrame {
             TXT_Content.setVisible(false);
             BTN_PubPhoto.setVisible(false);
             LBL_Name.setVisible(false);
+            BTN_Respuesta.setVisible(false);
+            BTN_Repost.setVisible(false);
+            BTN_MeGusta.setVisible(false);
         }
         
         if (Shw_index1 >= 1 && Shw_index1 <= Pub_index)
         {
+            LBL_Id1.setVisible(true);
+            LBL_Date1.setVisible(true);
+            TXT_Content1.setVisible(true);
+            BTN_PubPhoto1.setVisible(true);
+            LBL_Name1.setVisible(true);
+            BTN_Respuesta1.setVisible(true);
+            BTN_Repost1.setVisible(true);
+            BTN_MeGusta1.setVisible(true);
+            
             LBL_Id1.setText(Pub_Id[Shw_index1]);
             LBL_Date1.setText(Pub_Date[Shw_index1]);
             TXT_Content1.setText(Pub_Content[Shw_index1]);
             BTN_PubPhoto1.setText(Pub_Photo[Shw_index1]);
             LBL_Name1.setText(Pub_Name[Shw_index1]);
+            BTN_MeGusta1.setText(String.valueOf(Pub_Likes[Shw_index1]));
         }
         else
         {
@@ -122,6 +161,9 @@ public class VNT_Inicio extends javax.swing.JFrame {
             TXT_Content1.setVisible(false);
             BTN_PubPhoto1.setVisible(false);
             LBL_Name1.setVisible(false);
+            BTN_Respuesta1.setVisible(false);
+            BTN_Repost1.setVisible(false);
+            BTN_MeGusta1.setVisible(false);
         }
     }
     
@@ -167,6 +209,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         BTN_Respuesta1 = new javax.swing.JButton();
         BTN_Repost1 = new javax.swing.JButton();
         BTN_MeGusta1 = new javax.swing.JButton();
+        LBL_Warning = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
@@ -281,16 +324,24 @@ public class VNT_Inicio extends javax.swing.JFrame {
         LBL_Date.setForeground(new java.awt.Color(153, 153, 153));
         LBL_Date.setText("23/03/25");
 
-        BTN_Respuesta.setBackground(new java.awt.Color(204, 204, 204));
+        BTN_Respuesta.setBackground(new java.awt.Color(153, 153, 153));
+        BTN_Respuesta.setText("ANS");
+        BTN_Respuesta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_RespuestaActionPerformed(evt);
+            }
+        });
 
-        BTN_Repost.setBackground(new java.awt.Color(204, 204, 204));
+        BTN_Repost.setBackground(new java.awt.Color(153, 153, 153));
+        BTN_Repost.setText("REP");
+        BTN_Repost.setToolTipText("");
         BTN_Repost.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_RepostActionPerformed(evt);
             }
         });
 
-        BTN_MeGusta.setBackground(new java.awt.Color(204, 204, 204));
+        BTN_MeGusta.setBackground(new java.awt.Color(153, 153, 153));
         BTN_MeGusta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_MeGustaActionPerformed(evt);
@@ -329,16 +380,23 @@ public class VNT_Inicio extends javax.swing.JFrame {
         LBL_Date1.setForeground(new java.awt.Color(153, 153, 153));
         LBL_Date1.setText("23/03/25");
 
-        BTN_Respuesta1.setBackground(new java.awt.Color(204, 204, 204));
+        BTN_Respuesta1.setBackground(new java.awt.Color(153, 153, 153));
+        BTN_Respuesta1.setText("ANS");
+        BTN_Respuesta1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_Respuesta1ActionPerformed(evt);
+            }
+        });
 
-        BTN_Repost1.setBackground(new java.awt.Color(204, 204, 204));
+        BTN_Repost1.setBackground(new java.awt.Color(153, 153, 153));
+        BTN_Repost1.setText("REP");
         BTN_Repost1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_Repost1ActionPerformed(evt);
             }
         });
 
-        BTN_MeGusta1.setBackground(new java.awt.Color(204, 204, 204));
+        BTN_MeGusta1.setBackground(new java.awt.Color(153, 153, 153));
         BTN_MeGusta1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_MeGusta1ActionPerformed(evt);
@@ -436,6 +494,8 @@ public class VNT_Inicio extends javax.swing.JFrame {
 
         PAN_Posts.add(PNL_Pub);
 
+        LBL_Warning.setForeground(new java.awt.Color(255, 0, 51));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -458,6 +518,8 @@ public class VNT_Inicio extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
                     .addComponent(PAN_Posts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(LBL_Warning, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BTN_Publicar)
                         .addGap(9, 9, 9)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -493,7 +555,9 @@ public class VNT_Inicio extends javax.swing.JFrame {
                         .addGap(11, 11, 11)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BTN_Publicar)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(BTN_Publicar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(LBL_Warning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PAN_Posts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -537,6 +601,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
 
     private void BTN_InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_InicioActionPerformed
         // TODO add your handling code here:
+        this.ReloadVI();
     }//GEN-LAST:event_BTN_InicioActionPerformed
 
     private void BTN_ExplorarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ExplorarActionPerformed
@@ -596,19 +661,70 @@ public class VNT_Inicio extends javax.swing.JFrame {
 
     private void BTN_MeGustaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_MeGustaActionPerformed
         // TODO add your handling code here:
+        DB_con db_c = new DB_con();
+        String tweetid = db_c.Adyacent_Element( "id_tweet", "Tweet", TXT_Content.getText(), "contenido");
+        Boolean Dar_like = db_c.NewLike(Main_ID, tweetid);
         
+        if(Dar_like) //se comprueba que se publico el tweet correctamente
+        {
+            Pub_Likes[Shw_index]++;
+            BTN_MeGusta.setText(String.valueOf(Pub_Likes[Shw_index]));
+        }
+        else
+        {
+            LBL_Warning.setText("Ocurrio un error");
+        }
     }//GEN-LAST:event_BTN_MeGustaActionPerformed
 
     private void BTN_RepostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_RepostActionPerformed
         // TODO add your handling code here:
+        DB_con db_c = new DB_con();
+        String post = LBL_Name.getText() + " " + LBL_Id.getText() + " " + LBL_Date.getText() + System.lineSeparator() + TXT_Content.getText();
+        String tweetid = db_c.Adyacent_Element( "id_tweet", "Tweet", TXT_Content.getText(), "contenido");
+        Boolean posted = db_c.Repostear(Main_ID, "Retweet", tweetid, post);
+        
+        if(posted) //se comprueba que se publico el tweet correctamente
+        {
+            this.ReloadVI();
+        }
+        else
+        {
+            LBL_Warning.setText("Ocurrio un error");
+        }
     }//GEN-LAST:event_BTN_RepostActionPerformed
 
     private void BTN_Repost1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Repost1ActionPerformed
         // TODO add your handling code here:
+        DB_con db_c = new DB_con();
+        String post = LBL_Name1.getText() + LBL_Id1.getText() + LBL_Date1.getText() + System.lineSeparator() + TXT_Content1.getText();
+        String tweetid = db_c.Adyacent_Element( "id_tweet", "Tweet", TXT_Content1.getText(), "contenido");
+        Boolean posted = db_c.Repostear(Main_ID, "Retweet", tweetid, post);
+        
+        if(posted) //se comprueba que se publico el tweet correctamente
+        {
+            this.ReloadVI();
+        }
+        else
+        {
+            LBL_Warning.setText("Ocurrio un error");
+        }
     }//GEN-LAST:event_BTN_Repost1ActionPerformed
 
     private void BTN_MeGusta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_MeGusta1ActionPerformed
         // TODO add your handling code here:
+        DB_con db_c = new DB_con();
+        String tweetid = db_c.Adyacent_Element( "id_tweet", "Tweet", TXT_Content1.getText(), "contenido");
+        Boolean Dar_like = db_c.NewLike(Main_ID, tweetid);
+        
+        if(Dar_like) //se comprueba que se publico el tweet correctamente
+        {
+            Pub_Likes[Shw_index1]++;
+            BTN_MeGusta1.setText(String.valueOf(Pub_Likes[Shw_index1]));
+        }
+        else
+        {
+            LBL_Warning.setText("Ocurrio un error");
+        }
     }//GEN-LAST:event_BTN_MeGusta1ActionPerformed
 
     private void BTN_AntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_AntActionPerformed
@@ -633,8 +749,53 @@ public class VNT_Inicio extends javax.swing.JFrame {
 
     private void BTN_PublicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PublicarActionPerformed
         // TODO add your handling code here:
+        DB_con db_c = new DB_con();
+        String post = FLD_Publicar.getText();
+        boolean posted = db_c.Publicar(Main_ID, post);
         
+        if(posted) //se comprueba que se publico el tweet correctamente
+        {
+            this.ReloadVI();
+        }
+        else
+        {
+            LBL_Warning.setText("Ocurrio un error");
+        }
     }//GEN-LAST:event_BTN_PublicarActionPerformed
+
+    private void BTN_RespuestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_RespuestaActionPerformed
+        // TODO add your handling code here:DB_con db_c = new DB_con();
+        DB_con db_c = new DB_con();
+        String post = " En respuesta a " + LBL_Id.getText() + ": " + System.lineSeparator() + FLD_Publicar.getText();
+        String tweetid = db_c.Adyacent_Element( "id_tweet", "Tweet", TXT_Content.getText(), "contenido");
+        Boolean posted = db_c.Repostear(Main_ID, "Comentario", tweetid, post);
+        
+        if(posted) //se comprueba que se publico el tweet correctamente
+        {
+            this.ReloadVI();
+        }
+        else
+        {
+            LBL_Warning.setText("Ocurrio un error");
+        }
+    }//GEN-LAST:event_BTN_RespuestaActionPerformed
+
+    private void BTN_Respuesta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Respuesta1ActionPerformed
+        // TODO add your handling code here:
+        DB_con db_c = new DB_con();
+        String post = " En respuesta a " + LBL_Id1.getText() + ": " + System.lineSeparator() + FLD_Publicar.getText();
+        String tweetid = db_c.Adyacent_Element( "id_tweet", "Tweet", TXT_Content1.getText(), "contenido");
+        Boolean posted = db_c.Repostear(Main_ID, "Comentario", tweetid, post);
+        
+        if(posted) //se comprueba que se publico el tweet correctamente
+        {
+            this.ReloadVI();
+        }
+        else
+        {
+            LBL_Warning.setText("Ocurrio un error");
+        }
+    }//GEN-LAST:event_BTN_Respuesta1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -706,6 +867,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel LBL_Id1;
     private javax.swing.JLabel LBL_Name;
     private javax.swing.JLabel LBL_Name1;
+    private javax.swing.JLabel LBL_Warning;
     private java.awt.List LST_Tendencias;
     private java.awt.ScrollPane PAN_Posts;
     private javax.swing.JPanel PNL_Pub;

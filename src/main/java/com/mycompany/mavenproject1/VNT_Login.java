@@ -190,15 +190,13 @@ public class VNT_Login extends javax.swing.JFrame {
                 this.setVisible(false);
                 this.dispose();
             }
-            else
-            {
-                LBL_Warning.setText("Usuario no encontrado");
-            }
         } 
         catch (SQLException ex) 
         {
             Logger.getLogger(VNT_Login.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        LBL_Warning.setText("Usuario no encontrado");
     }//GEN-LAST:event_BTN_EntrarActionPerformed
 
     /**

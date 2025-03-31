@@ -274,7 +274,7 @@ public class VNT_Singup extends javax.swing.JFrame {
             DB_con db_c = new DB_con();
         
             //Se guarda en 'name' lo que estaba escrito en el campo nombre
-            String id = FLD_Id.getText();
+            String id = "@" + FLD_Id.getText();
             
             //Se guarda en 'name' lo que estaba escrito en el campo nombre
             String name = FLD_Nombre.getText();
@@ -314,17 +314,17 @@ public class VNT_Singup extends javax.swing.JFrame {
             
             Boolean singup;
                     
-            if (db_c.Check_Unique(id, email) == "")
+            if (db_c.Check_Unique_User(id, email) == "")
             {
                 //Se define login para guardar si se confirman que el usuario y la contraseña fueron correctos
-                singup = db_c.Registrar(id, name, last, email, phone, birth, gender, home, pass);
+                singup = db_c.Registrar_Usr(id, name, last, email, phone, birth, gender, home, pass);
                 
                 if(singup) //se comprueba que los datos para entrar si existen y son correctos
                 {
-                    //Se crea una ventana de inicio
+                    //Se crea una ventana de login
                     VNT_Login NewVL = new VNT_Login();
         
-                    //Se hace visible a la ventana de inicio
+                    //Se hace visible a la ventana de login
                     NewVL.setVisible(true);
         
                     //Se hace invisible y se desaparece la ventana de login actual
@@ -332,10 +332,9 @@ public class VNT_Singup extends javax.swing.JFrame {
                     this.dispose();
                 }
             }
-            else if (db_c.Check_Unique(id, email) != null)
+            else if (db_c.Check_Unique_User(id, email) != null)
             {
-                LBL_Warning.setText(db_c.Check_Unique(id, email));
-                singup = false;
+                LBL_Warning.setText(db_c.Check_Unique_User(id, email));
             }
         
         }
