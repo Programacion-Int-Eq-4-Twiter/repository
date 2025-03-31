@@ -4,6 +4,11 @@
  */
 package com.mycompany.mavenproject1;
 
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author Vicente193373
@@ -13,6 +18,7 @@ public class VNT_Perfil extends javax.swing.JFrame {
     /**
      * Creates new form VNT_Inicio
      */
+    File im;
     String Main_ID;
     String Show_ID;
     
@@ -54,7 +60,6 @@ public class VNT_Perfil extends javax.swing.JFrame {
         BTN_Return = new javax.swing.JButton();
         LBL_Titulo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         BTN_Verif = new javax.swing.JButton();
         BTN_CPerfil = new javax.swing.JButton();
         LBL_Nombre = new javax.swing.JLabel();
@@ -63,6 +68,7 @@ public class VNT_Perfil extends javax.swing.JFrame {
         LBL_CDate = new javax.swing.JLabel();
         LBL_Siguiendo = new javax.swing.JLabel();
         LBL_Seguidores = new javax.swing.JLabel();
+        BTN_Photo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -158,8 +164,6 @@ public class VNT_Perfil extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/AuroraPixalis.gif"))); // NOI18N
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/newer.png"))); // NOI18N
-
         BTN_Verif.setText("Verificacion");
 
         BTN_CPerfil.setText("Configurar");
@@ -186,6 +190,12 @@ public class VNT_Perfil extends javax.swing.JFrame {
         LBL_Seguidores.setFont(new java.awt.Font("Monospaced", 2, 14)); // NOI18N
         LBL_Seguidores.setForeground(new java.awt.Color(153, 153, 153));
         LBL_Seguidores.setText("# Seguidores");
+
+        BTN_Photo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_PhotoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -214,21 +224,6 @@ public class VNT_Perfil extends javax.swing.JFrame {
                                 .addComponent(LBL_Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                                .addComponent(BTN_Verif)
-                                .addGap(26, 26, 26)
-                                .addComponent(BTN_CPerfil)
-                                .addGap(29, 29, 29))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LBL_Nombre2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(LBL_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addComponent(LBL_Ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -242,7 +237,22 @@ public class VNT_Perfil extends javax.swing.JFrame {
                         .addGap(6, 6, 6))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PAN_Posts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(PAN_Posts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(BTN_Photo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                                .addComponent(BTN_Verif)
+                                .addGap(26, 26, 26)
+                                .addComponent(BTN_CPerfil)
+                                .addGap(29, 29, 29))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LBL_Nombre2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(LBL_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
@@ -299,17 +309,17 @@ public class VNT_Perfil extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(15, 15, 15)
                                 .addComponent(LBL_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(7, 7, 7)
+                                .addGap(15, 15, 15)
                                 .addComponent(LBL_Nombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(BTN_Verif)
-                                    .addComponent(BTN_CPerfil))))
+                                    .addComponent(BTN_CPerfil)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(BTN_Photo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LBL_Ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -374,6 +384,23 @@ public class VNT_Perfil extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BTN_ListasActionPerformed
 
+    private void BTN_PhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PhotoActionPerformed
+        // TODO add your handling code here:
+        
+        //Se debe definir para usar la ventanilla que busca un archivo
+        JFileChooser archivo = new JFileChooser();
+        archivo.showOpenDialog(this);
+        this.im = archivo.getSelectedFile();
+        
+        //Se guarda en 'path' la ubicacion del archivo elegido que sera la foto de perfil
+        String path_img = this.im.getAbsolutePath();
+        
+        //Se toma la imagen y se define como un icono asignable
+        ImageIcon img = new ImageIcon(new ImageIcon(path_img).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+        this.BTN_Photo.setText("");
+        this.BTN_Photo.setIcon(img);
+    }//GEN-LAST:event_BTN_PhotoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -422,6 +449,7 @@ public class VNT_Perfil extends javax.swing.JFrame {
     private javax.swing.JButton BTN_Listas;
     private javax.swing.JButton BTN_Notif;
     private javax.swing.JButton BTN_Perfil;
+    private javax.swing.JButton BTN_Photo;
     private javax.swing.JButton BTN_Return;
     private javax.swing.JButton BTN_Verif;
     private javax.swing.JTextField FLD_Buscar;
@@ -436,7 +464,6 @@ public class VNT_Perfil extends javax.swing.JFrame {
     private java.awt.ScrollPane PAN_Posts;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables

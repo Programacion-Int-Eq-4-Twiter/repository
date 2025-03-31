@@ -1,6 +1,10 @@
 
 package com.mycompany.mavenproject1;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -434,7 +439,7 @@ public class DB_con
             Connection c = this.Get_conexion();
             //String tweet = this.Adyacent_Element( "id_tweet", "Tweet", TXT_Content.getText(), "contenido");
             Statement sta = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ResultSet answer = sta.executeQuery("SELECT * FROM" + Table + "WHERE id_tweet = " + Id_tweet);
+            ResultSet answer = sta.executeQuery("SELECT * FROM " + Table + " WHERE id_tweet = " + Id_tweet);
             return this.Check_Number(answer);
         } 
         catch (SQLException ex) 
@@ -442,5 +447,65 @@ public class DB_con
             Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
+    }
+    
+    public Boolean New_Profile(String Id_user)
+    {
+        try 
+        {
+            Connection c = this.Get_conexion();
+            FileInputStream foto_perfil = null;
+            
+            String query = "INSERT INTO Perfil VALUES(?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement sta;
+            sta = c.prepareStatement(query);
+            
+            int number = Check_Number(this.Tbl_Extract("Perfil"));
+            Date mark = new Date();
+            SimpleDateFormat formatee = new SimpleDateFormat("yyMMdd");
+            String Id_perfil = formatee.format(mark) + number;
+            
+            File archivoImagen = new File("/src/main/java/images/Direction.png");
+            try 
+            {
+                foto_perfil = new FileInputStream(archivoImagen);
+            } 
+            catch (FileNotFoundException ex) 
+            {
+                Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
+            }
+            
+            String biografia = "Por editar";
+            
+            sta.setString(1, Id_perfil);
+            sta.setString(2, Id_user);
+            sta.setBinaryStream(3, foto_perfil, (int) archivoImagen.length());
+            sta.setString(4, biografia);
+            sta.setInt(5, 0);
+            sta.setInt(6, 0);
+            sta.setString(6, this.Adyacent_Element("pais", "Usuario", Id_user, "id_usuario"));
+            
+            int filas = sta.executeUpdate();
+            
+            //Se comprueba que haya filas actualizadas en la base de datos
+            if(filas == 0)
+            {
+                //Fallo inset
+                System.out.println("Algo fallo en el registro");
+                return false;
+            }
+            else
+            {
+                //exito
+                System.out.println("Registro completado exitosamente");
+                return true;
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
     }
 }
