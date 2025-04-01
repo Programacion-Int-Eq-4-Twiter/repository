@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 
 /**
@@ -26,7 +27,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
     String Main_ID;
     String Show_ID;
     
-    String[] Pub_Photo;
+    ImageIcon[] Pub_Photo;
     String[] Pub_Name;
     String[] Pub_Id;    
     String[] Pub_Date;
@@ -80,7 +81,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
                 Pub_Id[Pub_index] = tweet.getString("id_usuario");
                 Pub_Date[Pub_index] = tweet.getString("fecha_publicacion");
                 Pub_Content[Pub_index] = tweet.getString("contenido");
-                Pub_Photo[Pub_index] = db_c.Adyacent_Element("foto_perfil", "Tweet", Pub_Id[Pub_index], "id_usuario");
+                Pub_Photo[Pub_index] = db_c.Prfl_Photo(Pub_Id[Pub_index], BTN_PubPhoto.getHeight(), BTN_PubPhoto.getWidth());
                 Pub_Name[Pub_index] = db_c.Adyacent_Element( "nombre", "Usuario", Pub_Id[Pub_index], "id_usuario");
                 Pub_Likes[Pub_index] = db_c.Numero_en_tweet(tweet.getString("id_tweet"), "MeGusta");
             }
@@ -120,7 +121,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
             LBL_Id.setText(Pub_Id[Shw_index]);
             LBL_Date.setText(Pub_Date[Shw_index]);
             TXT_Content.setText(Pub_Content[Shw_index]);
-            BTN_PubPhoto.setText(Pub_Photo[Shw_index]);
+            BTN_PubPhoto.setIcon(Pub_Photo[Shw_index]);
             LBL_Name.setText(Pub_Name[Shw_index]);
             BTN_MeGusta.setText(String.valueOf(Pub_Likes[Shw_index]));
         }
@@ -150,7 +151,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
             LBL_Id1.setText(Pub_Id[Shw_index1]);
             LBL_Date1.setText(Pub_Date[Shw_index1]);
             TXT_Content1.setText(Pub_Content[Shw_index1]);
-            BTN_PubPhoto1.setText(Pub_Photo[Shw_index1]);
+            BTN_PubPhoto1.setIcon(Pub_Photo[Shw_index1]);
             LBL_Name1.setText(Pub_Name[Shw_index1]);
             BTN_MeGusta1.setText(String.valueOf(Pub_Likes[Shw_index1]));
         }
@@ -458,21 +459,19 @@ public class VNT_Inicio extends javax.swing.JFrame {
                 .addComponent(BTN_Ant, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PNL_PubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PNL_PubLayout.createSequentialGroup()
-                        .addComponent(BTN_PubPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(8, 8, 8))
+                    .addComponent(BTN_PubPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PNL_PubLayout.createSequentialGroup()
                         .addGroup(PNL_PubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LBL_Name)
                             .addComponent(LBL_Id)
                             .addComponent(LBL_Date))
                         .addGap(1, 1, 1)
-                        .addComponent(SCR_Pub, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(PNL_PubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BTN_Respuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(SCR_Pub, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PNL_PubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BTN_Repost, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BTN_MeGusta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BTN_MeGusta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BTN_Respuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(PNL_PubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BTN_PubPhoto1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -484,10 +483,10 @@ public class VNT_Inicio extends javax.swing.JFrame {
                         .addGap(1, 1, 1)
                         .addComponent(SCR_Pub1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PNL_PubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BTN_Respuesta1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PNL_PubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BTN_Repost1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BTN_MeGusta1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BTN_MeGusta1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BTN_Respuesta1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(BTN_Sig, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
         );

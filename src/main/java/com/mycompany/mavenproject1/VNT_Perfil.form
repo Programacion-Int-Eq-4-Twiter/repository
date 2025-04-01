@@ -38,55 +38,44 @@
               </Group>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="BTN_Return" min="-2" pref="62" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="LBL_Titulo" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="jLabel2" alignment="1" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                       <Component id="LBL_Ubicacion" min="-2" pref="183" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="LBL_CDate" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                       <Component id="LBL_Siguiendo" min="-2" pref="179" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="LBL_Seguidores" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="PAN_Posts" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace pref="5" max="-2" attributes="0"/>
                       <Component id="BTN_Photo" min="-2" pref="128" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace pref="38" max="32767" attributes="0"/>
-                              <Component id="BTN_Verif" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="BTN_CPerfil" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="LBL_Nombre2" max="32767" attributes="0"/>
                                   <Component id="LBL_Nombre" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="TGL_Follow" min="-2" pref="101" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="BTN_PConf" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="BTN_Return" min="-2" pref="62" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="LBL_Titulo" pref="375" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -151,24 +140,20 @@
                           <Component id="BTN_Return" min="-2" pref="41" max="-2" attributes="0"/>
                           <Component id="LBL_Titulo" min="-2" pref="41" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" pref="137" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               <Component id="LBL_Nombre" min="-2" pref="19" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                               <Component id="LBL_Nombre2" min="-2" pref="16" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="BTN_Verif" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="BTN_CPerfil" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="BTN_PConf" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TGL_Follow" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                              <Component id="BTN_Photo" min="-2" pref="116" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="BTN_Photo" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -180,8 +165,6 @@
                           <Component id="LBL_Siguiendo" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                           <Component id="LBL_Seguidores" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="PAN_Posts" min="-2" pref="246" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -384,19 +367,6 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_LST_Tendencias"/>
       </AccessibilityProperties>
     </Component>
-    <Container class="java.awt.ScrollPane" name="PAN_Posts">
-      <Properties>
-        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Default Cursor"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="Posts" noResource="true"/>
-      </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_PAN_Posts"/>
-      </AccessibilityProperties>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.ScrollPaneSupportLayout"/>
-    </Container>
     <Component class="javax.swing.JButton" name="BTN_Return">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -419,22 +389,7 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_LBL_Titulo"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/AuroraPixalis.gif"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="BTN_Verif">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Verificacion"/>
-      </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_BTN_Verif"/>
-      </AccessibilityProperties>
-    </Component>
-    <Component class="javax.swing.JButton" name="BTN_CPerfil">
+    <Component class="javax.swing.JButton" name="BTN_PConf">
       <Properties>
         <Property name="text" type="java.lang.String" value="Configurar"/>
       </Properties>
@@ -486,7 +441,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="99" red="99" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="[FECHA_CREACION_CUENTA]"/>
+        <Property name="text" type="java.lang.String" value="[FECHA_NACIMIENTO]"/>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_LBL_CDate"/>
@@ -521,6 +476,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_PhotoActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="TGL_Follow">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Seguir"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

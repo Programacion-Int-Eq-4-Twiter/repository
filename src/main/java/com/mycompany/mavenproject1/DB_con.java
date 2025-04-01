@@ -5,6 +5,8 @@ import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
@@ -25,17 +28,19 @@ public class DB_con
 {
     //*
     ///Estos strings tienen la funcion de contener los detalles de la conexio a la base de datos
-    ///Hasta tener mas instrucciones cada miembro del equipo debe de crear una base de datos
-    ///en su computadora y anotar los detalles de este aqui
-    //public String connectionstring = "jdbc:sqlserver://localhost---";
-    public String connectionstring = "jdbc:mysql://localhost:3306/BD_Twitter";
-    public String dbhost = "host";
-    public String dbpass = "";
+    ///Lo ideal es usar el SQL del equipo para que este cree la base de datos segun la estructura requerida
+    ///En caso de que la base de datos que se utilize tenga un nombre distinto este debe introducirse en DB_name:
+    public String DB_name = "BD_Twitter";
     
-    //Define una conexion dentro de este recurso
+    //Los String estan configurados para el estado predeterminado de nuevas bases de Datos
+    public String connectionstring = "jdbc:mysql://localhost:3306/" + DB_name;
+    public String dbhost = "host";  
+    public String dbpass = "";      
+    
+    //Define una conexion dentro de este recurso aun por configurar
     Connection conn = null;
     
-    //Esta funcion se encargara de configurar la conexion con la base de datos y comprobar que conecte
+    //*/ Esta funcion se encargara de configurar la conexion con la base de datos y comprobar que conecte
     public void Conectar()
     {
         Connection conn = null;
@@ -49,16 +54,16 @@ public class DB_con
             System.out.print("Error de conexion"); //Print
             Logger.getLogger(DB_con.class.getName()). log(Level.SEVERE, null, ex);
         }
-    }
+    }//*/
     
-    //Función para referenciar la conexion definida fuera de este recurso
+    //*/ Función para referenciar la conexion definida fuera de este recurso
     public Connection Get_conexion()
     {
         this.Conectar();
         return this.conn;
-    }
+    }//*/
     
-    //Esta funcion busca encontrar un registro con nombre y contraseña validos
+    //*/ Esta funcion busca encontrar un registro con nombre y contraseña validos
     public ResultSet Ex_select(String usr, String psw)
     {
         try 
@@ -103,9 +108,9 @@ public class DB_con
         }
         
         return null;
-    }
+    }//*/
     
-    //Funcion para hacer el registro de un nuevo usuario en la base de datos
+    //*/ Funcion para hacer el registro de un nuevo usuario en la base de datos
     public Boolean Registrar_Usr(String id_u, String name, String last, String email, String phone, String birth, String gender, String home, String pass)
     {
         try 
@@ -169,9 +174,9 @@ public class DB_con
             Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-    }
+    }//*/
     
-    //Funcion para seleccionar una tabla de la base de datos facilmente
+    //*/ Funcion para seleccionar una tabla de la base de datos facilmente
     public ResultSet Tbl_Extract(String tbl_name)
     {
         try 
@@ -193,9 +198,9 @@ public class DB_con
             return null;
         }
         
-    }
+    }//*/
     
-    //Funcion para obtener un elemento especifico de una tabla conectada por id
+    //*/ Funcion para obtener un String especifico de una tabla conectada por id
     public String Adyacent_Element(String Element, String Table, String Id_Request, String Id_type)
     {
         int Tbl_index = 0;    
@@ -233,6 +238,7 @@ public class DB_con
         return S_Output;
     }
 
+    //*/ Esta funcion comprueba que no exista ya un usuario con un id & email especificos
     public String Check_Unique_User(String Id_user, String email)
     {
         
@@ -275,18 +281,19 @@ public class DB_con
             Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-    }
+    }//*/
     
+    //*/ Con esta funcion se comprueba el numero de registros que un query obtiene
     public int Check_Number(ResultSet rs)
     {
-        int count = 0;
+        int count = 0; //La cuenta empieza con cero
         
         try 
         {
             
-            while(rs.next())
+            while(rs.next())//este proceso se repite hasta haber comprobado todos los registros
             {
-                count++;
+                count++; //Por cada elemento presente se aumenta en 1 la cuenta
             }
             
         } 
@@ -296,33 +303,36 @@ public class DB_con
         }
         
         return count;
-    }
+    }//*/
     
+    //*/ Funcion que se encarga de registrar una nueva publicacion
     public Boolean Publicar(String Id_user, String content)
     {
         try {
             //Se establece la conexion ya definida dentro de esta funcion
             Connection cn = this.Get_conexion();
+            
+            //Se crea un nuevo Id unico
             int created = Check_Number(this.Tbl_Extract("Tweet"));
             Date mark = new Date();
             SimpleDateFormat formatee = new SimpleDateFormat("yyMMdd");
             String Id_tweet = formatee.format(mark) + created;
             
             //Se realiza un query para insertar valores en la base de datos
-            //Particularmente agregarlos a la tabla 'usr'
             String query = "INSERT INTO Tweet VALUES(?, ?, ?)";
             PreparedStatement st = cn.prepareStatement(query);
             
-            st.setString(1, Id_tweet);
-            st.setString(2, Id_user);
-            st.setString(3, content);
+            st.setString(1, Id_tweet);  //Id unico de la publicacion
+            st.setString(2, Id_user);   //Usuario que hizo la publicacion
+            st.setString(3, content);   //Contenido de la publicacion
             
+            //Ejecuta el insert y guarda cuantas filas fueron afectadas
             int filas = st.executeUpdate();
             
             //Se comprueba que haya filas actualizadas en la base de datos
             if(filas == 0)
             {
-                //Fallo inset
+                //Fallo insert
                 System.out.println("Algo fallo en el registro");
                 return false;
             }
@@ -340,35 +350,38 @@ public class DB_con
         
         return false;
         
-    }
+    }//*/
     
+    //*/ Esta funcion se encarga de registrar un nuevo reposteo, refiriendose a retweets y respuestas/comentarios
     public Boolean Repostear(String Id_user, String type, String Id_tweet, String content)
     {
         try 
         {
             //Se establece la conexion ya definida dentro de esta funcion
             Connection cn = this.Get_conexion();
+            
+            //Se crea un nuevo Id unico
             int number = Check_Number(this.Tbl_Extract(type));
             Date mark = new Date();
             SimpleDateFormat formatee = new SimpleDateFormat("yyMMdd");
             String Id_re = formatee.format(mark) + number;
             
             //Se realiza un query para insertar valores en la base de datos
-            //Particularmente agregarlos a la tabla 'usr'
             String query = "INSERT INTO ? VALUES(?, ?, ?)";
             PreparedStatement st = cn.prepareStatement(query);
             
-            st.setString(1, type);
-            st.setString(2, Id_re);
-            st.setString(3, Id_user);
-            st.setString(4, Id_tweet);
+            st.setString(1, type);      //Tabla en que sera registrado el reposteo
+            st.setString(2, Id_re);     //Id unico del reposteo
+            st.setString(3, Id_user);   //Id del usario que reposteo
+            st.setString(4, Id_tweet);  //Id del tweet que fue reposteado
             
+            //Se guarda cuantas filas se actualizaron con el insert
             int filas = st.executeUpdate();
             
             //Se comprueba que haya filas actualizadas en la base de datos
             if(filas == 0)
             {
-                //Fallo inset
+                //Fallo insert
                 System.out.println("Algo fallo en el registro");
                 return false;
             }
@@ -386,35 +399,36 @@ public class DB_con
             return false;
         }
         
-    }
+    }//*/
     
+    //*/ Funcion que registra un nuevo me gusta en un tweet
     public Boolean NewLike(String Id_user, String Id_tweet)
     {
-        
         try 
         {
             //Se establece la conexion ya definida dentro de esta funcion
             Connection cn = this.Get_conexion();
+            
+            //Se crea un Id unico
             int number = Check_Number(this.Tbl_Extract("MeGusta"));
             Date mark = new Date();
             SimpleDateFormat formatee = new SimpleDateFormat("yyMMdd");
             String Id_re = formatee.format(mark) + number;
             
             //Se realiza un query para insertar valores en la base de datos
-            //Particularmente agregarlos a la tabla 'usr'
             String query = "INSERT INTO MeGusta VALUES(?, ?, ?)";
             PreparedStatement st = cn.prepareStatement(query);
             
-            st.setString(1, Id_re);
-            st.setString(2, Id_user);
-            st.setString(3, Id_tweet);
+            st.setString(1, Id_re);     //Id unico del me gusta
+            st.setString(2, Id_user);   //Id del usuario que dio me gusta
+            st.setString(3, Id_tweet);  //Id del tweet al que se le dio me gusta
             
             int filas = st.executeUpdate();
             
             //Se comprueba que haya filas actualizadas en la base de datos
             if(filas == 0)
             {
-                //Fallo inset
+                //Fallo insert
                 System.out.println("Algo fallo en el registro");
                 return false;
             }
@@ -430,14 +444,14 @@ public class DB_con
             Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-    }
+    }//*/
     
+    //*/ Esta funcion comprueba los contadores especificos de un tweet, como sus megusta o retweets
     public int Numero_en_tweet(String Id_tweet, String Table)
     {
         try
         {
             Connection c = this.Get_conexion();
-            //String tweet = this.Adyacent_Element( "id_tweet", "Tweet", TXT_Content.getText(), "contenido");
             Statement sta = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet answer = sta.executeQuery("SELECT * FROM " + Table + " WHERE id_tweet = " + Id_tweet);
             return this.Check_Number(answer);
@@ -447,8 +461,9 @@ public class DB_con
             Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
-    }
+    }//*/
     
+    //*/ Esta funcion crea un nuevo perfil con valores predeterminados
     public Boolean New_Profile(String Id_user)
     {
         try 
@@ -465,7 +480,7 @@ public class DB_con
             SimpleDateFormat formatee = new SimpleDateFormat("yyMMdd");
             String Id_perfil = formatee.format(mark) + number;
             
-            File archivoImagen = new File("/src/main/java/images/Direction.png");
+            File archivoImagen = new File("/src/main/java/images/newer.png");
             try 
             {
                 foto_perfil = new FileInputStream(archivoImagen);
@@ -507,5 +522,137 @@ public class DB_con
             Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
+    }//*/
+    
+    //*/ Esta funcion se encarga de modificar un campo compatible con String de la base de datos facilmente
+    public Boolean Update_String(String Id_type, String Id_object, String Table, String E_type, String Element)
+    {
+        try 
+        {
+            PreparedStatement sta;
+            Connection c = this.Get_conexion();
+            
+            String query = "UPDATE ? SET ? = ? WHERE ? = ?";
+            sta = c.prepareStatement(query);
+            
+            sta.setString(1, Table);     //Nombre de la tabla donde esta el campo a actualizar
+            sta.setString(2, E_type);    //Nombre del campo cuyo valor sera actualizado
+            sta.setString(3, Element);   //Nuevo string que sera insertado en el campo
+            sta.setString(4, Id_type);   //Tipo de id principal de la tabla
+            sta.setString(5, Id_object); //Id del registro especifico a actualizar
+            
+            //Se guarda cuantas filas se actualizaron con el update
+            int filas = sta.executeUpdate();
+            
+            //Se comprueba que haya filas actualizadas en la base de datos
+            if(filas == 0)
+            {
+                //Fallo update
+                System.out.println("Algo fallo en el registro");
+                return false;
+            }
+            else
+            {
+                //exito
+                System.out.println("Registro completado exitosamente");
+                return true;
+            }
+            
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+    }//*/
+    
+    //Sirve para extraer una foto de perfil como icono
+    public ImageIcon Prfl_Photo(String Id_user, int height, int width)
+    {
+        try 
+        {
+            //Consulta SQL para obtener la foto de perfil
+            String query = "SELECT foto_perfil FROM Perfil WHERE id_usuario = ?";
+            PreparedStatement sta = conn.prepareStatement(query);
+            
+            sta.setString(1, Id_user);  //Usa el Id del usuario para encontrar el perfil
+            
+            //Se ejecuta el query
+            ResultSet rs = sta.executeQuery();
+
+            //Se comprueba que haya dado resultado
+            if (rs.next()) 
+            {
+                // Obtener el flujo de bytes de la imagen (BLOB)
+                InputStream is = rs.getBinaryStream("foto_perfil");
+
+                // Convertir el InputStream en una imagen
+                Image image;
+                image = ImageIO.read(is);
+
+                // Ajustar el tamaño de la imagen si es necesario (por ejemplo, 100x100)
+                ImageIcon icon = new ImageIcon(image.getScaledInstance(width, height, Image.SCALE_DEFAULT));
+
+                // Retornar el icono de la imagen
+                return icon;
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        catch (IOException ex) 
+        {
+            Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);        
+        }
+        
+        return null;
     }
+    
+    //*/ Esta funcion es para cambiar una imagen que se haya guardado en la base de datos
+    public Boolean Update_Photo(String Id_user, String Image_Path)
+    {
+        try 
+        {
+            PreparedStatement sta;
+            Connection c = this.Get_conexion();
+            File Image = new File(Image_Path);
+            FileInputStream fis = new FileInputStream(Image);
+            
+            String query = "UPDATE Perfil SET foto_perfil = ? WHERE id_usuario = ?";
+            sta = c.prepareStatement(query);
+            
+            sta.setBinaryStream(1, fis, (int) Image.length());   
+            sta.setString(2, Id_user); //Id del registro especifico a actualizar
+            
+            //Se guarda cuantas filas se actualizaron con el update
+            int filas = sta.executeUpdate();
+            
+            //Se comprueba que haya filas actualizadas en la base de datos
+            if(filas == 0)
+            {
+                //Fallo update
+                System.out.println("Algo fallo en el registro");
+                return false;
+            }
+            else
+            {
+                //exito
+                System.out.println("Registro completado exitosamente");
+                return true;
+            }
+            
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        catch (FileNotFoundException ex) 
+        {
+            Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+    }//*/
 }

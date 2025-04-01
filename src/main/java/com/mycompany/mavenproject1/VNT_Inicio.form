@@ -442,10 +442,7 @@
                       <Component id="BTN_Ant" min="-2" pref="16" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="BTN_PubPhoto" min="-2" pref="50" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="BTN_PubPhoto" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="LBL_Name" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -454,13 +451,13 @@
                               </Group>
                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                               <Component id="SCR_Pub" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="BTN_Respuesta" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="BTN_Repost" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="BTN_MeGusta" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="BTN_Respuesta" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -476,10 +473,10 @@
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="BTN_Respuesta1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="BTN_Repost1" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="BTN_MeGusta1" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="BTN_Respuesta1" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="56" max="32767" attributes="0"/>
                       <Component id="BTN_Sig" min="-2" pref="16" max="-2" attributes="0"/>
