@@ -21,6 +21,8 @@ public class VNT_Login extends javax.swing.JFrame {
     {
         initComponents();
         
+        System.out.println("JFRAME 'VNT_Login'  HAS BEEN INICIATED, EXECUTION RESULTS:\n");
+        
         String url = "src/main/java/images/Direction.png";
         ImageIcon image = new ImageIcon(url);
         Image img = image.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
@@ -157,26 +159,28 @@ public class VNT_Login extends javax.swing.JFrame {
             //Se define la conexion usando el archivo predefinido DB_con.java
             DB_con db_c = new DB_con();
             
+            //Se define la conexion en a para referenciarla
+            Connection a = db_c.Get_conexion();
+            
             //Se guarda en 'usr' lo que estaba escrito en el campo de identificacion
             String usr = FLD_Identif.getText();
             
             //Se guarda en 'psw' lo que estaba escrito en el campo de contraseña
             String psw  = FLD_Pass.getText();
             
-            //Se define la conexion en a para referenciarla
-            Connection a = db_c.Get_conexion();
-            
-            /*/Se define login para guardar si se confirman que el usuario y la contraseña fueron correctos
-            Boolean login = db_c.Ex_select(usr, psw);
-            //*/
-            
             //Se obtiene el registro del usuario buscado
             ResultSet login = db_c.Ex_select(usr, psw);
             
-            String User_ID = login.getString("id_usuario");
-            
-            if(login != null) //se comprueba que los datos para entrar si existen y son correctos
+            if (login == null)
             {
+                LBL_Warning.setText("Fallo inicio de sesion");
+                System.out.println("\n   Error VNT_Login: login es null \n\n");
+            }
+            else if(login.next()) //se comprueba que los datos para entrar si existen y son correctos
+            {
+                //Como hubo exito en encontrar un registro se guarda el id del usuario
+                String User_ID = login.getString("id_usuario");
+                
                 //Se crea una ventana de inicio
                 VNT_Inicio NewVI = new VNT_Inicio();
                 
@@ -190,13 +194,16 @@ public class VNT_Login extends javax.swing.JFrame {
                 this.setVisible(false);
                 this.dispose();
             }
+            
         } 
         catch (SQLException ex) 
         {
             Logger.getLogger(VNT_Login.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("\n   Error VNT_Login: SQLException \n\n");
+            this.setVisible(false);
+            this.dispose();
         }
         
-        LBL_Warning.setText("Usuario no encontrado");
     }//GEN-LAST:event_BTN_EntrarActionPerformed
 
     /**

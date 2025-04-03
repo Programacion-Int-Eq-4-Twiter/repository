@@ -30,12 +30,12 @@ public class DB_con
     ///Estos strings tienen la funcion de contener los detalles de la conexio a la base de datos
     ///Lo ideal es usar el SQL del equipo para que este cree la base de datos segun la estructura requerida
     ///En caso de que la base de datos que se utilize tenga un nombre distinto este debe introducirse en DB_name:
-    public String DB_name = "BD_Twitter";
+    public String DB_name = "DB_Twitter";
+    public String dbpass = "";      
     
     //Los String estan configurados para el estado predeterminado de nuevas bases de Datos
-    public String connectionstring = "jdbc:mysql://localhost:3306/" + DB_name;
-    public String dbhost = "host";  
-    public String dbpass = "";      
+    public String connectionstring = "jdbc:mysql://localhost:3306/" + DB_name + "?serverTimezone=America/Mexico_City&zeroDateTimeBehavior=CONVERT_TO_NULL";
+    public String dbhost = "root";  
     
     //Define una conexion dentro de este recurso aun por configurar
     Connection conn = null;
@@ -47,11 +47,11 @@ public class DB_con
         try 
         {
             this.conn = DriverManager.getConnection(connectionstring, dbhost, dbpass);
-            System.out.print("Conexion exitosa"); //Print
+            System.out.print("\n   Conexion exitosa\n\n"); //Print
         } 
         catch (SQLException ex) 
         {
-            System.out.print("Error de conexion"); //Print
+            System.out.print("\n   Error de conexion\n\n"); //Print
             Logger.getLogger(DB_con.class.getName()). log(Level.SEVERE, null, ex);
         }
     }//*/
@@ -70,6 +70,16 @@ public class DB_con
         {
             //Se establece la conexion ya definida en esta funcion
             Connection c = this.Get_conexion();
+            
+            if (c == null) 
+            {
+                System.out.println("\n   Error Ex_select: La conexión no se estableció.\n\n");
+                return null; // Salir de la función si no hay conexión
+            }
+            else
+            {
+                System.out.println("\n   La conexión en Ex_select() se estableció exitosamente.\n\n");
+            }
             
             //Se define una variable de tipo string para contener un query de SQL
             //Particularmente busca en la tabla 'usr' un registro con cierto nombre y contraseña
@@ -94,10 +104,12 @@ public class DB_con
             if(rs.next()) //Si hay mas, revisa siguiente registro enlistado en 'rs'
             {
                 //se hizo login              
+                System.out.println("\n   Usuario encontrado existosamente.\n\n");
                 return rs;
             }
             else
             {
+                System.out.println("\n   Error Ex_select: No se obtuvo resultado al buscar el usuario.\n\n");
                 return null;
             }
             
@@ -105,6 +117,7 @@ public class DB_con
         catch (SQLException ex) 
         {
             Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("\n   Error Ex_select: SQLException\n\n");
         }
         
         return null;
@@ -158,13 +171,13 @@ public class DB_con
             if(filas == 0)
             {
                 //Fallo inset
-                System.out.println("Algo fallo en el registro");
+                System.out.println("\n   Algo fallo en el registro de usuario\n\n");
                 return false;
             }
             else
             {
                 //exito
-                System.out.println("Registro completado exitosamente");
+                System.out.println("\n   Registro de usuario completado exitosamente\n\n");
                 return true;
             }
 
@@ -333,13 +346,13 @@ public class DB_con
             if(filas == 0)
             {
                 //Fallo insert
-                System.out.println("Algo fallo en el registro");
+                System.out.println("\n   Algo fallo en la publicacion\n\n");
                 return false;
             }
             else
             {
                 //exito
-                System.out.println("Registro completado exitosamente");
+                System.out.println("\n   Publicacion completada exitosamente\n\n");
                 return true;
             }
         } 
@@ -382,13 +395,13 @@ public class DB_con
             if(filas == 0)
             {
                 //Fallo insert
-                System.out.println("Algo fallo en el registro");
+                System.out.println("\n   Algo fallo en el reposteo\n\n");
                 return false;
             }
             else
             {
                 //exito
-                System.out.println("Registro completado exitosamente");
+                System.out.println("\n   Reposteo completado exitosamente\n\n");
                 this.Publicar(Id_user, content);
                 return true;
             }
@@ -429,13 +442,13 @@ public class DB_con
             if(filas == 0)
             {
                 //Fallo insert
-                System.out.println("Algo fallo en el registro");
+                System.out.println("\n   Algo fallo en el registro del megusta\n\n");
                 return false;
             }
             else
             {
                 //exito
-                System.out.println("Registro completado exitosamente");
+                System.out.println("\n   Megusta registrado completado exitosamente\n\n");
                 return true;
             }
         } 
@@ -507,13 +520,13 @@ public class DB_con
             if(filas == 0)
             {
                 //Fallo inset
-                System.out.println("Algo fallo en el registro");
+                System.out.println("\n   Algo fallo en el registro del perfil\n\n");
                 return false;
             }
             else
             {
                 //exito
-                System.out.println("Registro completado exitosamente");
+                System.out.println("\n   Registro del perfil completado exitosamente\n");
                 return true;
             }
         } 
@@ -548,13 +561,13 @@ public class DB_con
             if(filas == 0)
             {
                 //Fallo update
-                System.out.println("Algo fallo en el registro");
+                System.out.println("\n   Algo fallo en actualizar el string\n\n");
                 return false;
             }
             else
             {
                 //exito
-                System.out.println("Registro completado exitosamente");
+                System.out.println("\n   String actualizado exitosamente\n\n");
                 return true;
             }
             
@@ -633,13 +646,13 @@ public class DB_con
             if(filas == 0)
             {
                 //Fallo update
-                System.out.println("Algo fallo en el registro");
+                System.out.println("\n   Algo fallo en actualizar la foto\n\n");
                 return false;
             }
             else
             {
                 //exito
-                System.out.println("Registro completado exitosamente");
+                System.out.println("\n   Foto actualizada exitosamente\n\n");
                 return true;
             }
             

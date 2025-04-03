@@ -235,7 +235,7 @@ public class VNT_Singup extends javax.swing.JFrame {
     private void BTN_CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CrearActionPerformed
         // TODO add your handling code here:
         
-        if(FLD_ClaveA.getText() == FLD_ClaveB.getText())
+        if(FLD_ClaveA.getText().equals(FLD_ClaveB.getText()))
         {
             //Se define la conexion usando el archivo predefinido DB_con.java
             DB_con db_c = new DB_con();
