@@ -39,6 +39,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         initComponents();
         Set_Show();
         Pub_Show();
+        System.out.println("   JFRAME 'VNT_Inicio' HAS BEEN INICIATED\n");
     }
         
     /**z
@@ -49,6 +50,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
     
     public void recieveID(String variable) {
         this.Main_ID = variable;
+        System.out.println("\n   Sesion " + Main_ID + " Iniciada \n\n");
     }
     
     public void ReloadVI()
@@ -89,6 +91,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         catch (SQLException ex) 
         {
             Logger.getLogger(VNT_Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("\n   Error VNT_Inicio: SQLException \n\n");
         }
         
         if(Pub_index == 0)
@@ -117,6 +120,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
             BTN_Respuesta.setVisible(true);
             BTN_Repost.setVisible(true);
             BTN_MeGusta.setVisible(true);
+            SCR_Pub.setVisible(true);
             
             LBL_Id.setText(Pub_Id[Shw_index]);
             LBL_Date.setText(Pub_Date[Shw_index]);
@@ -135,6 +139,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
             BTN_Respuesta.setVisible(false);
             BTN_Repost.setVisible(false);
             BTN_MeGusta.setVisible(false);
+            SCR_Pub.setVisible(false);
         }
         
         if (Shw_index1 >= 1 && Shw_index1 <= Pub_index)
@@ -147,6 +152,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
             BTN_Respuesta1.setVisible(true);
             BTN_Repost1.setVisible(true);
             BTN_MeGusta1.setVisible(true);
+            SCR_Pub1.setVisible(true);
             
             LBL_Id1.setText(Pub_Id[Shw_index1]);
             LBL_Date1.setText(Pub_Date[Shw_index1]);
@@ -165,6 +171,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
             BTN_Respuesta1.setVisible(false);
             BTN_Repost1.setVisible(false);
             BTN_MeGusta1.setVisible(false);
+            SCR_Pub1.setVisible(false);
         }
     }
     
@@ -429,28 +436,33 @@ public class VNT_Inicio extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PNL_PubLayout.createSequentialGroup()
                                 .addGap(1, 1, 1)
                                 .addComponent(SCR_Pub1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(PNL_PubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(PNL_PubLayout.createSequentialGroup()
-                            .addComponent(BTN_PubPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PNL_PubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(PNL_PubLayout.createSequentialGroup()
-                                    .addComponent(LBL_Name)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(LBL_Id)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(LBL_Date))
-                                .addGroup(PNL_PubLayout.createSequentialGroup()
-                                    .addComponent(BTN_Respuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(98, 98, 98)
-                                    .addComponent(BTN_Repost, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(98, 98, 98)
-                                    .addComponent(BTN_MeGusta, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PNL_PubLayout.createSequentialGroup()
-                                    .addGap(1, 1, 1)
-                                    .addComponent(SCR_Pub, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addComponent(BTN_Ant, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BTN_Sig, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30))
+                    .addGroup(PNL_PubLayout.createSequentialGroup()
+                        .addComponent(BTN_PubPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(PNL_PubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PNL_PubLayout.createSequentialGroup()
+                                .addComponent(LBL_Name)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LBL_Id)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LBL_Date))
+                            .addGroup(PNL_PubLayout.createSequentialGroup()
+                                .addComponent(BTN_Respuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(98, 98, 98)
+                                .addComponent(BTN_Repost, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(98, 98, 98)
+                                .addComponent(BTN_MeGusta, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PNL_PubLayout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(SCR_Pub, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(30, 49, Short.MAX_VALUE))
+            .addGroup(PNL_PubLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BTN_Sig, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(PNL_PubLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BTN_Ant, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(5, 5, 5))
         );
         PNL_PubLayout.setVerticalGroup(
             PNL_PubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -624,8 +636,8 @@ public class VNT_Inicio extends javax.swing.JFrame {
     private void BTN_PerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PerfilActionPerformed
         // Este bloque de codigo cierra esta ventana y abre la ventana de este boton
         VNT_Perfil NewVP = new VNT_Perfil();
-        NewVP.recieveID(Main_ID);
-        NewVP.recieveShowID(Main_ID);
+        System.out.println("\n   " + Main_ID + " Transportado \n\n");
+        NewVP.recieveIDs(Main_ID, Main_ID);
         NewVP.setVisible(true);
         this.setVisible(false);
         this.dispose();
@@ -672,6 +684,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         else
         {
             LBL_Warning.setText("Ocurrio un error");
+            System.out.println("\n   Error VNT_Inicio: Fallo MeGusta0\n\n");
         }
     }//GEN-LAST:event_BTN_MeGustaActionPerformed
 
@@ -689,6 +702,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         else
         {
             LBL_Warning.setText("Ocurrio un error");
+            System.out.println("\n   Error VNT_Inicio: Fallo Repost0\n\n");
         }
     }//GEN-LAST:event_BTN_RepostActionPerformed
 
@@ -706,6 +720,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         else
         {
             LBL_Warning.setText("Ocurrio un error");
+            System.out.println("\n   Error VNT_Inicio: Fallo Repost1\n\n");
         }
     }//GEN-LAST:event_BTN_Repost1ActionPerformed
 
@@ -723,6 +738,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         else
         {
             LBL_Warning.setText("Ocurrio un error");
+            System.out.println("\n   Error VNT_Inicio: Fallo MeGusta1 \n\n");
         }
     }//GEN-LAST:event_BTN_MeGusta1ActionPerformed
 
@@ -759,6 +775,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         else
         {
             LBL_Warning.setText("Ocurrio un error");
+            System.out.println("\n   Error VNT_Inicio: Fallo Publicaicon\n\n");
         }
     }//GEN-LAST:event_BTN_PublicarActionPerformed
 
@@ -776,6 +793,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         else
         {
             LBL_Warning.setText("Ocurrio un error");
+            System.out.println("\n   Error VNT_Inicio: Fallo Respuesta0\n\n");
         }
     }//GEN-LAST:event_BTN_RespuestaActionPerformed
 
@@ -793,6 +811,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         else
         {
             LBL_Warning.setText("Ocurrio un error");
+            System.out.println("\n   Error VNT_Inicio: Fallo Respuesta1\n\n");
         }
     }//GEN-LAST:event_BTN_Respuesta1ActionPerformed
 

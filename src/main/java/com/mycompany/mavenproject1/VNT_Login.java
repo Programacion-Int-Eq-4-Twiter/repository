@@ -21,13 +21,13 @@ public class VNT_Login extends javax.swing.JFrame {
     {
         initComponents();
         
-        System.out.println("JFRAME 'VNT_Login'  HAS BEEN INICIATED, EXECUTION RESULTS:\n");
-        
         String url = "src/main/java/images/Direction.png";
         ImageIcon image = new ImageIcon(url);
         Image img = image.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
         ImageIcon icono = new ImageIcon(img);
         LBL_Logo.setIcon(icono);
+        
+        System.out.println("   JFRAME 'VNT_Login' HAS BEEN INICIATED\n");
     }
 
     /**
@@ -75,6 +75,7 @@ public class VNT_Login extends javax.swing.JFrame {
         LBL_Logo.setBackground(new java.awt.Color(204, 204, 204));
 
         LBL_Warning.setForeground(new java.awt.Color(255, 0, 51));
+        LBL_Warning.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LBL_Warning.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -86,21 +87,25 @@ public class VNT_Login extends javax.swing.JFrame {
                 .addComponent(LBL_Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(424, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(LBL_Warning, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BTN_Entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(LBL_TextD)
-                        .addGap(86, 86, 86))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(TXT_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(FLD_Pass)
-                            .addComponent(BTN_Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TXT_Identif, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FLD_Identif, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGap(424, 424, 424))
+                .addContainerGap(251, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BTN_Entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LBL_TextD)
+                                .addGap(86, 86, 86))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(TXT_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(FLD_Pass)
+                                    .addComponent(BTN_Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TXT_Identif, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(FLD_Identif, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGap(424, 424, 424))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(LBL_Warning, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(243, 243, 243))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,15 +176,24 @@ public class VNT_Login extends javax.swing.JFrame {
             //Se obtiene el registro del usuario buscado
             ResultSet login = db_c.Ex_select(usr, psw);
             
-            if (login == null)
+            if (login == null) //Comprueba que login tuvo un resultado valido
             {
-                LBL_Warning.setText("Fallo inicio de sesion");
+                if(a == null)
+                {
+                    LBL_Warning.setText("Comprueba tu contraseña MySQL o Nombre de la Base en DB_con.java");
+                }
+                else
+                {
+                    LBL_Warning.setText("Fallo inicio de sesion");
+                }
                 System.out.println("\n   Error VNT_Login: login es null \n\n");
             }
-            else if(login.next()) //se comprueba que los datos para entrar si existen y son correctos
+            else//if(login.next() == true) //se comprueba que los datos para entrar si existen y son correctos
             {
                 //Como hubo exito en encontrar un registro se guarda el id del usuario
                 String User_ID = login.getString("id_usuario");
+                
+                System.out.println("\n   Iniciando sesion " + User_ID + "... \n\n");
                 
                 //Se crea una ventana de inicio
                 VNT_Inicio NewVI = new VNT_Inicio();
@@ -199,7 +213,7 @@ public class VNT_Login extends javax.swing.JFrame {
         catch (SQLException ex) 
         {
             Logger.getLogger(VNT_Login.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("\n   Error VNT_Login: SQLException \n\n");
+            //System.out.println("\n   Error VNT_Login: SQLException \n\n");
             this.setVisible(false);
             this.dispose();
         }

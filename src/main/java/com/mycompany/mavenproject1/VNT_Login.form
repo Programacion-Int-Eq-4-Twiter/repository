@@ -32,25 +32,32 @@
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="424" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="LBL_Warning" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
-                  <Component id="BTN_Entrar" min="-2" pref="192" max="-2" attributes="0"/>
+              <EmptySpace pref="251" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="LBL_TextD" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                      <Component id="TXT_Password" min="-2" pref="192" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="FLD_Pass" max="32767" attributes="0"/>
-                          <Component id="BTN_Crear" min="-2" pref="192" max="-2" attributes="0"/>
-                          <Component id="TXT_Identif" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                          <Component id="FLD_Identif" alignment="1" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="BTN_Entrar" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="LBL_TextD" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <Component id="TXT_Password" min="-2" pref="192" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="FLD_Pass" max="32767" attributes="0"/>
+                                  <Component id="BTN_Crear" min="-2" pref="192" max="-2" attributes="0"/>
+                                  <Component id="TXT_Identif" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                                  <Component id="FLD_Identif" alignment="1" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="424" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="LBL_Warning" min="-2" pref="546" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="243" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="424" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -145,6 +152,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="0" red="ff" type="rgb"/>
         </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="verticalAlignment" type="int" value="3"/>
       </Properties>
     </Component>

@@ -47,28 +47,29 @@
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="LBL_Siguiendo" min="-2" pref="179" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="LBL_Seguidores" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace pref="5" max="-2" attributes="0"/>
                       <Component id="BTN_Photo" min="-2" pref="128" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="LBL_Nombre2" max="32767" attributes="0"/>
-                                  <Component id="LBL_Nombre" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="TGL_Follow" min="-2" pref="101" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="BTN_PConf" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                      <Component id="LBL_Following" min="-2" pref="132" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="LBL_Followers" min="-2" pref="136" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="LBL_Nombre2" max="32767" attributes="0"/>
+                                  <Component id="LBL_Nombre" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -77,6 +78,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="LBL_Titulo" pref="375" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="FLD_Biography" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSeparator2" min="-2" pref="3" max="-2" attributes="0"/>
@@ -152,6 +154,11 @@
                                   <Component id="BTN_PConf" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="TGL_Follow" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="LBL_Following" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                                  <Component id="LBL_Followers" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <Component id="BTN_Photo" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
                       </Group>
@@ -160,11 +167,8 @@
                           <Component id="LBL_Ubicacion" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                           <Component id="LBL_CDate" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="LBL_Siguiendo" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
-                          <Component id="LBL_Seguidores" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="FLD_Biography" min="-2" pref="134" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -396,6 +400,9 @@
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_BTN_CPerfil"/>
       </AccessibilityProperties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_PConfActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="LBL_Nombre">
       <Properties>
@@ -447,7 +454,7 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_LBL_CDate"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="javax.swing.JLabel" name="LBL_Siguiendo">
+    <Component class="javax.swing.JLabel" name="LBL_Following">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Monospaced" size="14" style="2"/>
@@ -461,7 +468,7 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_LBL_Siguiendo"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="javax.swing.JLabel" name="LBL_Seguidores">
+    <Component class="javax.swing.JLabel" name="LBL_Followers">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Monospaced" size="14" style="2"/>
@@ -481,6 +488,22 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Seguir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TGL_FollowActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="FLD_Biography">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="[BIOGRAFIA]"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder/>
+          </Border>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FLD_BiographyActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

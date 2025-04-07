@@ -26,12 +26,15 @@ import javax.swing.ImageIcon;
  */        
 public class DB_con 
 {
-    //*
     ///Estos strings tienen la funcion de contener los detalles de la conexio a la base de datos
     ///Lo ideal es usar el SQL del equipo para que este cree la base de datos segun la estructura requerida
+    ///Esto ultimo es un proceso que se hace fuera de NetBeans con la aplicaicon de MySQL
+    
     ///En caso de que la base de datos que se utilize tenga un nombre distinto este debe introducirse en DB_name:
-    public String DB_name = "DB_Twitter";
-    public String dbpass = "";      
+    public String DB_name = "[NOMBRE DE BASE DE DATOS]";
+    
+    //Cada miembro debe introducir aqui la contraseña de su MySQL para que funcione:
+    public String dbpass = "[CONTRASEÑA]";         
     
     //Los String estan configurados para el estado predeterminado de nuevas bases de Datos
     public String connectionstring = "jdbc:mysql://localhost:3306/" + DB_name + "?serverTimezone=America/Mexico_City&zeroDateTimeBehavior=CONVERT_TO_NULL";
@@ -202,53 +205,83 @@ public class DB_con
             //Se selecciona toda la tabla del nombre buscado
             ResultSet rs = sta.executeQuery("SELECT * FROM " + tbl_name);
             
+            System.out.println("\n   Tbl_Extract() Completado Exitosamente\n\n");
             //Se regresan los resultados de la busqueda
             return rs;
         } 
         catch (SQLException ex) 
         {
             Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
         }
         
+        System.out.println("\n   Fallo en Tbl_Extract() \n\n");
+        return null;
     }//*/
     
     //*/ Funcion para obtener un String especifico de una tabla conectada por id
     public String Adyacent_Element(String Element, String Table, String Id_Request, String Id_type)
     {
-        int Tbl_index = 0;    
-        String S_Output = null;
-        ResultSet DB_Table = this.Tbl_Extract(Table);
+        System.out.println("\n_________________________________________________________\n");
+        System.out.println("\n   Adyacent_element() Iniciado por '" + Element + "' \n\n");
+
+        //int Tbl_index = 0;    
+        //String S_Output;
+        //ResultSet DB_Table = this.Tbl_Extract(Table);
         
         try 
         {
-            //Se abre un bucle hasta que se encuentre el elemento
-            while(S_Output == null)
+            /*/Se abre un bucle hasta que se encuentre el elemento
+            while(DB_Table.next())
             {
-            
                 //Se elige individualmente cada regitro de la tabla
-                DB_Table.absolute(Tbl_index);
+                //DB_Table.absolute(Tbl_index);
                 
                 //Se comprueba que el registro sea del usuario correcto
                 if(Id_Request == DB_Table.getString(Id_type))
                 {
+                    System.out.println("\n   Adyacent_element() Completado Exitosamente\n\n");
+                    
                     //Se encuentra el elemento buscado
-                    S_Output = DB_Table.getString(Element);
+                    return DB_Table.getString(Element);
                 }
                 
                 //En caso de no encontrarlo se cambia al siguiente espacio para buscar en el proximo bucle
-                Tbl_index = Tbl_index + 1;
+                //Tbl_index = Tbl_index + 1;
+            }//*/
             
+            
+            PreparedStatement sta;
+            Connection c = this.Get_conexion();
+            
+            String query = "SELECT " + Element + " FROM " + Table + " WHERE " + Id_type + " = ?";
+            System.out.println("\n   Used query: '" + query + "' \n\n");
+            sta = c.prepareStatement(query);
+            
+            sta.setString(1, Id_Request);   //
+            
+            ResultSet rs = sta.executeQuery();
+            
+            if(rs.next())
+            {
+                String Output = rs.getString(Element);
+                System.out.println("\n   Adyacent_element() Completado: \n\n" + Output );
+                return Output;
             }
+            else
+            {
+                System.out.println("\n   Fallo en Adyacent_element() \n\n");
+            }
+            
         } 
         catch (SQLException ex) 
         {
             Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
-            return S_Output;
+            System.out.println("\n   Adyacent_element() SQLException Catched\n\n");
         }
         
-        //Se envia de regreso el elemento encontrado
-        return S_Output;
+        //System.out.println("\n   Fallo en Adyacent_element() \n\n");
+        System.out.println("\n|_______________________________________________________|\n\n");
+        return null;
     }
 
     //*/ Esta funcion comprueba que no exista ya un usuario con un id & email especificos
@@ -259,10 +292,16 @@ public class DB_con
             int NUM_Id = 0, NUM_Mail = 0;
             
             Connection c = this.Get_conexion();
-            Statement sta = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             
-            ResultSet Ids = sta.executeQuery("SELECT * FROM Usuario WHERE id_usuario = " + Id_user);
-            ResultSet Emails = sta.executeQuery("SELECT * FROM Usuario WHERE correo = " + email);
+            String QRY_Id = "SELECT * FROM Usuario WHERE id_usuario = ?";
+            PreparedStatement STM_Id = c.prepareStatement(QRY_Id);
+            STM_Id.setString(1, Id_user);
+            ResultSet Ids = STM_Id.executeQuery();
+            
+            String QRY_Mail = "SELECT * FROM Usuario WHERE correo = ?";
+            PreparedStatement STM_Mail = c.prepareStatement(QRY_Mail);
+            STM_Mail.setString(1, email);
+            ResultSet Emails = STM_Mail.executeQuery();
             
             while(Ids.next())
             {
@@ -481,19 +520,23 @@ public class DB_con
     {
         try 
         {
+            //Se definen valores iniciales
             Connection c = this.Get_conexion();
             FileInputStream foto_perfil = null;
             
+            //Se prepara el query
             String query = "INSERT INTO Perfil VALUES(?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement sta;
             sta = c.prepareStatement(query);
             
+            //Proceso para crear un ID unico
             int number = Check_Number(this.Tbl_Extract("Perfil"));
             Date mark = new Date();
             SimpleDateFormat formatee = new SimpleDateFormat("yyMMdd");
             String Id_perfil = formatee.format(mark) + number;
             
-            File archivoImagen = new File("/src/main/java/images/newer.png");
+            //Definiendo la foto de perfil predeterminada
+            File archivoImagen = new File("src/main/java/images/newer.png");
             try 
             {
                 foto_perfil = new FileInputStream(archivoImagen);
@@ -504,16 +547,16 @@ public class DB_con
                 return false;
             }
             
-            String biografia = "Por editar";
-            
+            //Valores predeterminados a ser introducidos
             sta.setString(1, Id_perfil);
             sta.setString(2, Id_user);
             sta.setBinaryStream(3, foto_perfil, (int) archivoImagen.length());
-            sta.setString(4, biografia);
+            sta.setString(4, "Por editar");
             sta.setInt(5, 0);
             sta.setInt(6, 0);
-            sta.setString(6, this.Adyacent_Element("pais", "Usuario", Id_user, "id_usuario"));
+            sta.setString(7, this.Adyacent_Element("pais", "Usuario", Id_user, "id_usuario"));
             
+            //Se guarda las filas afectadas
             int filas = sta.executeUpdate();
             
             //Se comprueba que haya filas actualizadas en la base de datos
