@@ -31,10 +31,10 @@ public class DB_con
     ///Esto ultimo es un proceso que se hace fuera de NetBeans con la aplicaicon de MySQL
     
     ///En caso de que la base de datos que se utilize tenga un nombre distinto este debe introducirse en DB_name:
-    public String DB_name = "[NOMBRE DE BASE DE DATOS]";
+    public String DB_name = "DB_Twitter";
     
     //Cada miembro debe introducir aqui la contraseña de su MySQL para que funcione:
-    public String dbpass = "[CONTRASEÑA]";         
+    public String dbpass = "Neiyanal=0";         
     
     //Los String estan configurados para el estado predeterminado de nuevas bases de Datos
     public String connectionstring = "jdbc:mysql://localhost:3306/" + DB_name + "?serverTimezone=America/Mexico_City&zeroDateTimeBehavior=CONVERT_TO_NULL";
@@ -224,32 +224,8 @@ public class DB_con
         System.out.println("\n_________________________________________________________\n");
         System.out.println("\n   Adyacent_element() Iniciado por '" + Element + "' \n\n");
 
-        //int Tbl_index = 0;    
-        //String S_Output;
-        //ResultSet DB_Table = this.Tbl_Extract(Table);
-        
         try 
-        {
-            /*/Se abre un bucle hasta que se encuentre el elemento
-            while(DB_Table.next())
-            {
-                //Se elige individualmente cada regitro de la tabla
-                //DB_Table.absolute(Tbl_index);
-                
-                //Se comprueba que el registro sea del usuario correcto
-                if(Id_Request == DB_Table.getString(Id_type))
-                {
-                    System.out.println("\n   Adyacent_element() Completado Exitosamente\n\n");
-                    
-                    //Se encuentra el elemento buscado
-                    return DB_Table.getString(Element);
-                }
-                
-                //En caso de no encontrarlo se cambia al siguiente espacio para buscar en el proximo bucle
-                //Tbl_index = Tbl_index + 1;
-            }//*/
-            
-            
+        {   
             PreparedStatement sta;
             Connection c = this.Get_conexion();
             
@@ -264,7 +240,8 @@ public class DB_con
             if(rs.next())
             {
                 String Output = rs.getString(Element);
-                System.out.println("\n   Adyacent_element() Completado: \n\n" + Output );
+                System.out.println("\n   Adyacent_element() Completado: " + Output + "\n\n");
+                System.out.println("\n|_______________________________________________________|\n\n");
                 return Output;
             }
             else
@@ -276,7 +253,7 @@ public class DB_con
         catch (SQLException ex) 
         {
             Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("\n   Adyacent_element() SQLException Catched\n\n");
+            System.out.println("\n\n   Adyacent_element() SQLException Catched\n\n");
         }
         
         //System.out.println("\n   Fallo en Adyacent_element() \n\n");
@@ -360,6 +337,11 @@ public class DB_con
     //*/ Funcion que se encarga de registrar una nueva publicacion
     public Boolean Publicar(String Id_user, String content)
     {
+        
+        System.out.println("\n_________________________________________________________\n");
+        System.out.println("\n   Adyacent_element() Iniciado por '" + Id_user + "' \n\n");
+        int filas = 0;
+        
         try {
             //Se establece la conexion ya definida dentro de esta funcion
             Connection cn = this.Get_conexion();
@@ -371,7 +353,7 @@ public class DB_con
             String Id_tweet = formatee.format(mark) + created;
             
             //Se realiza un query para insertar valores en la base de datos
-            String query = "INSERT INTO Tweet VALUES(?, ?, ?)";
+            String query = "INSERT INTO Tweet (id_tweet, id_usuario, contenido) VALUES(?, ?, ?)";
             PreparedStatement st = cn.prepareStatement(query);
             
             st.setString(1, Id_tweet);  //Id unico de la publicacion
@@ -379,14 +361,14 @@ public class DB_con
             st.setString(3, content);   //Contenido de la publicacion
             
             //Ejecuta el insert y guarda cuantas filas fueron afectadas
-            int filas = st.executeUpdate();
+            filas = st.executeUpdate();
+            System.out.println("\n   Publicar() filas = " + filas + "\n\n");
             
             //Se comprueba que haya filas actualizadas en la base de datos
             if(filas == 0)
             {
                 //Fallo insert
-                System.out.println("\n   Algo fallo en la publicacion\n\n");
-                return false;
+                System.out.println("\n   Algo fallo en Publicar()\n\n");
             }
             else
             {
@@ -398,8 +380,10 @@ public class DB_con
         catch (SQLException ex) 
         {
             Logger.getLogger(DB_con.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("\n\n   Fallo en Publicar(): SQLException\n\n");
         }
         
+        System.out.println("\n|_______________________________________________________|\n\n");
         return false;
         
     }//*/
@@ -419,13 +403,12 @@ public class DB_con
             String Id_re = formatee.format(mark) + number;
             
             //Se realiza un query para insertar valores en la base de datos
-            String query = "INSERT INTO ? VALUES(?, ?, ?)";
+            String query = "INSERT INTO " + type + " VALUES(?, ?, ?)";
             PreparedStatement st = cn.prepareStatement(query);
             
-            st.setString(1, type);      //Tabla en que sera registrado el reposteo
-            st.setString(2, Id_re);     //Id unico del reposteo
-            st.setString(3, Id_user);   //Id del usario que reposteo
-            st.setString(4, Id_tweet);  //Id del tweet que fue reposteado
+            st.setString(1, Id_re);     //Id unico del reposteo
+            st.setString(2, Id_user);   //Id del usario que reposteo
+            st.setString(3, Id_tweet);  //Id del tweet que fue reposteado
             
             //Se guarda cuantas filas se actualizaron con el insert
             int filas = st.executeUpdate();
@@ -440,8 +423,8 @@ public class DB_con
             else
             {
                 //exito
-                System.out.println("\n   Reposteo completado exitosamente\n\n");
                 this.Publicar(Id_user, content);
+                System.out.println("\n   Reposteo completado exitosamente\n\n");
                 return true;
             }
         } 

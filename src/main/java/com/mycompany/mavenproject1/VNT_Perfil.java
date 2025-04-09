@@ -401,6 +401,19 @@ public class VNT_Perfil extends javax.swing.JFrame {
 
     private void BTN_InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_InicioActionPerformed
         // TODO add your handling code here:
+        VNT_Inicio NewVI = new VNT_Inicio();
+        
+        System.out.println("\n   Comprobando Sesion " + Main_ID + "... \n\n");
+        
+        //Se pasa el ID_del usuario que inicio sesion
+        NewVI.recieveID(Main_ID);
+        
+        //Se hace visible a la ventana de inicio
+        NewVI.setVisible(true);
+        
+        //Se hace invisible y se desaparece la ventana de login actual
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_BTN_InicioActionPerformed
 
     private void BTN_ExplorarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ExplorarActionPerformed

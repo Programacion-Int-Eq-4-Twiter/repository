@@ -775,7 +775,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         else
         {
             LBL_Warning.setText("Ocurrio un error");
-            System.out.println("\n   Error VNT_Inicio: Fallo Publicaicon\n\n");
+            System.out.println("\n   Error VNT_Inicio: Fallo Publicacion\n\n");
         }
     }//GEN-LAST:event_BTN_PublicarActionPerformed
 
