@@ -198,6 +198,7 @@ public class DB_con
         try 
         {
             Connection c = this.Get_conexion();
+            int count = 0;
             
             //Se define el query de forma que sea navegable
             Statement sta = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -205,8 +206,19 @@ public class DB_con
             //Se selecciona toda la tabla del nombre buscado
             ResultSet rs = sta.executeQuery("SELECT * FROM " + tbl_name);
             
+            //*/
+            while (rs.next())
+            {
+                count++;
+                System.out.println("\n   Tbl_Extract(" + count + ") = " + rs.getString("id_usuario") + "\n\n");
+            }
+            //*/
+            
+            rs.beforeFirst(); 
+            
             System.out.println("\n   Tbl_Extract() Completado Exitosamente\n\n");
             //Se regresan los resultados de la busqueda
+            
             return rs;
         } 
         catch (SQLException ex) 
@@ -324,6 +336,8 @@ public class DB_con
             {
                 count++; //Por cada elemento presente se aumenta en 1 la cuenta
             }
+            
+            rs.beforeFirst(); 
             
         } 
         catch (SQLException ex) 
@@ -636,6 +650,8 @@ public class DB_con
                 // Retornar el icono de la imagen
                 return icon;
             }
+            
+            rs.beforeFirst(); 
         } 
         catch (SQLException ex) 
         {

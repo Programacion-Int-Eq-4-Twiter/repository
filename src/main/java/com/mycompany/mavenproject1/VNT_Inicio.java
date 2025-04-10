@@ -20,19 +20,21 @@ public class VNT_Inicio extends javax.swing.JFrame {
     /**
      * Creates new form VNT_Inicio
      */
+    DB_con db_c = new DB_con();
     int Pub_index = -1;
     int Shw_index = -1;
     int Shw_index1 = 0;
+    int Srt_index = db_c.Check_Number(db_c.Tbl_Extract("Tweet"));
     
     String Main_ID;
-    String Show_ID;
+    //String Show_ID;
     
-    ImageIcon[] Pub_Photo;
-    String[] Pub_Name;
-    String[] Pub_Id;    
-    String[] Pub_Date;
-    String[] Pub_Content;
-    int[] Pub_Likes;
+    ImageIcon[] Pub_Photo = new ImageIcon[Srt_index];
+    String[] Pub_Name = new String[Srt_index];
+    String[] Pub_Id = new String[Srt_index];    
+    String[] Pub_Date = new String[Srt_index];
+    String[] Pub_Content = new String[Srt_index];
+    int[] Pub_Likes = new int[Srt_index];
     
     public VNT_Inicio() 
     {
@@ -79,6 +81,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
             while(tweet.next())
             {
                 Pub_index = Pub_index + 1;
+                System.out.println("\n   Pub_Id[" + Pub_index + "] = '");
                 
                 Pub_Id[Pub_index] = tweet.getString("id_usuario");
                 Pub_Date[Pub_index] = tweet.getString("fecha_publicacion");
@@ -86,7 +89,12 @@ public class VNT_Inicio extends javax.swing.JFrame {
                 Pub_Photo[Pub_index] = db_c.Prfl_Photo(Pub_Id[Pub_index], BTN_PubPhoto.getHeight(), BTN_PubPhoto.getWidth());
                 Pub_Name[Pub_index] = db_c.Adyacent_Element( "nombre", "Usuario", Pub_Id[Pub_index], "id_usuario");
                 Pub_Likes[Pub_index] = db_c.Numero_en_tweet(tweet.getString("id_tweet"), "MeGusta");
+                
+                System.out.println( Pub_Id[Pub_index] + "' \n\n");
             }
+            
+            tweet.beforeFirst(); 
+            
         } 
         catch (SQLException ex) 
         {
