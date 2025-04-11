@@ -337,7 +337,7 @@ public class DB_con
                 count++; //Por cada elemento presente se aumenta en 1 la cuenta
             }
             
-            rs.beforeFirst(); 
+            rs.beforeFirst(); //por si acaso se reinicia la cuenta de la funcion para otros usos
             
         } 
         catch (SQLException ex) 
@@ -405,6 +405,20 @@ public class DB_con
     //*/ Esta funcion se encarga de registrar un nuevo reposteo, refiriendose a retweets y respuestas/comentarios
     public Boolean Repostear(String Id_user, String type, String Id_tweet, String content)
     {
+        String id_un = "";
+        
+        
+        if (type == "Retweet")
+        {
+            id_un = "id_retweet";
+        }
+            
+            
+        if (type == "Comentario")
+        {
+                id_un = "id_comentario";
+        }    
+        
         try 
         {
             //Se establece la conexion ya definida dentro de esta funcion
@@ -417,7 +431,8 @@ public class DB_con
             String Id_re = formatee.format(mark) + number;
             
             //Se realiza un query para insertar valores en la base de datos
-            String query = "INSERT INTO " + type + " VALUES(?, ?, ?)";
+            String query = "INSERT INTO " + type + "(" + id_un + ", id_usuario, id_tweet) VALUES(?, ?, ?)";
+            System.out.println("\n   " + query + "\n\n");
             PreparedStatement st = cn.prepareStatement(query);
             
             st.setString(1, Id_re);     //Id unico del reposteo
@@ -453,40 +468,89 @@ public class DB_con
     //*/ Funcion que registra un nuevo me gusta en un tweet
     public Boolean NewLike(String Id_user, String Id_tweet)
     {
+        
+        System.out.println("\n_________________________________________________________\n");
+        System.out.println("\n   Iniciado NewLike('" + Id_user + "', '" + Id_tweet + "') \n\n");
+        
         try 
         {
             //Se establece la conexion ya definida dentro de esta funcion
             Connection cn = this.Get_conexion();
+            int filas;
+            int num_t = 0;
+                    
+            //Se comprueba rapidamente si ya hay un megusta
+            String check = "SELECT COUNT(*) AS total FROM MeGusta WHERE (id_usuario = ? AND id_tweet = ?)";
+            //System.out.println("\n   QUERY = '" + check + "' \n\n");
             
-            //Se crea un Id unico
-            int number = Check_Number(this.Tbl_Extract("MeGusta"));
-            Date mark = new Date();
-            SimpleDateFormat formatee = new SimpleDateFormat("yyMMdd");
-            String Id_re = formatee.format(mark) + number;
+            PreparedStatement QRY_num = cn.prepareStatement(check);
             
-            //Se realiza un query para insertar valores en la base de datos
-            String query = "INSERT INTO MeGusta VALUES(?, ?, ?)";
-            PreparedStatement st = cn.prepareStatement(query);
+            QRY_num.setString(1, Id_user);   //
+            QRY_num.setString(2, Id_tweet);   //
             
-            st.setString(1, Id_re);     //Id unico del me gusta
-            st.setString(2, Id_user);   //Id del usuario que dio me gusta
-            st.setString(3, Id_tweet);  //Id del tweet al que se le dio me gusta
+            ResultSet count = QRY_num.executeQuery();
             
-            int filas = st.executeUpdate();
+            if (count.next())
+                num_t = count.getInt("total");
             
-            //Se comprueba que haya filas actualizadas en la base de datos
-            if(filas == 0)
+            count.beforeFirst(); //por si acaso se reinicia la cuenta de la funcion para otros usos
+            System.out.println("\n   MeGustas Registrados = " + num_t + "\n\n");
+            
+            if (num_t == 0)
             {
-                //Fallo insert
-                System.out.println("\n   Algo fallo en el registro del megusta\n\n");
-                return false;
-            }
-            else
-            {
-                //exito
-                System.out.println("\n   Megusta registrado completado exitosamente\n\n");
+                System.out.println("\n   Registrando Nuevo MeGusta\n\n");
+                //Se crea un Id unico
+                int number = Check_Number(this.Tbl_Extract("MeGusta"));
+                Date mark = new Date();
+                SimpleDateFormat formatee = new SimpleDateFormat("yyMMdd");
+                String Id_re = formatee.format(mark) + number;
+            
+                //Se realiza un query para insertar valores en la base de datos
+                String query = "INSERT INTO MeGusta VALUES(?, ?, ?)";
+                PreparedStatement st = cn.prepareStatement(query);
+            
+                st.setString(1, Id_re);     //Id unico del MeGusta
+                st.setString(2, Id_user);   //Id del usuario que dio MeGusta
+                st.setString(3, Id_tweet);  //Id del tweet al que se le dio MeGusta
+            
+                filas = st.executeUpdate();
+                
+                if (filas != 0)
+                    System.out.println("\n   Operacion MeGusta completada exitosamente\n\n");
+                else 
+                    System.out.println("\n   Algo fallo en el registro del megusta\n\n");
+                
+                
+                System.out.println("\n|_______________________________________________________|\n\n");
                 return true;
             }
+            
+            if (num_t > 0)
+            {
+                System.out.println("\n   Eliminando Me Gusta Encontrado\n\n");
+                
+                //Se realiza un query para insertar valores en la base de datos
+                String query = "DELETE FROM MeGusta WHERE (id_usuario = ? AND id_tweet = ?)";
+                PreparedStatement st = cn.prepareStatement(query);
+            
+                st.setString(1, Id_user);   //Id del usuario que dio me gusta
+                st.setString(2, Id_tweet);  //Id del tweet al que se le dio me gusta
+                filas = st.executeUpdate();
+                
+                if (filas != 0)
+                    System.out.println("\n   Operacion MeGusta completada exitosamente\n\n");
+                else
+                    System.out.println("\n   Algo fallo en el registro del megusta\n\n");
+                
+                
+                System.out.println("\n|_______________________________________________________|\n\n");
+                return false;
+            }
+            
+            System.out.println("\n    Error= Cuenta Null\n\n");
+            System.out.println("\n|_______________________________________________________|\n\n");
+            return null;
+            
         } 
         catch (SQLException ex) 
         {
@@ -585,14 +649,11 @@ public class DB_con
             PreparedStatement sta;
             Connection c = this.Get_conexion();
             
-            String query = "UPDATE ? SET ? = ? WHERE ? = ?";
+            String query = "UPDATE " + Table + " SET " + E_type + " = ? WHERE " + Id_type + " = ?";
             sta = c.prepareStatement(query);
             
-            sta.setString(1, Table);     //Nombre de la tabla donde esta el campo a actualizar
-            sta.setString(2, E_type);    //Nombre del campo cuyo valor sera actualizado
-            sta.setString(3, Element);   //Nuevo string que sera insertado en el campo
-            sta.setString(4, Id_type);   //Tipo de id principal de la tabla
-            sta.setString(5, Id_object); //Id del registro especifico a actualizar
+            sta.setString(1, Element);   //Nuevo string que sera insertado en el campo
+            sta.setString(2, Id_object); //Id del registro especifico a actualizar
             
             //Se guarda cuantas filas se actualizaron con el update
             int filas = sta.executeUpdate();

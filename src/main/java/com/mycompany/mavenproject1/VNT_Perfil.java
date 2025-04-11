@@ -418,26 +418,57 @@ public class VNT_Perfil extends javax.swing.JFrame {
 
     private void BTN_ExplorarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ExplorarActionPerformed
         // TODO add your handling code here:
+        VNT_Explorar NewVE = new VNT_Explorar();
+        NewVE.recieveID(Main_ID);
+        NewVE.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_BTN_ExplorarActionPerformed
 
     private void BTN_NotifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_NotifActionPerformed
         // TODO add your handling code here:
+        VNT_Notif NewVN = new VNT_Notif();
+        NewVN.recieveID(Main_ID);
+        NewVN.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_BTN_NotifActionPerformed
 
     private void BTN_PerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PerfilActionPerformed
         // TODO add your handling code here:
+        VNT_Perfil NewVP = new VNT_Perfil();
+        System.out.println("\n   " + Main_ID + " Transportado \n\n");
+        NewVP.recieveIDs(Main_ID, Main_ID);
+        NewVP.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_BTN_PerfilActionPerformed
 
     private void BTN_ConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ConfigActionPerformed
         // TODO add your handling code here:
+        VNT_Configuracion NewVCn = new VNT_Configuracion();
+        NewVCn.recieveID(Main_ID);
+        NewVCn.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_BTN_ConfigActionPerformed
 
     private void BTN_ComunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ComunActionPerformed
         // TODO add your handling code here:
+        VNT_Comunidades NewVCm = new VNT_Comunidades();
+        NewVCm.recieveID(Main_ID);
+        NewVCm.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_BTN_ComunActionPerformed
 
     private void BTN_ListasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ListasActionPerformed
         // TODO add your handling code here:
+        VNT_Listas NewVL = new VNT_Listas();
+        NewVL.recieveID(Main_ID);
+        NewVL.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_BTN_ListasActionPerformed
 
     private void BTN_PhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PhotoActionPerformed

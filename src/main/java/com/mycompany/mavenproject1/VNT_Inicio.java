@@ -39,8 +39,14 @@ public class VNT_Inicio extends javax.swing.JFrame {
     public VNT_Inicio() 
     {
         initComponents();
-        Set_Show();
-        Pub_Show();
+        Set_Show();         //Define arrays que contengan los tweets
+        Pub_Show();         //actualiza los tweets enseñados
+        
+        PNL_Pub.setSize(400, 510);
+        
+        FLD_Publicar.setLineWrap(true);         // Activa el ajuste de línea en el campo de texto principal
+        FLD_Publicar.setWrapStyleWord(true);    // Ajusta las líneas por palabras completas (más estético)
+        
         System.out.println("   JFRAME 'VNT_Inicio' HAS BEEN INICIATED\n");
     }
         
@@ -203,7 +209,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         BTN_Listas = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
         LST_Tendencias = new java.awt.List();
-        PAN_Posts = new java.awt.ScrollPane();
+        LBL_Warning = new javax.swing.JLabel();
         PNL_Pub = new javax.swing.JPanel();
         BTN_PubPhoto = new javax.swing.JButton();
         LBL_Name = new javax.swing.JLabel();
@@ -213,7 +219,6 @@ public class VNT_Inicio extends javax.swing.JFrame {
         BTN_Repost = new javax.swing.JButton();
         BTN_MeGusta = new javax.swing.JButton();
         BTN_Ant = new javax.swing.JButton();
-        BTN_Sig = new javax.swing.JButton();
         SCR_Pub = new javax.swing.JScrollPane();
         TXT_Content = new javax.swing.JTextPane();
         BTN_PubPhoto1 = new javax.swing.JButton();
@@ -225,7 +230,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         BTN_Respuesta1 = new javax.swing.JButton();
         BTN_Repost1 = new javax.swing.JButton();
         BTN_MeGusta1 = new javax.swing.JButton();
-        LBL_Warning = new javax.swing.JLabel();
+        BTN_Sig = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
@@ -326,11 +331,14 @@ public class VNT_Inicio extends javax.swing.JFrame {
         LST_Tendencias.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         LST_Tendencias.setName("Tendencias"); // NOI18N
 
-        PAN_Posts.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        PAN_Posts.setForeground(new java.awt.Color(51, 51, 51));
-        PAN_Posts.setName("Posts"); // NOI18N
+        LBL_Warning.setForeground(new java.awt.Color(255, 0, 51));
 
         BTN_PubPhoto.setSelected(true);
+        BTN_PubPhoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_PubPhotoActionPerformed(evt);
+            }
+        });
 
         LBL_Name.setText("Name");
 
@@ -338,7 +346,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         LBL_Id.setText("@Id");
 
         LBL_Date.setForeground(new java.awt.Color(153, 153, 153));
-        LBL_Date.setText("23/03/25");
+        LBL_Date.setText("[FECHA&HORA]");
 
         BTN_Respuesta.setBackground(new java.awt.Color(153, 153, 153));
         BTN_Respuesta.setText("ANS");
@@ -364,15 +372,10 @@ public class VNT_Inicio extends javax.swing.JFrame {
             }
         });
 
+        BTN_Ant.setText("<<");
         BTN_Ant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_AntActionPerformed(evt);
-            }
-        });
-
-        BTN_Sig.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_SigActionPerformed(evt);
             }
         });
 
@@ -382,6 +385,11 @@ public class VNT_Inicio extends javax.swing.JFrame {
         SCR_Pub.setViewportView(TXT_Content);
 
         BTN_PubPhoto1.setSelected(true);
+        BTN_PubPhoto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_PubPhoto1ActionPerformed(evt);
+            }
+        });
 
         LBL_Name1.setText("Name");
 
@@ -394,7 +402,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         LBL_Id1.setText("@Id");
 
         LBL_Date1.setForeground(new java.awt.Color(153, 153, 153));
-        LBL_Date1.setText("23/03/25");
+        LBL_Date1.setText("[FECHA&HORA]");
 
         BTN_Respuesta1.setBackground(new java.awt.Color(153, 153, 153));
         BTN_Respuesta1.setText("ANS");
@@ -424,7 +432,11 @@ public class VNT_Inicio extends javax.swing.JFrame {
         PNL_PubLayout.setHorizontalGroup(
             PNL_PubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PNL_PubLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addContainerGap()
+                .addComponent(BTN_Ant, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(5, 5, 5))
+            .addGroup(PNL_PubLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
                 .addGroup(PNL_PubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(PNL_PubLayout.createSequentialGroup()
                         .addComponent(BTN_PubPhoto1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -462,22 +474,14 @@ public class VNT_Inicio extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PNL_PubLayout.createSequentialGroup()
                                 .addGap(1, 1, 1)
                                 .addComponent(SCR_Pub, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(30, 49, Short.MAX_VALUE))
-            .addGroup(PNL_PubLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BTN_Sig, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(PNL_PubLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BTN_Ant, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(5, 5, 5))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         PNL_PubLayout.setVerticalGroup(
             PNL_PubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PNL_PubLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BTN_Ant, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PNL_PubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BTN_PubPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PNL_PubLayout.createSequentialGroup()
@@ -506,14 +510,15 @@ public class VNT_Inicio extends javax.swing.JFrame {
                 .addGroup(PNL_PubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BTN_Repost1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BTN_MeGusta1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BTN_Respuesta1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addComponent(BTN_Sig, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BTN_Respuesta1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        PAN_Posts.add(PNL_Pub);
-
-        LBL_Warning.setForeground(new java.awt.Color(255, 0, 51));
+        BTN_Sig.setText(">>");
+        BTN_Sig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_SigActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -532,16 +537,19 @@ public class VNT_Inicio extends javax.swing.JFrame {
                     .addComponent(BTN_Comun))
                 .addGap(12, 12, 12)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
-                    .addComponent(PAN_Posts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(LBL_Warning, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BTN_Publicar)
-                        .addGap(9, 9, 9)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LBL_Warning, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BTN_Publicar))
+                            .addComponent(jScrollPane1)))
+                    .addComponent(BTN_Sig, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PNL_Pub, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -557,32 +565,9 @@ public class VNT_Inicio extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BTN_Buscar)
-                    .addComponent(FLD_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addComponent(LST_Tendencias, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(BTN_Publicar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(LBL_Warning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PAN_Posts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(168, 168, 168)
                         .addComponent(BTN_Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -600,6 +585,27 @@ public class VNT_Inicio extends javax.swing.JFrame {
                         .addComponent(BTN_Config, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(85, 85, 85))
                     .addComponent(jSeparator1)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BTN_Buscar)
+                    .addComponent(FLD_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addComponent(LST_Tendencias, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(PNL_Pub, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BTN_Sig, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BTN_Publicar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(LBL_Warning, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14))
         );
 
         BTN_Inicio.getAccessibleContext().setAccessibleName("ID_BTN_Inicio");
@@ -613,7 +619,6 @@ public class VNT_Inicio extends javax.swing.JFrame {
         BTN_Comun.getAccessibleContext().setAccessibleName("ID_BTN_Comun");
         BTN_Listas.getAccessibleContext().setAccessibleName("ID_BTN_Listas");
         LST_Tendencias.getAccessibleContext().setAccessibleName("ID_LST_Tendencias");
-        PAN_Posts.getAccessibleContext().setAccessibleName("ID_PAN_Posts");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -684,10 +689,16 @@ public class VNT_Inicio extends javax.swing.JFrame {
         String tweetid = db_c.Adyacent_Element( "id_tweet", "Tweet", TXT_Content.getText(), "contenido");
         Boolean Dar_like = db_c.NewLike(Main_ID, tweetid);
         
-        if(Dar_like) //se comprueba que se publico el tweet correctamente
+        if(Dar_like == true) //se comprueba que se publico el tweet correctamente
         {
             Pub_Likes[Shw_index]++;
-            BTN_MeGusta.setText(String.valueOf(Pub_Likes[Shw_index]));
+            BTN_MeGusta.setText("♥ " + String.valueOf(Pub_Likes[Shw_index]));
+        }
+        else if (Dar_like == false)
+        {
+            
+            Pub_Likes[Shw_index]--;
+            BTN_MeGusta.setText("♡ " + String.valueOf(Pub_Likes[Shw_index]));
         }
         else
         {
@@ -699,7 +710,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
     private void BTN_RepostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_RepostActionPerformed
         // TODO add your handling code here:
         DB_con db_c = new DB_con();
-        String post = LBL_Name.getText() + " " + LBL_Id.getText() + " " + LBL_Date.getText() + System.lineSeparator() + TXT_Content.getText();
+        String post = LBL_Name.getText() + "  " + LBL_Id.getText() + "  " + LBL_Date.getText() + ": \n" + TXT_Content.getText();
         String tweetid = db_c.Adyacent_Element( "id_tweet", "Tweet", TXT_Content.getText(), "contenido");
         Boolean posted = db_c.Repostear(Main_ID, "Retweet", tweetid, post);
         
@@ -738,15 +749,21 @@ public class VNT_Inicio extends javax.swing.JFrame {
         String tweetid = db_c.Adyacent_Element( "id_tweet", "Tweet", TXT_Content1.getText(), "contenido");
         Boolean Dar_like = db_c.NewLike(Main_ID, tweetid);
         
-        if(Dar_like) //se comprueba que se publico el tweet correctamente
+        if(Dar_like == true) //se comprueba que se publico el tweet correctamente
         {
             Pub_Likes[Shw_index1]++;
-            BTN_MeGusta1.setText(String.valueOf(Pub_Likes[Shw_index1]));
+            BTN_MeGusta1.setText("♥ " + String.valueOf(Pub_Likes[Shw_index1]));
+        }
+        else if (Dar_like == false)
+        {
+            
+            Pub_Likes[Shw_index1]--;
+            BTN_MeGusta1.setText("♡ " + String.valueOf(Pub_Likes[Shw_index1]));
         }
         else
         {
             LBL_Warning.setText("Ocurrio un error");
-            System.out.println("\n   Error VNT_Inicio: Fallo MeGusta1 \n\n");
+            System.out.println("\n   Error VNT_Inicio: Fallo MeGusta0\n\n");
         }
     }//GEN-LAST:event_BTN_MeGusta1ActionPerformed
 
@@ -823,6 +840,26 @@ public class VNT_Inicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BTN_Respuesta1ActionPerformed
 
+    private void BTN_PubPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PubPhotoActionPerformed
+        // TODO add your handling code here:
+        VNT_Perfil NewVP = new VNT_Perfil();
+        System.out.println("\n   " + Main_ID + " & " + Pub_Id[Shw_index] + " Transportados \n\n");
+        NewVP.recieveIDs(Main_ID, Pub_Id[Shw_index]);
+        NewVP.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_BTN_PubPhotoActionPerformed
+
+    private void BTN_PubPhoto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PubPhoto1ActionPerformed
+        // TODO add your handling code here:
+        VNT_Perfil NewVP = new VNT_Perfil();
+        System.out.println("\n   " + Main_ID + " & " + Pub_Id[Shw_index1] + " Transportados \n\n");
+        NewVP.recieveIDs(Main_ID, Pub_Id[Shw_index1]);
+        NewVP.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_BTN_PubPhoto1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -895,7 +932,6 @@ public class VNT_Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel LBL_Name1;
     private javax.swing.JLabel LBL_Warning;
     private java.awt.List LST_Tendencias;
-    private java.awt.ScrollPane PAN_Posts;
     private javax.swing.JPanel PNL_Pub;
     private javax.swing.JScrollPane SCR_Pub;
     private javax.swing.JScrollPane SCR_Pub1;
