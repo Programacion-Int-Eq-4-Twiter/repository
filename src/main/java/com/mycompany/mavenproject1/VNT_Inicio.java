@@ -4,6 +4,7 @@
  */
 package com.mycompany.mavenproject1;
 
+import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -21,14 +22,17 @@ public class VNT_Inicio extends javax.swing.JFrame {
      * Creates new form VNT_Inicio
      */
     DB_con db_c = new DB_con();
-    int Pub_index = -1;
-    int Shw_index = -1;
-    int Shw_index1 = 0;
-    int Srt_index = db_c.Check_Number(db_c.Tbl_Extract("Tweet"));
+    
+    //Valores iniciales de variables encargadas de contar las publicaciones
+    int Pub_index = -1; //Recuento de publicaciones totales
+    int Shw_index = -1; //Numero de publicacion mostrado superior
+    int Shw_index1 = 0; //Numero de publicacion mostrado inferior
+    int Srt_index = db_c.Check_Number(db_c.Tbl_Extract("Tweet"));   //Cuenta numero de publicaciones en BdD
     
     String Main_ID;
     //String Show_ID;
     
+    //Define los arreglos necesarios para guardar la info de las publicaciones
     ImageIcon[] Pub_Photo = new ImageIcon[Srt_index];
     String[] Pub_Name = new String[Srt_index];
     String[] Pub_Id = new String[Srt_index];    
@@ -39,6 +43,13 @@ public class VNT_Inicio extends javax.swing.JFrame {
     public VNT_Inicio() 
     {
         initComponents();
+        /*
+        Color nuevoColor = getBackground();  // Color actual por defecto
+        nuevoColor = new Color(30, 30, 30); // Oscuro
+        getContentPane().setBackground(nuevoColor);
+        PNL_Pub.setBackground(nuevoColor);
+        FLD_Publicar.setBackground(nuevoColor);
+        */
         Set_Show();         //Define arrays que contengan los tweets
         Pub_Show();         //actualiza los tweets enseñados
         
@@ -76,6 +87,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
         this.dispose();
     }
     
+    //Esta funcion guarda las publicaciones de la BdD en los arrays
     private void Set_Show()
     {
         try 
@@ -115,8 +127,8 @@ public class VNT_Inicio extends javax.swing.JFrame {
         
         if(Pub_index > 0)
         {
-            Shw_index = 0;
-            Shw_index1 = 1;
+            Shw_index = Pub_index;
+            Shw_index1 = Pub_index - 1;
         }
     }
     
@@ -205,8 +217,6 @@ public class VNT_Inicio extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         FLD_Publicar = new javax.swing.JTextArea();
         BTN_Publicar = new javax.swing.JButton();
-        BTN_Comun = new javax.swing.JButton();
-        BTN_Listas = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
         LST_Tendencias = new java.awt.List();
         LBL_Warning = new javax.swing.JLabel();
@@ -308,26 +318,6 @@ public class VNT_Inicio extends javax.swing.JFrame {
             }
         });
 
-        BTN_Comun.setBackground(new java.awt.Color(30, 30, 30));
-        BTN_Comun.setFont(new java.awt.Font("Monospaced", 2, 24)); // NOI18N
-        BTN_Comun.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_Comun.setText("Comunidades");
-        BTN_Comun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_ComunActionPerformed(evt);
-            }
-        });
-
-        BTN_Listas.setBackground(new java.awt.Color(30, 30, 30));
-        BTN_Listas.setFont(new java.awt.Font("Monospaced", 2, 24)); // NOI18N
-        BTN_Listas.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_Listas.setText("Listas");
-        BTN_Listas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_ListasActionPerformed(evt);
-            }
-        });
-
         LST_Tendencias.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         LST_Tendencias.setName("Tendencias"); // NOI18N
 
@@ -381,7 +371,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
 
         TXT_Content.setEditable(false);
         TXT_Content.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        TXT_Content.setText("the quick brown fox jump over the lazy dog in the afternoon of this soon to be lost place in the wilderness at the bottom of these food chains; one two three four five six seven eight nine ten eleven twelve apple chocolate beans pepper soda books water desks walls numbers toughts death space universe ants goku dddd dd d d   d d d d d d d dddd ddddd d d d dd dddd dd dddd dddd d ddd dddd d ddd ddd dddd dddddddd ddd dd dd ddddd dddd d d ");
+        TXT_Content.setText("[PUBLICACION]");
         SCR_Pub.setViewportView(TXT_Content);
 
         BTN_PubPhoto1.setSelected(true);
@@ -395,7 +385,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
 
         TXT_Content1.setEditable(false);
         TXT_Content1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        TXT_Content1.setText("the quick brown fox jump over the lazy dog in the afternoon of this soon to be lost place in the wilderness at the bottom of these food chains; one two three four five six seven eight nine ten eleven twelve apple chocolate beans pepper soda books water desks walls numbers toughts death space universe ants goku dddd dd d d   d d d d d d d dddd ddddd d d d dd dddd dd dddd dddd d ddd dddd d ddd ddd dddd dddddddd ddd dd dd ddddd dddd d d ");
+        TXT_Content1.setText("[PUBLICACION]");
         SCR_Pub1.setViewportView(TXT_Content1);
 
         LBL_Id1.setForeground(new java.awt.Color(153, 153, 153));
@@ -481,7 +471,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
             .addGroup(PNL_PubLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BTN_Ant, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(PNL_PubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BTN_PubPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PNL_PubLayout.createSequentialGroup()
@@ -526,15 +516,12 @@ public class VNT_Inicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(BTN_Notif)
-                        .addComponent(BTN_Perfil, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BTN_Config, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BTN_Inicio, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BTN_Explorar, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(BTN_Listas)
-                    .addComponent(BTN_Comun))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BTN_Notif)
+                    .addComponent(BTN_Perfil, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BTN_Config, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BTN_Inicio, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BTN_Explorar, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(12, 12, 12)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
@@ -576,14 +563,10 @@ public class VNT_Inicio extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(BTN_Notif, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(BTN_Comun, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(BTN_Listas, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(BTN_Perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(BTN_Config, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(85, 85, 85))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jSeparator1)))
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
@@ -597,7 +580,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(PNL_Pub, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(BTN_Sig, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -616,8 +599,6 @@ public class VNT_Inicio extends javax.swing.JFrame {
         FLD_Buscar.getAccessibleContext().setAccessibleName("ID_FLD_Publicar");
         BTN_Buscar.getAccessibleContext().setAccessibleName("ID_BTN_Buscar");
         BTN_Publicar.getAccessibleContext().setAccessibleName("ID_BTN_Publicar");
-        BTN_Comun.getAccessibleContext().setAccessibleName("ID_BTN_Comun");
-        BTN_Listas.getAccessibleContext().setAccessibleName("ID_BTN_Listas");
         LST_Tendencias.getAccessibleContext().setAccessibleName("ID_LST_Tendencias");
 
         pack();
@@ -664,24 +645,6 @@ public class VNT_Inicio extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_BTN_ConfigActionPerformed
-
-    private void BTN_ComunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ComunActionPerformed
-        // Este bloque de codigo cierra esta ventana y abre la ventana de este boton
-        VNT_Comunidades NewVCm = new VNT_Comunidades();
-        NewVCm.recieveID(Main_ID);
-        NewVCm.setVisible(true);
-        this.setVisible(false);
-        this.dispose();
-    }//GEN-LAST:event_BTN_ComunActionPerformed
-
-    private void BTN_ListasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ListasActionPerformed
-        // Este bloque de codigo cierra esta ventana y abre la ventana de este boton
-        VNT_Listas NewVL = new VNT_Listas();
-        NewVL.recieveID(Main_ID);
-        NewVL.setVisible(true);
-        this.setVisible(false);
-        this.dispose();
-    }//GEN-LAST:event_BTN_ListasActionPerformed
 
     private void BTN_MeGustaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_MeGustaActionPerformed
         // TODO add your handling code here:
@@ -769,20 +732,20 @@ public class VNT_Inicio extends javax.swing.JFrame {
 
     private void BTN_AntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_AntActionPerformed
         //
-        if(Shw_index > 0)
+        if(Shw_index < Pub_index && Shw_index1 < Pub_index)
         {
-            Shw_index = Shw_index - 2;
-            Shw_index1 = Shw_index1 - 2;
+            Shw_index = Shw_index + 2;
+            Shw_index1 = Shw_index1 + 2;
             Pub_Show();
         }
     }//GEN-LAST:event_BTN_AntActionPerformed
 
     private void BTN_SigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SigActionPerformed
         // TODO add your handling code here:
-        if(Shw_index < Pub_index && Shw_index1 < Pub_index)
+        if(Shw_index1 > 0)
         {
-            Shw_index = Shw_index + 2;
-            Shw_index1 = Shw_index1 + 2;
+            Shw_index = Shw_index - 2;
+            Shw_index1 = Shw_index1 - 2;
             Pub_Show();
         }
     }//GEN-LAST:event_BTN_SigActionPerformed
@@ -843,7 +806,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
     private void BTN_PubPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PubPhotoActionPerformed
         // TODO add your handling code here:
         VNT_Perfil NewVP = new VNT_Perfil();
-        System.out.println("\n   " + Main_ID + " & " + Pub_Id[Shw_index] + " Transportados \n\n");
+        System.out.println("\n   " + Main_ID + " & " + Pub_Id[Shw_index] + " Enviados \n\n");
         NewVP.recieveIDs(Main_ID, Pub_Id[Shw_index]);
         NewVP.setVisible(true);
         this.setVisible(false);
@@ -853,7 +816,7 @@ public class VNT_Inicio extends javax.swing.JFrame {
     private void BTN_PubPhoto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PubPhoto1ActionPerformed
         // TODO add your handling code here:
         VNT_Perfil NewVP = new VNT_Perfil();
-        System.out.println("\n   " + Main_ID + " & " + Pub_Id[Shw_index1] + " Transportados \n\n");
+        System.out.println("\n   " + Main_ID + " & " + Pub_Id[Shw_index1] + " Enviados \n\n");
         NewVP.recieveIDs(Main_ID, Pub_Id[Shw_index1]);
         NewVP.setVisible(true);
         this.setVisible(false);
@@ -893,6 +856,14 @@ public class VNT_Inicio extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -905,11 +876,9 @@ public class VNT_Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Ant;
     private javax.swing.JButton BTN_Buscar;
-    private javax.swing.JButton BTN_Comun;
     private javax.swing.JButton BTN_Config;
     private javax.swing.JButton BTN_Explorar;
     private javax.swing.JButton BTN_Inicio;
-    private javax.swing.JButton BTN_Listas;
     private javax.swing.JButton BTN_MeGusta;
     private javax.swing.JButton BTN_MeGusta1;
     private javax.swing.JButton BTN_Notif;

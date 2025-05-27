@@ -40,8 +40,6 @@ public class VNT_Explorar extends javax.swing.JFrame {
         BTN_Perfil = new javax.swing.JButton();
         BTN_Config = new javax.swing.JButton();
         FLD_Buscar = new javax.swing.JTextField();
-        BTN_Comun = new javax.swing.JButton();
-        BTN_Listas = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
         LST_Tendencias = new java.awt.List();
         BTN_Buscar1 = new javax.swing.JButton();
@@ -105,26 +103,6 @@ public class VNT_Explorar extends javax.swing.JFrame {
             }
         });
 
-        BTN_Comun.setBackground(new java.awt.Color(30, 30, 30));
-        BTN_Comun.setFont(new java.awt.Font("Monospaced", 2, 24)); // NOI18N
-        BTN_Comun.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_Comun.setText("Comunidades");
-        BTN_Comun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_ComunActionPerformed(evt);
-            }
-        });
-
-        BTN_Listas.setBackground(new java.awt.Color(30, 30, 30));
-        BTN_Listas.setFont(new java.awt.Font("Monospaced", 2, 24)); // NOI18N
-        BTN_Listas.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_Listas.setText("Listas");
-        BTN_Listas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_ListasActionPerformed(evt);
-            }
-        });
-
         LST_Tendencias.setBackground(new java.awt.Color(30, 30, 30));
         LST_Tendencias.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         LST_Tendencias.setName("Tendencias"); // NOI18N
@@ -139,15 +117,12 @@ public class VNT_Explorar extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(BTN_Notif)
-                        .addComponent(BTN_Perfil, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BTN_Config, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BTN_Inicio, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BTN_Explorar, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(BTN_Listas)
-                    .addComponent(BTN_Comun))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BTN_Notif)
+                    .addComponent(BTN_Perfil, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BTN_Config, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BTN_Inicio, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BTN_Explorar, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(12, 12, 12)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -191,10 +166,6 @@ public class VNT_Explorar extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(BTN_Notif, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(BTN_Comun, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(BTN_Listas, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
                                 .addComponent(BTN_Perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(BTN_Config, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -211,8 +182,6 @@ public class VNT_Explorar extends javax.swing.JFrame {
         BTN_Perfil.getAccessibleContext().setAccessibleName("ID_BTN_Perfil");
         BTN_Config.getAccessibleContext().setAccessibleName("ID_BTN_Config");
         FLD_Buscar.getAccessibleContext().setAccessibleName("ID_FLD_Publicar");
-        BTN_Comun.getAccessibleContext().setAccessibleName("ID_BTN_Comun");
-        BTN_Listas.getAccessibleContext().setAccessibleName("ID_BTN_Listas");
         LST_Tendencias.getAccessibleContext().setAccessibleName("ID_LST_Tendencias");
         TBD_Parati.getAccessibleContext().setAccessibleName("ID_TBD_Parati");
 
@@ -273,24 +242,6 @@ public class VNT_Explorar extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BTN_ConfigActionPerformed
 
-    private void BTN_ComunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ComunActionPerformed
-        // TODO add your handling code here:
-        VNT_Comunidades NewVCm = new VNT_Comunidades();
-        NewVCm.recieveID(Main_ID);
-        NewVCm.setVisible(true);
-        this.setVisible(false);
-        this.dispose();
-    }//GEN-LAST:event_BTN_ComunActionPerformed
-
-    private void BTN_ListasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ListasActionPerformed
-        // TODO add your handling code here:
-        VNT_Listas NewVL = new VNT_Listas();
-        NewVL.recieveID(Main_ID);
-        NewVL.setVisible(true);
-        this.setVisible(false);
-        this.dispose();
-    }//GEN-LAST:event_BTN_ListasActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -320,6 +271,10 @@ public class VNT_Explorar extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -331,11 +286,9 @@ public class VNT_Explorar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Buscar1;
-    private javax.swing.JButton BTN_Comun;
     private javax.swing.JButton BTN_Config;
     private javax.swing.JButton BTN_Explorar;
     private javax.swing.JButton BTN_Inicio;
-    private javax.swing.JButton BTN_Listas;
     private javax.swing.JButton BTN_Notif;
     private javax.swing.JButton BTN_Perfil;
     private javax.swing.JTextField FLD_Buscar;

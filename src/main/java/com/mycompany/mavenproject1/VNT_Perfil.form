@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -25,31 +25,37 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Component id="BTN_Notif" min="-2" max="-2" attributes="0"/>
-                      <Component id="BTN_Perfil" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="BTN_Config" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="BTN_Inicio" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="BTN_Explorar" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="BTN_Listas" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="BTN_Comun" alignment="0" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="BTN_Notif" min="-2" max="-2" attributes="0"/>
+                  <Component id="BTN_Perfil" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="BTN_Config" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="BTN_Inicio" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="BTN_Explorar" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <Component id="BTN_ELocat" min="-2" pref="32" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="LBL_Ubicacion" min="-2" pref="183" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="BTN_EDate" min="-2" pref="32" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="LBL_CDate" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace pref="5" max="-2" attributes="0"/>
                       <Component id="BTN_Photo" min="-2" pref="128" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="LBL_Following" min="-2" pref="132" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="LBL_Followers" min="-2" pref="136" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="26" max="32767" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="TGL_Follow" min="-2" pref="101" max="-2" attributes="0"/>
@@ -57,28 +63,29 @@
                               <Component id="BTN_PConf" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="LBL_Nombre2" min="-2" pref="273" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                      <Component id="LBL_Following" min="-2" pref="132" max="-2" attributes="0"/>
+                                      <Component id="LBL_Nombre" min="-2" pref="257" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="LBL_Followers" min="-2" pref="136" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="BTN_EName" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="LBL_Nombre2" max="32767" attributes="0"/>
-                                  <Component id="LBL_Nombre" max="32767" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="BTN_Return" min="-2" pref="62" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="LBL_Titulo" pref="375" max="32767" attributes="0"/>
+                      <Component id="LBL_Titulo" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="FLD_Biography" max="32767" attributes="0"/>
+                  <Component id="SPN_Biography" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="BTN_EBio" min="-2" pref="32" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSeparator2" min="-2" pref="3" max="-2" attributes="0"/>
@@ -110,7 +117,7 @@
                   <Component id="filler1" min="-2" max="-2" attributes="0"/>
                   <Component id="LST_Tendencias" min="-2" pref="544" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="33" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
@@ -127,10 +134,6 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="BTN_Notif" min="-2" pref="37" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="BTN_Comun" min="-2" pref="37" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="BTN_Listas" min="-2" pref="37" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="BTN_Perfil" min="-2" pref="37" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="BTN_Config" min="-2" pref="37" max="-2" attributes="0"/>
@@ -145,11 +148,14 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="LBL_Nombre" min="-2" pref="19" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="LBL_Nombre" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="BTN_EName" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="LBL_Nombre2" min="-2" pref="16" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="BTN_PConf" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="TGL_Follow" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
@@ -164,12 +170,16 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="LBL_Ubicacion" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                           <Component id="LBL_CDate" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                          <Component id="BTN_EDate" alignment="0" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="BTN_ELocat" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="LBL_Ubicacion" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="FLD_Biography" min="-2" pref="134" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="SPN_Biography" min="-2" pref="149" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="BTN_EBio" min="-2" pref="31" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="217" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -193,7 +203,7 @@
           <Color blue="1e" green="1e" red="1e" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Monospaced" size="24" style="3"/>
+          <Font name="Monospaced" size="24" style="2"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -253,7 +263,7 @@
           <Color blue="1e" green="1e" red="1e" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Monospaced" size="24" style="2"/>
+          <Font name="Monospaced" size="24" style="3"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -301,46 +311,6 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_BTN_Buscar"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="javax.swing.JButton" name="BTN_Comun">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="1e" green="1e" red="1e" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Monospaced" size="24" style="2"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Comunidades"/>
-      </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_BTN_Comun"/>
-      </AccessibilityProperties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_ComunActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="BTN_Listas">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="1e" green="1e" red="1e" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Monospaced" size="24" style="2"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Listas"/>
-      </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_BTN_Listas"/>
-      </AccessibilityProperties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_ListasActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.Box$Filler" name="filler1">
       <Properties>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -387,7 +357,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Monospaced" size="24" style="2"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="[NOMBRE_USUARIO]"/>
+        <Property name="text" type="java.lang.String" value="Perfil de [NOMBRE_USUARIO]"/>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_LBL_Titulo"/>
@@ -492,18 +462,74 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TGL_FollowActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="FLD_Biography">
+    <Component class="javax.swing.JButton" name="BTN_EBio">
       <Properties>
-        <Property name="text" type="java.lang.String" value="[BIOGRAFIA]"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
-          </Border>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Noto Sans" size="10" style="0"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="\ud83d\udd89" containsInvalidXMLChars="true"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FLD_BiographyActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_EBioActionPerformed"/>
       </Events>
     </Component>
+    <Component class="javax.swing.JButton" name="BTN_EName">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Noto Sans" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="\ud83d\udd89" containsInvalidXMLChars="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_ENameActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BTN_EDate">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Noto Sans" size="10" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="\ud83d\udd89" containsInvalidXMLChars="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_EDateActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BTN_ELocat">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Noto Sans" size="10" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="\ud83d\udd89" containsInvalidXMLChars="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_ELocatActionPerformed"/>
+      </Events>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="SPN_Biography">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="TXT_Biography">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="lineWrap" type="boolean" value="true"/>
+                <Property name="rows" type="int" value="5"/>
+                <Property name="text" type="java.lang.String" value="[BIOGRAFIA]"/>
+                <Property name="wrapStyleWord" type="boolean" value="true"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

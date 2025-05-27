@@ -24,8 +24,6 @@ import javax.swing.ImageIcon;
  *
  * @author Vicente193373
  */        
-
-//el agua moja
 public class DB_con 
 {
     ///Estos strings tienen la funcion de contener los detalles de la conexio a la base de datos
@@ -33,7 +31,7 @@ public class DB_con
     ///Esto ultimo es un proceso que se hace fuera de NetBeans con la aplicaicon de MySQL
     
     ///En caso de que la base de datos que se utilize tenga un nombre distinto este debe introducirse en DB_name:
-    public String DB_name = "[NAME]";
+    public String DB_name = "[DBNAME]";
     
     //Cada miembro debe introducir aqui la contraseña de su MySQL para que funcione:
     public String dbpass = "[PASSWORD]";         
@@ -773,4 +771,5 @@ public class DB_con
         
         return false;
     }//*/
+    
 }

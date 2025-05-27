@@ -34,16 +34,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Component id="BTN_Notif" min="-2" max="-2" attributes="0"/>
-                      <Component id="BTN_Perfil" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="BTN_Config" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="BTN_Inicio" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="BTN_Explorar" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="BTN_Listas" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="BTN_Comun" alignment="0" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="BTN_Notif" min="-2" max="-2" attributes="0"/>
+                  <Component id="BTN_Perfil" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="BTN_Config" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="BTN_Inicio" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="BTN_Explorar" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
@@ -94,14 +90,10 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="BTN_Notif" min="-2" pref="37" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="BTN_Comun" min="-2" pref="37" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="BTN_Listas" min="-2" pref="37" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="BTN_Perfil" min="-2" pref="37" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="BTN_Config" min="-2" pref="37" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
               </Group>
@@ -120,7 +112,7 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <Component id="PNL_Pub" max="32767" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
               <Component id="BTN_Sig" min="-2" pref="16" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="125" max="-2" attributes="0"/>
@@ -290,46 +282,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_PublicarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BTN_Comun">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="1e" green="1e" red="1e" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Monospaced" size="24" style="2"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Comunidades"/>
-      </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_BTN_Comun"/>
-      </AccessibilityProperties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_ComunActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="BTN_Listas">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="1e" green="1e" red="1e" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Monospaced" size="24" style="2"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Listas"/>
-      </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_BTN_Listas"/>
-      </AccessibilityProperties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_ListasActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.Box$Filler" name="filler1">
       <Properties>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -433,7 +385,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="BTN_Ant" min="-2" pref="16" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="BTN_PubPhoto" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
@@ -561,7 +513,7 @@
                     <EmptyBorder/>
                   </Border>
                 </Property>
-                <Property name="text" type="java.lang.String" value="the quick brown fox jump over the lazy dog in the afternoon of this soon to be lost place in the wilderness at the bottom of these food chains; one two three four five six seven eight nine ten eleven twelve apple chocolate beans pepper soda books water desks walls numbers toughts death space universe ants goku dddd dd d d   d d d d d d d dddd ddddd d d d dd dddd dd dddd dddd d ddd dddd d ddd ddd dddd dddddddd ddd dd dd ddddd dddd d d "/>
+                <Property name="text" type="java.lang.String" value="[PUBLICACION]"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -594,7 +546,7 @@
                     <EmptyBorder/>
                   </Border>
                 </Property>
-                <Property name="text" type="java.lang.String" value="the quick brown fox jump over the lazy dog in the afternoon of this soon to be lost place in the wilderness at the bottom of these food chains; one two three four five six seven eight nine ten eleven twelve apple chocolate beans pepper soda books water desks walls numbers toughts death space universe ants goku dddd dd d d   d d d d d d d dddd ddddd d d d dd dddd dd dddd dddd d ddd dddd d ddd ddd dddd dddddddd ddd dd dd ddddd dddd d d "/>
+                <Property name="text" type="java.lang.String" value="[PUBLICACION]"/>
               </Properties>
             </Component>
           </SubComponents>

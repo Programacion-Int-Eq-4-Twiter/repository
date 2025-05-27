@@ -102,7 +102,6 @@ public class VNT_Singup extends javax.swing.JFrame {
         jLabel1.setText("@");
 
         LBL_Warning.setForeground(new java.awt.Color(255, 0, 51));
-        LBL_Warning.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         BTN_Login.setText("Iniciar Sesion");
         BTN_Login.addActionListener(new java.awt.event.ActionListener() {
@@ -244,11 +243,46 @@ public class VNT_Singup extends javax.swing.JFrame {
 
     private void BTN_CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CrearActionPerformed
         // TODO add your handling code here:
+        System.out.println("\n   BTN_Crear: Action Performed\n\n");
         
-        if(FLD_ClaveA.getText().equals(FLD_ClaveB.getText()))
+        int empty = 0;
+        
+        if(FLD_Correo.getText().trim().isEmpty())
+            empty = 1;
+        
+        if(FLD_Tel.getText().trim().isEmpty())
+            empty = 1;
+        
+        if(FLD_Nombre.getText().trim().isEmpty())
+            empty = 1;
+        
+        if(FLD_Apellido.getText().trim().isEmpty())
+            empty = 1;
+        
+        if(FLD_Id.getText().trim().isEmpty())
+            empty = 1;
+        
+        if(FLD_Genero.getText().trim().isEmpty())
+            empty = 1;
+        
+        if(FLD_Localidad.getText().trim().isEmpty())
+            empty = 1;
+        
+        if(FLD_ClaveA.getText().trim().isEmpty())
+            empty = 1;
+        
+        if(empty == 0)
         {
+            System.out.println("\n   All fields are full\n\n");
+            LBL_Warning.setText("");
+            
+            if(FLD_ClaveA.getText().equals(FLD_ClaveB.getText()))
+            {
             //Se define la conexion usando el archivo predefinido DB_con.java
             DB_con db_c = new DB_con();
+            
+            //Se define la conexion en a para referenciarla
+            Connection a = db_c.Get_conexion();
         
             //Se guarda en 'name' lo que estaba escrito en el campo nombre
             String id = "@" + FLD_Id.getText();
@@ -286,9 +320,6 @@ public class VNT_Singup extends javax.swing.JFrame {
             //Se guarda en 'psw' lo que estaba escrito en el campo contraseña
             String pass  = FLD_ClaveB.getText();
         
-            //Se define la conexion en a para referenciarla
-            Connection a = db_c.Get_conexion();
-            
             Boolean singup, profile;
                     
             if (db_c.Check_Unique_User(id, email) == "")
@@ -319,17 +350,22 @@ public class VNT_Singup extends javax.swing.JFrame {
             }
             else //if (db_c.Check_Unique_User(id, email) != null)
             {
-                LBL_Warning.setText(db_c.Check_Unique_User(id, email));
+                LBL_Warning.setText("Id de usuario ya en uso");
                 System.out.println("\n   Error BTN_Crear: Check_Unique_User()\n\n");
             }
         
         }
+            else
+            {
+                LBL_Warning.setText("Contraseñas diferentes");
+                System.out.println("\n   Error BTN_Crear: Contraseñas diferentes\n\n");
+            }
+        }
         else
         {
-            LBL_Warning.setText("Contraseñas diferentes");
-            System.out.println("\n   Error BTN_Crear: Contraseñas diferentes\n\n");
+            LBL_Warning.setText("Llene todos los espacios");
+            System.out.println("\n   Error BTN_Crear: Empty Fields\n\n");    
         }
-        
     }//GEN-LAST:event_BTN_CrearActionPerformed
 
     private void BTN_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_LoginActionPerformed
@@ -370,6 +406,14 @@ public class VNT_Singup extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VNT_Singup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

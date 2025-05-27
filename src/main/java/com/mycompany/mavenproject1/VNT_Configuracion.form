@@ -25,60 +25,28 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Component id="BTN_Notif" min="-2" max="-2" attributes="0"/>
-                      <Component id="BTN_Perfil" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="BTN_Config" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="BTN_Inicio" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="BTN_Explorar" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="BTN_Listas" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="BTN_Comun" alignment="0" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="BTN_Notif" min="-2" max="-2" attributes="0"/>
+                  <Component id="BTN_Perfil" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="BTN_Config" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="BTN_Inicio" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="BTN_Explorar" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="BTN_Publicar" alignment="0" max="32767" attributes="0"/>
-                      <Component id="BTN_Publicar2" alignment="0" max="32767" attributes="0"/>
-                      <Component id="BTN_Publicar3" alignment="0" max="32767" attributes="0"/>
-                      <Component id="BTN_Publicar4" alignment="0" max="32767" attributes="0"/>
-                      <Component id="BTN_Publicar5" alignment="0" max="32767" attributes="0"/>
-                      <Component id="BTN_Publicar6" alignment="0" max="32767" attributes="0"/>
-                      <Component id="BTN_Publicar7" alignment="0" max="32767" attributes="0"/>
-                      <Component id="BTN_Publicar8" alignment="0" max="32767" attributes="0"/>
-                      <Component id="BTN_Publicar9" alignment="0" max="32767" attributes="0"/>
-                      <Component id="BTN_Publicar10" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jScrollPane1" alignment="0" pref="368" max="32767" attributes="0"/>
-                      <Component id="LBL_Titulo" alignment="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="BTN_Buscar1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="BTN_Color" alignment="0" max="32767" attributes="0"/>
+                  <Component id="BTN_Fuente" alignment="0" max="32767" attributes="0"/>
+                  <Component id="BTN_Notificaciones" alignment="0" max="32767" attributes="0"/>
+                  <Component id="BTN_Idioma" alignment="0" max="32767" attributes="0"/>
+                  <Component id="LBL_Titulo" alignment="0" pref="368" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jSeparator2" min="-2" pref="3" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="filler1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="BTN_Publicar12" alignment="0" max="32767" attributes="0"/>
-                          <Component id="BTN_Publicar11" alignment="0" max="32767" attributes="0"/>
-                          <Component id="BTN_Publicar1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="BTN_Publicar13" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="LBL_Titulo1" min="-2" pref="135" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
+              <EmptySpace pref="246" max="32767" attributes="0"/>
+              <Component id="filler1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -99,61 +67,25 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="BTN_Notif" min="-2" pref="37" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="BTN_Comun" min="-2" pref="37" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="BTN_Listas" min="-2" pref="37" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="BTN_Perfil" min="-2" pref="37" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="BTN_Config" min="-2" pref="37" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="LBL_Titulo" min="-2" pref="32" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane1" alignment="0" min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                                      <Component id="BTN_Buscar1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="BTN_Publicar" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="BTN_Publicar3" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="BTN_Publicar2" min="-2" pref="32" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="BTN_Publicar4" min="-2" pref="32" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="BTN_Publicar5" min="-2" pref="32" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="BTN_Publicar6" min="-2" pref="32" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="BTN_Publicar7" min="-2" pref="32" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="BTN_Publicar8" min="-2" pref="32" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="BTN_Publicar9" min="-2" pref="32" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="BTN_Publicar10" min="-2" pref="32" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="BTN_Color" min="-2" pref="32" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="BTN_Fuente" min="-2" pref="32" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="BTN_Notificaciones" min="-2" pref="32" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="BTN_Idioma" min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="113" max="32767" attributes="0"/>
+                      <EmptySpace pref="223" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="LBL_Titulo1" min="-2" pref="32" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="BTN_Publicar1" min="-2" pref="38" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="BTN_Publicar11" min="-2" pref="38" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="BTN_Publicar12" min="-2" pref="38" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="BTN_Publicar13" min="-2" pref="38" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="filler1" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="filler1" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -271,79 +203,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_ConfigActionPerformed"/>
       </Events>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTextArea" name="FLD_Publicar">
-          <Properties>
-            <Property name="columns" type="int" value="20"/>
-            <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Configuraci&#xf3;n de b&#xfa;squeda"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
-          </Properties>
-          <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_FLD_Publicar"/>
-          </AccessibilityProperties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Component class="javax.swing.JButton" name="BTN_Publicar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Tu cuenta"/>
-        <Property name="actionCommand" type="java.lang.String" value=""/>
-        <Property name="horizontalAlignment" type="int" value="2"/>
-      </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_BTN_Publicar"/>
-      </AccessibilityProperties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_PublicarActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="BTN_Comun">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="1e" green="1e" red="1e" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Monospaced" size="24" style="2"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Comunidades"/>
-      </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_BTN_Comun"/>
-      </AccessibilityProperties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_ComunActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="BTN_Listas">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="1e" green="1e" red="1e" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Monospaced" size="24" style="2"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Listas"/>
-      </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ID_BTN_Listas"/>
-      </AccessibilityProperties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_ListasActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.Box$Filler" name="filler1">
       <Properties>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -360,98 +219,43 @@
         <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.VerticalStrut"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="BTN_Buscar1">
+    <Component class="javax.swing.JButton" name="BTN_Color">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Buscar"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="BTN_Publicar2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Premium"/>
+        <Property name="text" type="java.lang.String" value="Color de fondo"/>
         <Property name="actionCommand" type="java.lang.String" value=""/>
         <Property name="horizontalAlignment" type="int" value="2"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_Publicar2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_ColorActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BTN_Publicar3">
+    <Component class="javax.swing.JButton" name="BTN_Fuente">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Monetizaci&#xf3;n"/>
+        <Property name="text" type="java.lang.String" value="Tama&#xf1;o de Fuente"/>
         <Property name="actionCommand" type="java.lang.String" value=""/>
         <Property name="horizontalAlignment" type="int" value="2"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_Publicar3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_FuenteActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BTN_Publicar4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Suscripciones para creadores"/>
-        <Property name="actionCommand" type="java.lang.String" value=""/>
-        <Property name="horizontalAlignment" type="int" value="2"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_Publicar4ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="BTN_Publicar5">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Seguridad y acceso a la cuenta"/>
-        <Property name="actionCommand" type="java.lang.String" value=""/>
-        <Property name="horizontalAlignment" type="int" value="2"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_Publicar5ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="BTN_Publicar6">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Privacidad y seguridad"/>
-        <Property name="actionCommand" type="java.lang.String" value=""/>
-        <Property name="horizontalAlignment" type="int" value="2"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_Publicar6ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="BTN_Publicar7">
+    <Component class="javax.swing.JButton" name="BTN_Notificaciones">
       <Properties>
         <Property name="text" type="java.lang.String" value="Notificaciones"/>
         <Property name="actionCommand" type="java.lang.String" value=""/>
         <Property name="horizontalAlignment" type="int" value="2"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_Publicar7ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_NotificacionesActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BTN_Publicar8">
+    <Component class="javax.swing.JButton" name="BTN_Idioma">
       <Properties>
-        <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="label" type="java.lang.String" value="Accesibilidad, pantalla e idiomas"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_Publicar8ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="BTN_Publicar9">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Recursos adicionales"/>
-        <Property name="actionCommand" type="java.lang.String" value=""/>
+        <Property name="text" type="java.lang.String" value="Idiomas"/>
         <Property name="horizontalAlignment" type="int" value="2"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_Publicar9ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="BTN_Publicar10">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Centro de ayuda"/>
-        <Property name="actionCommand" type="java.lang.String" value=""/>
-        <Property name="horizontalAlignment" type="int" value="2"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_Publicar10ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_IdiomaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="LBL_Titulo">
@@ -461,54 +265,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Configuraci&#xf3;n"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="LBL_Titulo1">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Monospaced" size="24" style="2"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Tu cuenta"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="BTN_Publicar1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Informaci&#xf3;n de la cuenta"/>
-        <Property name="actionCommand" type="java.lang.String" value=""/>
-        <Property name="horizontalAlignment" type="int" value="2"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_Publicar1ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="BTN_Publicar11">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Cambia tu contrase&#xf1;a"/>
-        <Property name="actionCommand" type="java.lang.String" value=""/>
-        <Property name="horizontalAlignment" type="int" value="2"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_Publicar11ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="BTN_Publicar12">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Descargar un archivo con tus datos"/>
-        <Property name="actionCommand" type="java.lang.String" value=""/>
-        <Property name="horizontalAlignment" type="int" value="2"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_Publicar12ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="BTN_Publicar13">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Desactivar tu cuenta"/>
-        <Property name="actionCommand" type="java.lang.String" value=""/>
-        <Property name="horizontalAlignment" type="int" value="2"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_Publicar13ActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

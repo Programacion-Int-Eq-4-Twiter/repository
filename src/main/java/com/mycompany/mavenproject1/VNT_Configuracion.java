@@ -4,6 +4,22 @@
  */
 package com.mycompany.mavenproject1;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Font;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Vicente193373
@@ -40,28 +56,12 @@ public class VNT_Configuracion extends javax.swing.JFrame {
         BTN_Notif = new javax.swing.JButton();
         BTN_Perfil = new javax.swing.JButton();
         BTN_Config = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        FLD_Publicar = new javax.swing.JTextArea();
-        BTN_Publicar = new javax.swing.JButton();
-        BTN_Comun = new javax.swing.JButton();
-        BTN_Listas = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
-        BTN_Buscar1 = new javax.swing.JButton();
-        BTN_Publicar2 = new javax.swing.JButton();
-        BTN_Publicar3 = new javax.swing.JButton();
-        BTN_Publicar4 = new javax.swing.JButton();
-        BTN_Publicar5 = new javax.swing.JButton();
-        BTN_Publicar6 = new javax.swing.JButton();
-        BTN_Publicar7 = new javax.swing.JButton();
-        BTN_Publicar8 = new javax.swing.JButton();
-        BTN_Publicar9 = new javax.swing.JButton();
-        BTN_Publicar10 = new javax.swing.JButton();
+        BTN_Color = new javax.swing.JButton();
+        BTN_Fuente = new javax.swing.JButton();
+        BTN_Notificaciones = new javax.swing.JButton();
+        BTN_Idioma = new javax.swing.JButton();
         LBL_Titulo = new javax.swing.JLabel();
-        LBL_Titulo1 = new javax.swing.JLabel();
-        BTN_Publicar1 = new javax.swing.JButton();
-        BTN_Publicar11 = new javax.swing.JButton();
-        BTN_Publicar12 = new javax.swing.JButton();
-        BTN_Publicar13 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,165 +120,43 @@ public class VNT_Configuracion extends javax.swing.JFrame {
             }
         });
 
-        FLD_Publicar.setColumns(20);
-        FLD_Publicar.setRows(5);
-        FLD_Publicar.setText("Configuración de búsqueda");
-        FLD_Publicar.setToolTipText("");
-        jScrollPane1.setViewportView(FLD_Publicar);
-        FLD_Publicar.getAccessibleContext().setAccessibleName("ID_FLD_Publicar");
-
-        BTN_Publicar.setText("Tu cuenta");
-        BTN_Publicar.setActionCommand("");
-        BTN_Publicar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BTN_Publicar.addActionListener(new java.awt.event.ActionListener() {
+        BTN_Color.setText("Color de fondo");
+        BTN_Color.setActionCommand("");
+        BTN_Color.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BTN_Color.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_PublicarActionPerformed(evt);
+                BTN_ColorActionPerformed(evt);
             }
         });
 
-        BTN_Comun.setBackground(new java.awt.Color(30, 30, 30));
-        BTN_Comun.setFont(new java.awt.Font("Monospaced", 2, 24)); // NOI18N
-        BTN_Comun.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_Comun.setText("Comunidades");
-        BTN_Comun.addActionListener(new java.awt.event.ActionListener() {
+        BTN_Fuente.setText("Tamaño de Fuente");
+        BTN_Fuente.setActionCommand("");
+        BTN_Fuente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BTN_Fuente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_ComunActionPerformed(evt);
+                BTN_FuenteActionPerformed(evt);
             }
         });
 
-        BTN_Listas.setBackground(new java.awt.Color(30, 30, 30));
-        BTN_Listas.setFont(new java.awt.Font("Monospaced", 2, 24)); // NOI18N
-        BTN_Listas.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_Listas.setText("Listas");
-        BTN_Listas.addActionListener(new java.awt.event.ActionListener() {
+        BTN_Notificaciones.setText("Notificaciones");
+        BTN_Notificaciones.setActionCommand("");
+        BTN_Notificaciones.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BTN_Notificaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_ListasActionPerformed(evt);
+                BTN_NotificacionesActionPerformed(evt);
             }
         });
 
-        BTN_Buscar1.setText("Buscar");
-
-        BTN_Publicar2.setText("Premium");
-        BTN_Publicar2.setActionCommand("");
-        BTN_Publicar2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BTN_Publicar2.addActionListener(new java.awt.event.ActionListener() {
+        BTN_Idioma.setText("Idiomas");
+        BTN_Idioma.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BTN_Idioma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_Publicar2ActionPerformed(evt);
-            }
-        });
-
-        BTN_Publicar3.setText("Monetización");
-        BTN_Publicar3.setActionCommand("");
-        BTN_Publicar3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BTN_Publicar3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_Publicar3ActionPerformed(evt);
-            }
-        });
-
-        BTN_Publicar4.setText("Suscripciones para creadores");
-        BTN_Publicar4.setActionCommand("");
-        BTN_Publicar4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BTN_Publicar4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_Publicar4ActionPerformed(evt);
-            }
-        });
-
-        BTN_Publicar5.setText("Seguridad y acceso a la cuenta");
-        BTN_Publicar5.setActionCommand("");
-        BTN_Publicar5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BTN_Publicar5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_Publicar5ActionPerformed(evt);
-            }
-        });
-
-        BTN_Publicar6.setText("Privacidad y seguridad");
-        BTN_Publicar6.setActionCommand("");
-        BTN_Publicar6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BTN_Publicar6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_Publicar6ActionPerformed(evt);
-            }
-        });
-
-        BTN_Publicar7.setText("Notificaciones");
-        BTN_Publicar7.setActionCommand("");
-        BTN_Publicar7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BTN_Publicar7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_Publicar7ActionPerformed(evt);
-            }
-        });
-
-        BTN_Publicar8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BTN_Publicar8.setLabel("Accesibilidad, pantalla e idiomas");
-        BTN_Publicar8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_Publicar8ActionPerformed(evt);
-            }
-        });
-
-        BTN_Publicar9.setText("Recursos adicionales");
-        BTN_Publicar9.setActionCommand("");
-        BTN_Publicar9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BTN_Publicar9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_Publicar9ActionPerformed(evt);
-            }
-        });
-
-        BTN_Publicar10.setText("Centro de ayuda");
-        BTN_Publicar10.setActionCommand("");
-        BTN_Publicar10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BTN_Publicar10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_Publicar10ActionPerformed(evt);
+                BTN_IdiomaActionPerformed(evt);
             }
         });
 
         LBL_Titulo.setFont(new java.awt.Font("Monospaced", 2, 24)); // NOI18N
         LBL_Titulo.setText("Configuración");
-
-        LBL_Titulo1.setFont(new java.awt.Font("Monospaced", 2, 24)); // NOI18N
-        LBL_Titulo1.setText("Tu cuenta");
-
-        BTN_Publicar1.setText("Información de la cuenta");
-        BTN_Publicar1.setActionCommand("");
-        BTN_Publicar1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BTN_Publicar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_Publicar1ActionPerformed(evt);
-            }
-        });
-
-        BTN_Publicar11.setText("Cambia tu contraseña");
-        BTN_Publicar11.setActionCommand("");
-        BTN_Publicar11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BTN_Publicar11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_Publicar11ActionPerformed(evt);
-            }
-        });
-
-        BTN_Publicar12.setText("Descargar un archivo con tus datos");
-        BTN_Publicar12.setActionCommand("");
-        BTN_Publicar12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BTN_Publicar12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_Publicar12ActionPerformed(evt);
-            }
-        });
-
-        BTN_Publicar13.setText("Desactivar tu cuenta");
-        BTN_Publicar13.setActionCommand("");
-        BTN_Publicar13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BTN_Publicar13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_Publicar13ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -286,51 +164,26 @@ public class VNT_Configuracion extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(BTN_Notif)
-                        .addComponent(BTN_Perfil, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BTN_Config, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BTN_Inicio, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BTN_Explorar, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(BTN_Listas)
-                    .addComponent(BTN_Comun))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BTN_Notif)
+                    .addComponent(BTN_Perfil, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BTN_Config, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BTN_Inicio, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BTN_Explorar, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(12, 12, 12)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(BTN_Publicar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BTN_Publicar2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BTN_Publicar3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BTN_Publicar4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BTN_Publicar5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BTN_Publicar6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BTN_Publicar7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BTN_Publicar8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BTN_Publicar9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BTN_Publicar10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
-                        .addComponent(LBL_Titulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(BTN_Buscar1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(BTN_Color, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BTN_Fuente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BTN_Notificaciones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BTN_Idioma, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LBL_Titulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(BTN_Publicar12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BTN_Publicar11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BTN_Publicar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BTN_Publicar13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(LBL_Titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 6, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
+                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,52 +202,21 @@ public class VNT_Configuracion extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(BTN_Notif, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(BTN_Comun, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(BTN_Listas, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
                                 .addComponent(BTN_Perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(BTN_Config, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LBL_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(47, 47, 47)
-                                        .addComponent(BTN_Buscar1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(BTN_Publicar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(BTN_Publicar3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(BTN_Publicar2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(BTN_Publicar4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(BTN_Publicar5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(BTN_Publicar6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(BTN_Publicar7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(BTN_Publicar8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(BTN_Publicar9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(BTN_Publicar10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(113, Short.MAX_VALUE))
+                                .addGap(31, 31, 31)
+                                .addComponent(BTN_Color, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(BTN_Fuente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(BTN_Notificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(BTN_Idioma, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(223, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(LBL_Titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(BTN_Publicar1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BTN_Publicar11, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BTN_Publicar12, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BTN_Publicar13, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
@@ -404,13 +226,12 @@ public class VNT_Configuracion extends javax.swing.JFrame {
         BTN_Notif.getAccessibleContext().setAccessibleName("ID_BTN_Notif");
         BTN_Perfil.getAccessibleContext().setAccessibleName("ID_BTN_Perfil");
         BTN_Config.getAccessibleContext().setAccessibleName("ID_BTN_Config");
-        BTN_Publicar.getAccessibleContext().setAccessibleName("ID_BTN_Publicar");
-        BTN_Comun.getAccessibleContext().setAccessibleName("ID_BTN_Comun");
-        BTN_Listas.getAccessibleContext().setAccessibleName("ID_BTN_Listas");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private ResourceBundle localBundle;
+    
     private void BTN_InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_InicioActionPerformed
         // TODO add your handling code here:
         VNT_Inicio NewVI = new VNT_Inicio();
@@ -465,79 +286,131 @@ public class VNT_Configuracion extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BTN_ConfigActionPerformed
 
-    private void BTN_ComunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ComunActionPerformed
+    private void BTN_ColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ColorActionPerformed
         // TODO add your handling code here:
-        VNT_Comunidades NewVCm = new VNT_Comunidades();
-        NewVCm.recieveID(Main_ID);
-        NewVCm.setVisible(true);
-        this.setVisible(false);
-        this.dispose();
-    }//GEN-LAST:event_BTN_ComunActionPerformed
+        String[] opciones = {"Azul", "Verde", "Claro", "Oscuro"};
+        int seleccion = JOptionPane.showOptionDialog(
+            this,
+            "Selecciona un color de fondo:",
+            "Cambiar color",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.PLAIN_MESSAGE,
+            null,
+            opciones,
+            opciones[0]
+        );
 
-    private void BTN_ListasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ListasActionPerformed
-        // TODO add your handling code here:
-        VNT_Listas NewVL = new VNT_Listas();
-        NewVL.recieveID(Main_ID);
-        NewVL.setVisible(true);
-        this.setVisible(false);
-        this.dispose();
-    }//GEN-LAST:event_BTN_ListasActionPerformed
+        Color nuevoColor = getBackground();  // Color actual por defecto
 
-    private void BTN_PublicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PublicarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_PublicarActionPerformed
+        switch (seleccion) {
+            case 0:
+                nuevoColor = new Color(173, 216, 230); // Azul claro
+                break;
+            case 1:
+                nuevoColor = new Color(144, 238, 144); // Verde claro
+                break;
+            case 2:
+                nuevoColor = new Color(211, 211, 211); // Gris claro
+                break;
+            case 3:
+                nuevoColor = new Color(30, 30, 30); // Gris Oscuro
+                break;
+            default:
+                return; // Si cierra el diálogo, no hace nada
+        }
 
-    private void BTN_Publicar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Publicar2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_Publicar2ActionPerformed
+        // Aplica el color al panel principal
+        getContentPane().setBackground(nuevoColor);
 
-    private void BTN_Publicar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Publicar3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_Publicar3ActionPerformed
+        // También puedes aplicar a otros paneles si los tienes
+        // panelFondo.setBackground(nuevoColor); 
+    }//GEN-LAST:event_BTN_ColorActionPerformed
 
-    private void BTN_Publicar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Publicar4ActionPerformed
+    private void BTN_FuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_FuenteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_Publicar4ActionPerformed
+        String[] opciones = {"Pequeño", "Mediano", "Grande"};
 
-    private void BTN_Publicar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Publicar5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_Publicar5ActionPerformed
+        int seleccion = JOptionPane.showOptionDialog(
+            this,
+            "Selecciona el tamaño de fuente:",
+            "Configuración de fuente",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.PLAIN_MESSAGE,
+            null,
+            opciones,
+            opciones[1]
+        );
 
-    private void BTN_Publicar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Publicar6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_Publicar6ActionPerformed
+        int nuevoTamano;
+        switch (seleccion) {
+            case 0:
+                nuevoTamano = 12;
+                break;
+            case 1:
+                nuevoTamano = 16;
+                break;
+            case 2:
+                nuevoTamano = 20;
+                break;
+            default:
+                return; // Usuario canceló o cerró el diálogo
+        }
 
-    private void BTN_Publicar7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Publicar7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_Publicar7ActionPerformed
+        // Aplicamos el cambio de fuente a toda la ventana
+        cambiarFuente(this.getContentPane(), nuevoTamano);
+        LBL_Titulo.setFont(LBL_Titulo.getFont().deriveFont((float) nuevoTamano));
+        
+        this.pack(); // ajusta tamaño de ventana a sus componentes
+        this.revalidate(); // refresca el layout
+        this.repaint();    // repinta la ventana
 
-    private void BTN_Publicar8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Publicar8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_Publicar8ActionPerformed
+    }//GEN-LAST:event_BTN_FuenteActionPerformed
 
-    private void BTN_Publicar9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Publicar9ActionPerformed
+    private void BTN_NotificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_NotificacionesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_Publicar9ActionPerformed
+            Object[] opciones = {"Activar notificaciones", "Desactivar notificaciones"};
+       int seleccion = javax.swing.JOptionPane.showOptionDialog(
+           this,
+           "Seleccione una opción:",
+           "Configuración de notificaciones",
+           javax.swing.JOptionPane.DEFAULT_OPTION,
+           javax.swing.JOptionPane.QUESTION_MESSAGE,
+           null,
+           opciones,
+           opciones[0]
+       );
 
-    private void BTN_Publicar10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Publicar10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_Publicar10ActionPerformed
+       if (seleccion == 0) {
+           ConfigGlobal.notificacionesActivadas = true;
+           javax.swing.JOptionPane.showMessageDialog(this, "Notificaciones activadas.");
+       } else if (seleccion == 1) {
+           ConfigGlobal.notificacionesActivadas = false;
+           javax.swing.JOptionPane.showMessageDialog(this, "Notificaciones desactivadas.");
+       }
+    }//GEN-LAST:event_BTN_NotificacionesActionPerformed
 
-    private void BTN_Publicar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Publicar1ActionPerformed
+    private void BTN_IdiomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_IdiomaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_Publicar1ActionPerformed
+        String[] opciones = {"Español", "Inglés"};
+        int seleccion = JOptionPane.showOptionDialog(
+            this,
+            IdiomaManager.getTexto("label.seleccionar_idioma"),
+            IdiomaManager.getTexto("btn.idioma"),
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.INFORMATION_MESSAGE,
+            null,
+            opciones,
+            opciones[0]
+        );
 
-    private void BTN_Publicar11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Publicar11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_Publicar11ActionPerformed
+        if (seleccion == 0) {
+            localBundle = ResourceBundle.getBundle("com.mycompany.mavenproject1.messages", new Locale("es"));
+        } else if (seleccion == 1) {
+            localBundle = ResourceBundle.getBundle("com.mycompany.mavenproject1.messages", new Locale("en"));
+        }
 
-    private void BTN_Publicar12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Publicar12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_Publicar12ActionPerformed
-
-    private void BTN_Publicar13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Publicar13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_Publicar13ActionPerformed
+        actualizarTextos();
+    }//GEN-LAST:event_BTN_IdiomaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -580,6 +453,22 @@ public class VNT_Configuracion extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -590,34 +479,58 @@ public class VNT_Configuracion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BTN_Buscar1;
-    private javax.swing.JButton BTN_Comun;
+    private javax.swing.JButton BTN_Color;
     private javax.swing.JButton BTN_Config;
     private javax.swing.JButton BTN_Explorar;
+    private javax.swing.JButton BTN_Fuente;
+    private javax.swing.JButton BTN_Idioma;
     private javax.swing.JButton BTN_Inicio;
-    private javax.swing.JButton BTN_Listas;
     private javax.swing.JButton BTN_Notif;
+    private javax.swing.JButton BTN_Notificaciones;
     private javax.swing.JButton BTN_Perfil;
-    private javax.swing.JButton BTN_Publicar;
-    private javax.swing.JButton BTN_Publicar1;
-    private javax.swing.JButton BTN_Publicar10;
-    private javax.swing.JButton BTN_Publicar11;
-    private javax.swing.JButton BTN_Publicar12;
-    private javax.swing.JButton BTN_Publicar13;
-    private javax.swing.JButton BTN_Publicar2;
-    private javax.swing.JButton BTN_Publicar3;
-    private javax.swing.JButton BTN_Publicar4;
-    private javax.swing.JButton BTN_Publicar5;
-    private javax.swing.JButton BTN_Publicar6;
-    private javax.swing.JButton BTN_Publicar7;
-    private javax.swing.JButton BTN_Publicar8;
-    private javax.swing.JButton BTN_Publicar9;
-    private javax.swing.JTextArea FLD_Publicar;
     private javax.swing.JLabel LBL_Titulo;
-    private javax.swing.JLabel LBL_Titulo1;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
+
+    private void actualizarTextos() {
+        BTN_Inicio.setText(localBundle.getString("btn.inicio"));
+        BTN_Explorar.setText(localBundle.getString("btn.explorar"));
+        BTN_Notif.setText(localBundle.getString("btn.notificaciones"));
+        BTN_Perfil.setText(localBundle.getString("btn.perfil"));
+        BTN_Config.setText(localBundle.getString("btn.configuracion"));
+
+        LBL_Titulo.setText(localBundle.getString("label.configuracion"));
+
+        BTN_Color.setText(localBundle.getString("btn.premium"));
+        BTN_Fuente.setText(localBundle.getString("btn.suscripciones"));
+        BTN_Notificaciones.setText(localBundle.getString("btn.notificaciones.config"));
+        BTN_Idioma.setText(localBundle.getString("btn.idioma"));
+
+    }
+
+    private void cambiarFuente(Component componente, int nuevoTamano) {
+        if (componente instanceof JLabel || 
+            componente instanceof JButton || 
+            componente instanceof JTextArea || 
+            componente instanceof JTextField || 
+            componente instanceof JCheckBox || 
+            componente instanceof JRadioButton || 
+            componente instanceof JTable || 
+            componente instanceof JComboBox) {
+
+            Font fuenteActual = componente.getFont();
+            componente.setFont(fuenteActual.deriveFont((float) nuevoTamano));
+        }
+
+        // Si el componente es un contenedor, aplicamos recursivamente a sus hijos
+        if (componente instanceof Container) {
+            for (Component hijo : ((Container) componente).getComponents()) {
+                cambiarFuente(hijo, nuevoTamano);
+            }
+        }
+    }
+
+
 }

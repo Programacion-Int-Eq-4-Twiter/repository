@@ -7,8 +7,18 @@ package com.mycompany.mavenproject1;
 import java.awt.Image;
 import java.io.File;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 
 /**
  *
@@ -31,16 +41,19 @@ public class VNT_Perfil extends javax.swing.JFrame {
         System.out.println("\n   JFRAME 'VNT_Perfil' HAS BEEN INICIATED\n\n");
         System.out.println("   Main_ID = " + Main_ID + ", Show_ID = " + Show_ID);
         
-        //*/
-        if(Main_ID == Show_ID)
+        BTN_PConf.setVisible(false);
+        TGL_Follow.setVisible(false);
+        BTN_EBio.setText("🖉");
+        BTN_EDate.setText("🖉");
+        BTN_ELocat.setText("🖉");
+        BTN_EName.setText("🖉");
+        
+        /*else
         {
-            BTN_PConf.setVisible(false);
-            TGL_Follow.setVisible(false);
-        }
-        else
-        {
-            BTN_PConf.setVisible(false);
-            TGL_Follow.setVisible(false);
+            BTN_EBio.setVisible(false);
+            BTN_EDate.setVisible(false);
+            BTN_ELocat.setVisible(false);
+            BTN_EName.setVisible(false);
         }//*/
     }
 
@@ -53,6 +66,14 @@ public class VNT_Perfil extends javax.swing.JFrame {
         
         System.out.println("\n   Sesion " + Main_ID + " Iniciada \n\n");
         System.out.println("   Mostrando Perfil " + Show_ID + " \n\n");
+            
+        if(Main_ID != Show_ID)
+        {
+            BTN_EBio.setVisible(false);
+            BTN_EDate.setVisible(false);
+            BTN_ELocat.setVisible(false);
+            BTN_EName.setVisible(false);
+        }
         
         ProfileUpdate(Show_ID);
     }//*/
@@ -72,7 +93,10 @@ public class VNT_Perfil extends javax.swing.JFrame {
         LBL_CDate.setText(db_c.Adyacent_Element("fecha_nacimiento", "Usuario", Show_ID, "id_usuario"));
         LBL_Following.setVisible(false);
         LBL_Followers.setVisible(false);
-        FLD_Biography.setText(db_c.Adyacent_Element("biografia", "Perfil", Show_ID, "id_usuario"));
+        TXT_Biography.setText(db_c.Adyacent_Element("biografia", "Perfil", Show_ID, "id_usuario"));
+        
+        if (Main_ID == Show_ID)
+            LBL_Titulo.setText("Tu Perfil");
         
     }
     
@@ -94,8 +118,6 @@ public class VNT_Perfil extends javax.swing.JFrame {
         BTN_Config = new javax.swing.JButton();
         FLD_Buscar = new javax.swing.JTextField();
         BTN_Buscar = new javax.swing.JButton();
-        BTN_Comun = new javax.swing.JButton();
-        BTN_Listas = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
         LST_Tendencias = new java.awt.List();
         BTN_Return = new javax.swing.JButton();
@@ -109,7 +131,13 @@ public class VNT_Perfil extends javax.swing.JFrame {
         LBL_Followers = new javax.swing.JLabel();
         BTN_Photo = new javax.swing.JButton();
         TGL_Follow = new javax.swing.JToggleButton();
-        FLD_Biography = new javax.swing.JTextField();
+        BTN_EBio = new javax.swing.JButton();
+        BTN_EName = new javax.swing.JButton();
+        BTN_EDate = new javax.swing.JButton();
+        BTN_ELocat = new javax.swing.JButton();
+        SPN_Biography = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TXT_Biography = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,7 +146,7 @@ public class VNT_Perfil extends javax.swing.JFrame {
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         BTN_Inicio.setBackground(new java.awt.Color(30, 30, 30));
-        BTN_Inicio.setFont(new java.awt.Font("Monospaced", 3, 24)); // NOI18N
+        BTN_Inicio.setFont(new java.awt.Font("Monospaced", 2, 24)); // NOI18N
         BTN_Inicio.setForeground(new java.awt.Color(255, 255, 255));
         BTN_Inicio.setText("Inicio");
         BTN_Inicio.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +176,7 @@ public class VNT_Perfil extends javax.swing.JFrame {
         });
 
         BTN_Perfil.setBackground(new java.awt.Color(30, 30, 30));
-        BTN_Perfil.setFont(new java.awt.Font("Monospaced", 2, 24)); // NOI18N
+        BTN_Perfil.setFont(new java.awt.Font("Monospaced", 3, 24)); // NOI18N
         BTN_Perfil.setForeground(new java.awt.Color(255, 255, 255));
         BTN_Perfil.setText("Perfil");
         BTN_Perfil.addActionListener(new java.awt.event.ActionListener() {
@@ -170,26 +198,6 @@ public class VNT_Perfil extends javax.swing.JFrame {
 
         BTN_Buscar.setText("Buscar");
 
-        BTN_Comun.setBackground(new java.awt.Color(30, 30, 30));
-        BTN_Comun.setFont(new java.awt.Font("Monospaced", 2, 24)); // NOI18N
-        BTN_Comun.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_Comun.setText("Comunidades");
-        BTN_Comun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_ComunActionPerformed(evt);
-            }
-        });
-
-        BTN_Listas.setBackground(new java.awt.Color(30, 30, 30));
-        BTN_Listas.setFont(new java.awt.Font("Monospaced", 2, 24)); // NOI18N
-        BTN_Listas.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_Listas.setText("Listas");
-        BTN_Listas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_ListasActionPerformed(evt);
-            }
-        });
-
         LST_Tendencias.setBackground(new java.awt.Color(30, 30, 30));
         LST_Tendencias.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         LST_Tendencias.setName("Tendencias"); // NOI18N
@@ -198,7 +206,7 @@ public class VNT_Perfil extends javax.swing.JFrame {
         BTN_Return.setText("<");
 
         LBL_Titulo.setFont(new java.awt.Font("Monospaced", 2, 24)); // NOI18N
-        LBL_Titulo.setText("[NOMBRE_USUARIO]");
+        LBL_Titulo.setText("Perfil de [NOMBRE_USUARIO]");
 
         BTN_PConf.setText("Configurar");
         BTN_PConf.addActionListener(new java.awt.event.ActionListener() {
@@ -243,13 +251,47 @@ public class VNT_Perfil extends javax.swing.JFrame {
             }
         });
 
-        FLD_Biography.setText("[BIOGRAFIA]");
-        FLD_Biography.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        FLD_Biography.addActionListener(new java.awt.event.ActionListener() {
+        BTN_EBio.setFont(new java.awt.Font("Noto Sans", 0, 10)); // NOI18N
+        BTN_EBio.setText("🖉");
+        BTN_EBio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FLD_BiographyActionPerformed(evt);
+                BTN_EBioActionPerformed(evt);
             }
         });
+
+        BTN_EName.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
+        BTN_EName.setText("🖉");
+        BTN_EName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_ENameActionPerformed(evt);
+            }
+        });
+
+        BTN_EDate.setFont(new java.awt.Font("Noto Sans", 0, 10)); // NOI18N
+        BTN_EDate.setText("🖉");
+        BTN_EDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_EDateActionPerformed(evt);
+            }
+        });
+
+        BTN_ELocat.setFont(new java.awt.Font("Noto Sans", 0, 10)); // NOI18N
+        BTN_ELocat.setText("🖉");
+        BTN_ELocat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_ELocatActionPerformed(evt);
+            }
+        });
+
+        TXT_Biography.setEditable(false);
+        TXT_Biography.setColumns(20);
+        TXT_Biography.setLineWrap(true);
+        TXT_Biography.setRows(5);
+        TXT_Biography.setText("[BIOGRAFIA]");
+        TXT_Biography.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(TXT_Biography);
+
+        SPN_Biography.setViewportView(jScrollPane2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -257,50 +299,56 @@ public class VNT_Perfil extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(BTN_Notif)
-                        .addComponent(BTN_Perfil, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BTN_Config, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BTN_Inicio, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BTN_Explorar, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(BTN_Listas)
-                    .addComponent(BTN_Comun))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BTN_Notif)
+                    .addComponent(BTN_Perfil, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BTN_Config, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BTN_Inicio, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BTN_Explorar, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(12, 12, 12)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(BTN_ELocat, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(LBL_Ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LBL_CDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(12, 12, 12))
+                        .addComponent(BTN_EDate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LBL_CDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(BTN_Photo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(LBL_Following, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LBL_Followers, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 26, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(TGL_Follow, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35)
                                 .addComponent(BTN_PConf)
                                 .addGap(46, 46, 46))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LBL_Nombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(LBL_Following, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(LBL_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(LBL_Followers, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(LBL_Nombre2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(LBL_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                        .addComponent(BTN_EName)))
+                                .addGap(5, 5, 5))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(BTN_Return, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LBL_Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE))
-                    .addComponent(FLD_Biography))
+                        .addComponent(LBL_Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(SPN_Biography)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(BTN_EBio, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
@@ -325,7 +373,7 @@ public class VNT_Perfil extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LST_Tendencias, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jSeparator2))
@@ -340,10 +388,6 @@ public class VNT_Perfil extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(BTN_Notif, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(BTN_Comun, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(BTN_Listas, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(BTN_Perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(BTN_Config, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -356,11 +400,13 @@ public class VNT_Perfil extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(LBL_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15)
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(LBL_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(BTN_EName, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(LBL_Nombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addGap(30, 30, 30)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(BTN_PConf)
                                     .addComponent(TGL_Follow, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -371,11 +417,15 @@ public class VNT_Perfil extends javax.swing.JFrame {
                             .addComponent(BTN_Photo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LBL_Ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LBL_CDate, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(FLD_Biography, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(LBL_CDate, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BTN_EDate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BTN_ELocat, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LBL_Ubicacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(SPN_Biography, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BTN_EBio, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(217, 217, 217))))
         );
 
         BTN_Inicio.getAccessibleContext().setAccessibleName("ID_BTN_Inicio");
@@ -385,8 +435,6 @@ public class VNT_Perfil extends javax.swing.JFrame {
         BTN_Config.getAccessibleContext().setAccessibleName("ID_BTN_Config");
         FLD_Buscar.getAccessibleContext().setAccessibleName("ID_FLD_Publicar");
         BTN_Buscar.getAccessibleContext().setAccessibleName("ID_BTN_Buscar");
-        BTN_Comun.getAccessibleContext().setAccessibleName("ID_BTN_Comun");
-        BTN_Listas.getAccessibleContext().setAccessibleName("ID_BTN_Listas");
         LST_Tendencias.getAccessibleContext().setAccessibleName("ID_LST_Tendencias");
         BTN_Return.getAccessibleContext().setAccessibleName("ID_BTN_Return");
         LBL_Titulo.getAccessibleContext().setAccessibleName("ID_LBL_Titulo");
@@ -453,24 +501,6 @@ public class VNT_Perfil extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BTN_ConfigActionPerformed
 
-    private void BTN_ComunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ComunActionPerformed
-        // TODO add your handling code here:
-        VNT_Comunidades NewVCm = new VNT_Comunidades();
-        NewVCm.recieveID(Main_ID);
-        NewVCm.setVisible(true);
-        this.setVisible(false);
-        this.dispose();
-    }//GEN-LAST:event_BTN_ComunActionPerformed
-
-    private void BTN_ListasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ListasActionPerformed
-        // TODO add your handling code here:
-        VNT_Listas NewVL = new VNT_Listas();
-        NewVL.recieveID(Main_ID);
-        NewVL.setVisible(true);
-        this.setVisible(false);
-        this.dispose();
-    }//GEN-LAST:event_BTN_ListasActionPerformed
-
     private void BTN_PhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PhotoActionPerformed
         // TODO add your handling code here:
         DB_con db_c = new DB_con();
@@ -489,6 +519,7 @@ public class VNT_Perfil extends javax.swing.JFrame {
         
         //Se actualiza la foto en la base de datos
         db_c.Update_Photo(Main_ID, path_img);
+        ProfileUpdate(Show_ID);
     }//GEN-LAST:event_BTN_PhotoActionPerformed
 
     private void TGL_FollowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TGL_FollowActionPerformed
@@ -501,9 +532,133 @@ public class VNT_Perfil extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BTN_PConfActionPerformed
 
-    private void FLD_BiographyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FLD_BiographyActionPerformed
+    private void BTN_ENameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ENameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FLD_BiographyActionPerformed
+        String NewName = JOptionPane.showInputDialog(null, "Introduce el nuevo nombre:");
+        
+        if (NewName != null && !NewName.trim().isEmpty())
+        {
+            //Se define la conexion usando el archivo predefinido DB_con.java
+            DB_con db_c = new DB_con();
+            db_c.Update_String("id_usuario", Main_ID, "Usuario", "nombre", NewName);
+            System.out.println("\n   Nuevo Nombre de " + Main_ID + ": " + NewName + "\n\n");
+            ProfileUpdate(Show_ID);
+        }
+        else
+        {
+            System.out.println("\n   Asignacion de Nuevo Nombre Cancelada \n\n");
+        }
+    }//GEN-LAST:event_BTN_ENameActionPerformed
+
+    private void BTN_ELocatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ELocatActionPerformed
+        // TODO add your handling code here:
+        String NewLocal = JOptionPane.showInputDialog(null, "Introduce la nueva ubicación:");
+        
+        if (NewLocal != null && !NewLocal.trim().isEmpty())
+        {
+            //Se define la conexion usando el archivo predefinido DB_con.java
+            DB_con db_c = new DB_con();
+            
+            db_c.Update_String("id_usuario", Main_ID, "Usuario", "pais", NewLocal);
+            db_c.Update_String("id_usuario", Main_ID, "Perfil", "ubicacion", NewLocal);
+            System.out.println("\n   Nueva Ubicación de " + Main_ID + ": " + NewLocal + "\n\n");
+            
+            ProfileUpdate(Show_ID);
+        }
+        else
+        {
+            System.out.println("\n   Asignacion de Nueva Ubicación Cancelada \n\n");
+        }
+    }//GEN-LAST:event_BTN_ELocatActionPerformed
+
+    private void BTN_EBioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_EBioActionPerformed
+        // TODO add your handling code here:
+        /*
+        String NewBio = JOptionPane.showInputDialog(null, "Introduce la nueva Biografía:");
+        
+        if (NewBio != null && !NewBio.trim().isEmpty())
+        {
+            //Se define la conexion usando el archivo predefinido DB_con.java
+            DB_con db_c = new DB_con();
+            db_c.Update_String("id_usuario", Main_ID, "Perfil", "biografia", NewBio);
+            System.out.println("\n   Nueva Biografía de " + Main_ID + ":\n   " + NewBio + "\n\n");
+            ProfileUpdate(Show_ID);
+        }
+        else
+        {
+            System.out.println("\n   Asignacion de Nueva Ubicación Cancelada \n\n");
+        }*/
+        
+        JTextArea campoTexto = new JTextArea(5, 30); //5 filas, 30 columnas
+        campoTexto.setLineWrap(true);
+        campoTexto.setWrapStyleWord(true);
+        
+        JScrollPane scroll = new JScrollPane(campoTexto);
+
+        int result = JOptionPane.showConfirmDialog(null, scroll, "Introduce Nueva Biografía", JOptionPane.OK_CANCEL_OPTION);
+
+        if (result == JOptionPane.OK_OPTION)
+        {
+            //Se define la conexion usando el archivo predefinido DB_con.java
+            DB_con db_c = new DB_con();
+            
+            String NewBio = campoTexto.getText();
+            db_c.Update_String("id_usuario", Main_ID, "Perfil", "biografia", NewBio);
+            System.out.println("\n   Nueva Biografía de " + Main_ID + ": \n    " + NewBio + "\n\n");
+            
+            ProfileUpdate(Show_ID);
+        }
+        else
+        {
+            System.out.println("\n   Asignacion de Nueva Biografía Cancelada \n\n");
+        }
+    }//GEN-LAST:event_BTN_EBioActionPerformed
+
+    private void BTN_EDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_EDateActionPerformed
+        // TODO add your handling code here:
+        JSpinner D = new JSpinner(new SpinnerNumberModel(1, 1, 31, 1));
+        JSpinner M = new JSpinner(new SpinnerNumberModel(1, 1, 12, 1));
+        JSpinner Y = new JSpinner(new SpinnerNumberModel(1900, 1000, 3000, 1));
+
+        JPanel panel = new JPanel();
+        
+        panel.add(new JLabel("Dia:"));
+        panel.add(D);
+        
+        panel.add(new JLabel(" Mes:"));
+        panel.add(M);
+        
+        panel.add(new JLabel(" Año:"));
+        panel.add(Y);
+
+        int result = JOptionPane.showConfirmDialog(null, panel, "Nueva Fecha de Nacimiento", JOptionPane.OK_CANCEL_OPTION);
+
+        if (result == JOptionPane.OK_OPTION) 
+        {
+            //Se define la conexion usando el archivo predefinido DB_con.java
+            DB_con db_c = new DB_con();
+            
+            int Day = (int) D.getValue();
+            int Month = (int) M.getValue();
+            int Year = (int) Y.getValue();
+            
+            //Se procesan los valores en el formato adecuado para una fecha en SQL
+            LocalDate bdate = LocalDate.of(Year, Month, Day);
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            
+            //Se guarda en 'birth' lo que se intordujo como fecha de nacimiento
+            String NewBirth = bdate.format(formato);
+            db_c.Update_String("id_usuario", Main_ID, "Usuario", "fecha_nacimiento", NewBirth);
+            
+            System.out.println("\n   Nueva Fecha de Nacmiento de " + Main_ID + ": " + NewBirth);
+            
+            ProfileUpdate(Show_ID);
+        }
+        else
+        {
+            System.out.println("\n   Asignacion de Nueva Fecha de Nacimeinto Cancelada \n\n");
+        }
+    }//GEN-LAST:event_BTN_EDateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -534,6 +689,10 @@ public class VNT_Perfil extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() 
@@ -547,17 +706,18 @@ public class VNT_Perfil extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Buscar;
-    private javax.swing.JButton BTN_Comun;
     private javax.swing.JButton BTN_Config;
+    private javax.swing.JButton BTN_EBio;
+    private javax.swing.JButton BTN_EDate;
+    private javax.swing.JButton BTN_ELocat;
+    private javax.swing.JButton BTN_EName;
     private javax.swing.JButton BTN_Explorar;
     private javax.swing.JButton BTN_Inicio;
-    private javax.swing.JButton BTN_Listas;
     private javax.swing.JButton BTN_Notif;
     private javax.swing.JButton BTN_PConf;
     private javax.swing.JButton BTN_Perfil;
     private javax.swing.JButton BTN_Photo;
     private javax.swing.JButton BTN_Return;
-    private javax.swing.JTextField FLD_Biography;
     private javax.swing.JTextField FLD_Buscar;
     private javax.swing.JLabel LBL_CDate;
     private javax.swing.JLabel LBL_Followers;
@@ -567,8 +727,11 @@ public class VNT_Perfil extends javax.swing.JFrame {
     private javax.swing.JLabel LBL_Titulo;
     private javax.swing.JLabel LBL_Ubicacion;
     private java.awt.List LST_Tendencias;
+    private javax.swing.JScrollPane SPN_Biography;
     private javax.swing.JToggleButton TGL_Follow;
+    private javax.swing.JTextArea TXT_Biography;
     private javax.swing.Box.Filler filler1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
